@@ -1,36 +1,26 @@
+/**********************************************
+*
+*   file ed.c
+*
+*   Functions: This file contains
+*      erosion
+*      dilation
+*      mask_erosion
+*      mask_dilation
+*      interior_outline
+*      exterior_outline
+*      copy_3_x_3
+*      opening
+*      closing
+*      get_shape_options
+*
+*   Purpose:
+*      These functions perform the erosion,
+*      dilation, outlining, opening and
+*      closing operations.
+************************************************/
 
-       /**********************************************
-       *
-       *   file ed.c
-       *
-       *   Functions: This file contains
-       *      erosion
-       *      dilation
-       *      mask_erosion
-       *      mask_dilation
-       *      interior_outline
-       *      exterior_outline
-       *      copy_3_x_3
-       *      opening
-       *      closing
-       *      get_shape_options
-       *
-       *   Purpose:
-       *      These functions perform the erosion,
-       *      dilation, outlining, opening and
-       *      closing operations.
-       *
-       *   External Calls:
-       *      none
-       *
-       *   Modifications:
-       *      14 March 1993 - created
-       *      21 August 1998 - modified to work on entire
-       *           images at once.
-       *
-       ************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -68,7 +58,7 @@ short edmask4[3][3] = {{1, 1, 1},
      *******************************************/
 
 erosion(the_image, out_image,
-        value, threshold, 
+        value, threshold,
         rows, cols)
 
    int    threshold;
@@ -430,7 +420,7 @@ opening(the_image, out_image,
       for(j=0; j<cols; j++)
          out_image[i][j] = the_image[i][j];
 
-   mask_erosion(the_image, out_image, 
+   mask_erosion(the_image, out_image,
                 value, mask_type,
                 rows, cols);
 
@@ -438,14 +428,14 @@ opening(the_image, out_image,
       count = 1;
       while(count < number){
          count++;
-         mask_erosion(the_image, out_image, 
+         mask_erosion(the_image, out_image,
                       value, mask_type,
                       rows, cols);
       }  /* ends while */
    }  /* ends if number > 1 */
 
    mask_dilation(the_image,
-                 out_image, 
+                 out_image,
                  value, mask_type,
                  rows, cols);
 
@@ -514,7 +504,7 @@ printf("\nCLOSING> value=%d mask=%d number=%d",value,mask_type,number);
       for(j=0; j<cols; j++)
          out_image[i][j] = the_image[i][j];
 
-   mask_dilation(the_image, out_image, 
+   mask_dilation(the_image, out_image,
                  value, mask_type,
                  rows, cols);
 
@@ -522,13 +512,13 @@ printf("\nCLOSING> value=%d mask=%d number=%d",value,mask_type,number);
       count = 1;
       while(count < number){
          count++;
-         mask_dilation(the_image, out_image, 
+         mask_dilation(the_image, out_image,
                         value, mask_type,
                         rows, cols);
       }  /* ends while */
    }  /* ends if number > 1 */
 
-   mask_erosion(the_image, out_image, 
+   mask_erosion(the_image, out_image,
                 value, mask_type,
                 rows, cols);
 
@@ -549,7 +539,7 @@ printf("\nCLOSING> value=%d mask=%d number=%d",value,mask_type,number);
      *
      *******************************************/
 
-interior_outline(the_image, out_image, 
+interior_outline(the_image, out_image,
                  value, mask_type,
                  rows, cols)
    int    mask_type;
@@ -588,7 +578,7 @@ interior_outline(the_image, out_image,
    }
 
    mask_erosion(the_image,
-                out_image, 
+                out_image,
                 value, mask_type,
                 rows, cols);
 
@@ -596,7 +586,7 @@ interior_outline(the_image, out_image,
       for(j=0; j<cols; j++)
          the_image[i][j] =
             the_image[i][j] - out_image[i][j];
-   
+
    for(i=0; i<rows; i++)
       for(j=0; j<cols; j++)
          out_image[i][j] = the_image[i][j];
@@ -658,7 +648,7 @@ exterior_outline(the_image, out_image,
          break;
    }
 
-   mask_dilation(the_image, out_image, 
+   mask_dilation(the_image, out_image,
                  value, mask_type,
                  rows, cols);
 
@@ -666,13 +656,9 @@ exterior_outline(the_image, out_image,
       for(j=0; j<cols; j++)
          the_image[i][j] =
             out_image[i][j] - the_image[i][j];
-   
+
    for(i=0; i<rows; i++)
       for(j=0; j<cols; j++)
          out_image[i][j] = the_image[i][j];
 
 }  /* ends exterior_outline */
-
-
-
-

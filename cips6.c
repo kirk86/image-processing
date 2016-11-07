@@ -1,52 +1,51 @@
-
-   /*************************** 
-   * 
-   *   cips6.c 
-   *   COMPOSITE FILE COMPRISING: 
-   *   filter.c 
-   *   display.c 
-   *   djet.c 
-   *   scale.c 
-   * 
-   ***************************\ 
-
+/***************************
+*
+*   cips6.c
+*   COMPOSITE FILE COMPRISING:
+*   filter.c
+*   display.c
+*   djet.c
+*   scale.c
+*
+***************************\
 
 
-    /***********************************************
-    *
-    *    file d:\cips\filter.c
-    *
-    *    Functions: This file contains
-    *       filter_image
-    *       median_filter
-    *       high_pixel
-    *       low_pixel
-    *       setup_filters
-    *       get_filter_options
-    *       median_of
-    *       sort_elements
-    *       swap
-    *
-    *    Purpose:
-    *       These functions implement several
-    *       types of basic spatial frequency
-    *       filters.
-    *
-    *    External Calls:
-    *       wtiff.c - round_off_image_size
-    *                 create_file_if_needed
-    *                 write_array_into_tiff_image
-    *       tiff.c - read_tiff_header
-    *       rtiff.c - read_tiff_image
-    *       numcvrt.c - get_integer
-    *
-    *
-    *    Modifications:
-    *       15 February 1992 - created
-    *
-    *************************************************/
 
-#include "cips.h"
+ /***********************************************
+ *
+ *    file d:\cips\filter.c
+ *
+ *    Functions: This file contains
+ *       filter_image
+ *       median_filter
+ *       high_pixel
+ *       low_pixel
+ *       setup_filters
+ *       get_filter_options
+ *       median_of
+ *       sort_elements
+ *       swap
+ *
+ *    Purpose:
+ *       These functions implement several
+ *       types of basic spatial frequency
+ *       filters.
+ *
+ *    External Calls:
+ *       wtiff.c - round_off_image_size
+ *                 create_file_if_needed
+ *                 write_array_into_tiff_image
+ *       tiff.c - read_tiff_header
+ *       rtiff.c - read_tiff_image
+ *       numcvrt.c - get_integer
+ *
+ *
+ *    Modifications:
+ *       15 February 1992 - created
+ *
+ *************************************************/
+
+#include <cips.h>
 
 
      /*******************************************
@@ -663,8 +662,8 @@ get_filter_options(filter_type, low_high)
 
 
 display_image(file_name, image, il, ie, ll, le,
-              image_header, monitor_type, 
-              color_transform, invert, image_colors, 
+              image_header, monitor_type,
+              color_transform, invert, image_colors,
               display_colors, show_hist, title)
    char    color_transform[],
            file_name[],
@@ -715,8 +714,8 @@ display_image(file_name, image, il, ie, ll, le,
 
      /**********************************************
      *
-     *   If you want to display the histogram and 
-     *   do not want to perform hist equalization, 
+     *   If you want to display the histogram and
+     *   do not want to perform hist equalization,
      *   then zero the histogram for calculations.
      *
      **********************************************/
@@ -751,9 +750,9 @@ display_image(file_name, image, il, ie, ll, le,
 
         /********************************************
         *
-        *   Somehow, my dx and dy offsets are 
-        *   backwards from my horizontal and vertical 
-        *   variables. Trying to center the images 
+        *   Somehow, my dx and dy offsets are
+        *   backwards from my horizontal and vertical
+        *   variables. Trying to center the images
         *   on the screen. March 21 1992
         *
         ********************************************/
@@ -771,9 +770,9 @@ display_image(file_name, image, il, ie, ll, le,
       if(max_horizontal > horizontal) dy_offset = 0;
       if(max_vertical > vertical)     dx_offset = 0;
 
-      if(horizontal > max_horizontal) 
+      if(horizontal > max_horizontal)
          horizontal = max_horizontal;
-      if(vertical > max_vertical)     
+      if(vertical > max_vertical)
          vertical   = max_vertical;
 
 
@@ -816,9 +815,9 @@ display_image(file_name, image, il, ie, ll, le,
         /* set graphics mode */
 
    my_setvideomode(display_mode); /* MSC 6.0 */
-   if(display_colors == 16) 
+   if(display_colors == 16)
       map_16_shades_of_gray(display_mode);
-   if(display_colors == 256) 
+   if(display_colors == 256)
       my_map_64_shades_of_gray();
 
 
@@ -845,11 +844,11 @@ display_image(file_name, image, il, ie, ll, le,
 
         /*****************************************
         *
-        *   These statements place a gray 
-        *   background across the display area of 
-        *   a VGA screen.  This reduces the 
-        *   contrast between the screen background 
-        *   and the images you display. This makes 
+        *   These statements place a gray
+        *   background across the display area of
+        *   a VGA screen.  This reduces the
+        *   contrast between the screen background
+        *   and the images you display. This makes
         *   it easier to take photos.
         *
         *******************************************/
@@ -873,18 +872,18 @@ display_image(file_name, image, il, ie, ll, le,
                  (color_transform[0] != 'H'))
                calculate_histogram(image, histogram);
 
-            transform_the_colors(image, 
+            transform_the_colors(image,
                                  color_transform,
                                  display_colors,
-                                 image_colors, 
+                                 image_colors,
                                  histogram,
-                                 horizontal, 
+                                 horizontal,
                                  vertical);
 
             if(color_transform[0] == 'H')
                calculate_histogram(image, new_hist);
           display_image_portion(image, x+dx_offset,
-                                y+dy_offset, 
+                                y+dy_offset,
                                 display_colors,
                                 image_colors, invert);
          }        /* ends loop over b */
@@ -892,10 +891,10 @@ display_image(file_name, image, il, ie, ll, le,
 
           /*******************************************
           *
-          *   Put in these statements to print a title 
-          *   at the bottom of the display.  This is 
-          *   nice for taking photos or articles 
-          *   because it tells the reader what you 
+          *   Put in these statements to print a title
+          *   at the bottom of the display.  This is
+          *   nice for taking photos or articles
+          *   because it tells the reader what you
           *   are trying to do.
           *
           ********************************************/
@@ -975,13 +974,13 @@ display_image(file_name, image, il, ie, ll, le,
    *
    ************************************************/
 
-display_menu_for_display_image(image_colors, 
+display_menu_for_display_image(image_colors,
                               display_colors,
                               invert, color_transform,
                               monitor_type,
                               show_hist)
    char color_transform[], monitor_type[];
-   int  *invert, *image_colors, 
+   int  *invert, *image_colors,
         *display_colors, *show_hist;
 {
    char response[80];
@@ -1001,7 +1000,7 @@ display_menu_for_display_image(image_colors,
              *display_colors);
       printf("\nDISPLAY> 5. Monitor type is %s",
              monitor_type);
-      printf("\nDISPLAY> 6. Histogram is %d", 
+      printf("\nDISPLAY> 6. Histogram is %d",
              *show_hist);
       printf("  (1=show 0=don't show)");
       printf("\nDISPLAY> _\b");
@@ -1028,7 +1027,7 @@ display_menu_for_display_image(image_colors,
          gets(response);
          if((response[0] == 'S') ||
             (response[0] == 's'))
-               strcpy(color_transform, 
+               strcpy(color_transform,
                       "Straight mode");
          else
                strcpy(color_transform,
@@ -1094,7 +1093,7 @@ display_menu_for_display_image(image_colors,
    *
    *********************************/
 
-display_image_portion(image, x, y, display_colors, 
+display_image_portion(image, x, y, display_colors,
                       image_colors, invert)
    int      invert, display_colors, image_colors;
    short    image[ROWS][COLS];
@@ -1250,8 +1249,8 @@ transform_the_colors(image, color_transform,
    *
    *   Purpose:
    *      These functions print a 200x200 image using
-   *      dithering to an HP DeskJet or compatable 
-   *      (Laserjet). This uses an 8x8 matrix which 
+   *      dithering to an HP DeskJet or compatable
+   *      (Laserjet). This uses an 8x8 matrix which
    *      gives 64 shades of gray.
    *
    *   External Calls:
@@ -1291,12 +1290,12 @@ transform_the_colors(image, color_transform,
     @DDDDDDDDDDDDDDDY
 
 
-          The function print_original_200_row 
+          The function print_original_200_row
           receives a 200 element array
     ZBDDDDDDDDDDDDDDDDDDDDDDDDDDB?
     @ADDDDDDDDDDDDDDDDDDDDDDDDDDAY
 
-          This array is transformed into a 8x200 
+          This array is transformed into a 8x200
           array of characters called 'row'
     ZDDDDDDDDD ... ~DDDDDDD?
     CDDDDDDDDD ... ~DDDDDDD4
@@ -1313,7 +1312,7 @@ transform_the_colors(image, color_transform,
     IMM;
     :  :
     HMM<
-          Each row of 'row' is passed to the funnction 
+          Each row of 'row' is passed to the funnction
           print_bytes for graphics printing
 
 
@@ -1457,7 +1456,7 @@ print_graphics_image(image1, image2, image_name,
 
 
    printf("\nReading image");
-   read_tiff_image(image_name, image2, 
+   read_tiff_image(image_name, image2,
                    il, ie+100, ll, le+100);
 
 
@@ -1515,7 +1514,7 @@ print_graphics_image(image1, image2, image_name,
    if(color_transform[0] == 'H'){
 
       printf("\nReading image");
-      read_tiff_image(image_name, image1, 
+      read_tiff_image(image_name, image1,
                    il+100, ie, ll+100, le);
       printf("\nReading image");
       read_tiff_image(image_name, image2,
@@ -1525,11 +1524,11 @@ print_graphics_image(image1, image2, image_name,
       calculate_histogram(image2, histogram);
 
       printf("\nReading image");
-      read_tiff_image(image_name, image1, 
+      read_tiff_image(image_name, image1,
                    il, ie, ll, le);
 
       printf("\nReading image");
-      read_tiff_image(image_name, image2, 
+      read_tiff_image(image_name, image2,
                    il, ie+100, ll, le+100);
 
       printf("\nDJET> Equalizing histogram");
@@ -1550,8 +1549,8 @@ print_graphics_image(image1, image2, image_name,
 
       /*********************************************
       *
-      *   If invert is set them invert the 
-      *   transformed image arrays (they now 
+      *   If invert is set them invert the
+      *   transformed image arrays (they now
       *   only have 64 shades of gray).
       *
       **********************************************/
@@ -1582,10 +1581,10 @@ print_graphics_image(image1, image2, image_name,
 
         /*********************************************
         *
-        *   Print the two arrays to make a 100x200 
-        *   output. To do this you loop over 100 rows, 
-        *   set the r buffer to the image values, set 
-        *   the graphics, and print the row via 
+        *   Print the two arrays to make a 100x200
+        *   output. To do this you loop over 100 rows,
+        *   set the r buffer to the image values, set
+        *   the graphics, and print the row via
         *   function print_original_200_row.
         *
         **********************************************/
@@ -1620,7 +1619,7 @@ print_graphics_image(image1, image2, image_name,
 
 
    printf("\nReading image");
-   read_tiff_image(image_name, image1, 
+   read_tiff_image(image_name, image1,
                 il+100, ie, ll+100, le);
    printf("\nReading image");
    read_tiff_image(image_name, image2,
@@ -1735,8 +1734,8 @@ print_graphics_image(image1, image2, image_name,
 
       /**********************************************
       *
-      *   If show_hist is 1 then calculate the 
-      *   histogram for the two image arrays and 
+      *   If show_hist is 1 then calculate the
+      *   histogram for the two image arrays and
       *   print the histogram.
       *
       ***********************************************/
@@ -2080,7 +2079,7 @@ print_hist_image(printer, hist)
 
    printf("\n\nHIST> Now printing the histogram");
    for(i=0; i<256; i++){
-      printf("\n\tHIST> Histogram[%d]=%ld", 
+      printf("\n\tHIST> Histogram[%d]=%ld",
             i, hist[i]);
 
             /* print the line 2 times */
@@ -2240,7 +2239,7 @@ zoom_image_array(in_name, out_name, the_image, out_image,
    short  the_image[ROWS][COLS],
           out_image[ROWS][COLS];
 {
-   int    A, B, a, b, count, factor, 
+   int    A, B, a, b, count, factor,
           i, j, length, width;
    struct tiff_header_struct image_header;
 
@@ -2306,7 +2305,7 @@ zoom_image_array(in_name, out_name, the_image, out_image,
            ******************************************/
 
    if(method[0] == 'r' || method[0] == 'R'){
-      read_tiff_image(in_name, the_image, 
+      read_tiff_image(in_name, the_image,
                       il, ie, ll, le);
       count = 1;
       for(A=0; A<factor; A++){
@@ -2386,7 +2385,7 @@ interpolate_pixel(the_image, A, B, i, j, a, b, factor)
 
    if(a > 0) y = 1;
    if(b > 0) x = 1;
-   diff = 
+   diff =
       the_image[y+i+A*ROWS/factor][x+j+B*COLS/factor] -
       the_image[i+A*ROWS/factor][j+B*COLS/factor];
 
@@ -2432,7 +2431,7 @@ interpolate_pixel(the_image, A, B, i, j, a, b, factor)
      *
      *******************************************/
 
-shrink_image_array(in_name, out_name, 
+shrink_image_array(in_name, out_name,
           the_image, out_image,
           il1, ie1, ll1, le1, il2, ie2, ll2, le2,
           scale, method)
@@ -2442,7 +2441,7 @@ shrink_image_array(in_name, out_name,
    short  the_image[ROWS][COLS],
           out_image[ROWS][COLS];
 {
-   int    A, B, a, b, count, factor, 
+   int    A, B, a, b, count, factor,
           i, j, length, width;
    struct tiff_header_struct image_header;
 
@@ -2479,8 +2478,8 @@ shrink_image_array(in_name, out_name,
       *   The equations inside the out_image []'s
       *   look a little strange.  What we are doing is
       *   setting every element and moving over every
-      *   time through the loops over A and B.  
-      *   The first loop is for i=0,49 then i=50,99 
+      *   time through the loops over A and B.
+      *   The first loop is for i=0,49 then i=50,99
       *   for a factor=2 and ROWS=100.
       *
       *   The final proof is that this works.
@@ -2613,7 +2612,7 @@ average_pixel(the_image, factor, i, j)
 
    for(a=0; a<factor; a++)
       for(b=0; b<factor; b++)
-         result = result + 
+         result = result +
                   the_image[factor*i+a][factor*j+a];
    result = result/(factor*factor);
 
@@ -2649,7 +2648,7 @@ median_pixel(the_image, factor, i, j)
      count = 0;
    for(a=0; a<factor; a++){
          for(b=0; b<factor; b++){
-            elements[count] = 
+            elements[count] =
                the_image[factor*i+a][factor*j+b];
               count++;
         }
@@ -2681,7 +2680,7 @@ get_scaling_options(zoom_shrink, scale, method)
    int not_finished = 1, response;
 
    while(not_finished){
-      printf("\n\t1. Zoom or Shrink is - %s", 
+      printf("\n\t1. Zoom or Shrink is - %s",
              zoom_shrink);
       printf("\n\t2. Scale factor is %d", *scale);
       printf("\n\t3. Scaling Method is - %s", method);

@@ -1,52 +1,40 @@
-
-   /*************************** 
-   * 
-   *   cips7.c 
-   *   COMPOSITE FILE COMPRISING: 
-   *   ed.c 
-   *   skeleton.c 
-   *   segment.c 
-   *   segment2.c 
-   * 
-   ***************************\ 
-
+/***************************
+*
+*   cips7.c
+*   COMPOSITE FILE COMPRISING:
+*   ed.c
+*   skeleton.c
+*   segment.c
+*   segment2.c
+*
+***************************\
 
 
-       /**********************************************
-       *
-       *   file d:\cips\ed.c
-       *
-       *   Functions: This file contains
-       *      erosion
-       *      dilation
-       *      mask_erosion
-       *      mask_dilation
-       *      interior_outline
-       *      exterior_outline
-       *      copy_3_x_3
-       *      opening
-       *      closing
-       *      get_shape_options
-       *
-       *   Purpose:
-       *      These functions perform the erosion,
-       *      dilation, outlining, opening and
-       *      closing operations.
-       *
-       *   External Calls:
-       *      wtiff.c - round_off_image_size
-       *                create_file_if_needed
-       *                write_array_into_tiff_image
-       *      tiff.c - read_tiff_header
-       *      rtiff.c - read_tiff_image
-       *      numcvrt.c - get_integer
-       *
-       *   Modifications:
-       *      14 March 1993 - created
-       *
-       ************************************************/
 
-#include "cips.h"
+/**********************************************
+*
+*   file ed.c
+*
+*   Functions: This file contains
+*      erosion
+*      dilation
+*      mask_erosion
+*      mask_dilation
+*      interior_outline
+*      exterior_outline
+*      copy_3_x_3
+*      opening
+*      closing
+*      get_shape_options
+*
+*   Purpose:
+*      These functions perform the erosion,
+*      dilation, outlining, opening and
+*      closing operations.
+*
+************************************************/
+
+#include <cips.h>
 
 
 
@@ -1528,7 +1516,7 @@ can_dilate(the_image, i, j, value)
 
 little_label_and_check(temp, stack, label, stack_empty,
                        stack_pointer, a, b, value)
-   int   a, b, stack[12][2], 
+   int   a, b, stack[12][2],
          *stack_empty, *stack_pointer;
    short temp[3][3], label, value;
 {
@@ -1712,7 +1700,7 @@ edm(in_name, out_name, the_image, out_image,
       if( (i%10) == 0) printf("%3d", i);
       for(j=0; j<COLS; j++){
          if(the_image[i][j] == value)
-            out_image[i][j] = distance_8(the_image, 
+            out_image[i][j] = distance_8(the_image,
                                          i, j, value);
       }  /* ends loop over j */
    }  /* ends loop over i */
@@ -1951,7 +1939,7 @@ mat(in_name, out_name, the_image, out_image,
       if( (i%10) == 0) printf("%3d", i);
       for(j=0; j<COLS; j++){
          if(the_image[i][j] == value)
-            out_image[i][j] = mat_d(the_image, 
+            out_image[i][j] = mat_d(the_image,
                                     i, j, value);
       }  /* ends loop over j */
    }  /* ends loop over i */
@@ -2606,8 +2594,8 @@ grow(binary, value)
                ***********************************/
 
          if(binary[i][j] == value){
-            label_and_check_neighbor(binary, stack, 
-                      g_label, &stack_empty, &pointer, 
+            label_and_check_neighbor(binary, stack,
+                      g_label, &stack_empty, &pointer,
                       i, j, value, &stack_file_in_use,
                       &first_call);
             object_found = 1;
@@ -3138,7 +3126,7 @@ insert_into_peaks(peaks, max, max_place)
       }  /* ends if */
    }  /* ends loop over j */
       /* last case */
-   if(max < peaks[PEAKS-2][0]  && 
+   if(max < peaks[PEAKS-2][0]  &&
       max > peaks[PEAKS-1][0]){
       peaks[PEAKS-1][0] = max;
       peaks[PEAKS-1][1] = max_place;
@@ -3268,7 +3256,7 @@ valley_high_low(histogram, peak1, peak2, hi, low)
    *
    *********************************************/
 
-find_valley_point(histogram, peak1, 
+find_valley_point(histogram, peak1,
                   peak2, valley_point)
    int  peak1, peak2, *valley_point;
    unsigned long histogram[];
@@ -3602,8 +3590,8 @@ edge_region(in_name, out_name, the_image, out_image,
    char     in_name[], out_name[];
    float    percent;
    int      edge_type, il, ie, ll, le;
-   short    diff, erode, 
-            max_area, min_area, 
+   short    diff, erode,
+            max_area, min_area,
             set_value,
             the_image[ROWS][COLS],
             out_image[ROWS][COLS];
@@ -3807,8 +3795,8 @@ edge_gray_shade_region(in_name, out_name, the_image,
    char     in_name[], out_name[];
    float    percent;
    int      edge_type, il, ie, ll, le;
-   short    diff, erode, 
-            max_area, min_area, 
+   short    diff, erode,
+            max_area, min_area,
             set_value,
             the_image[ROWS][COLS],
             out_image[ROWS][COLS];
@@ -4314,21 +4302,21 @@ erode_image_array(the_image, out_image,
    *
    *  get_edge_region_options(...
    *
-   *  This function interacts with the user to   
-   *  get the options needed to call the 
-   *  edge and region based segmentation 
+   *  This function interacts with the user to
+   *  get the options needed to call the
+   *  edge and region based segmentation
    *  routines.
    *
    ********************************************/
 
-get_edge_region_options(method, edge_type, 
-         min_area, max_area, set_value, 
+get_edge_region_options(method, edge_type,
+         min_area, max_area, set_value,
          diff, percent, erode)
    char  method[];
    float *percent;
    int   *edge_type;
-   short *diff, *erode, 
-         *min_area, *max_area, 
+   short *diff, *erode,
+         *min_area, *max_area,
          *set_value;
 {
    int not_finished = 1, response;
@@ -4368,7 +4356,7 @@ get_edge_region_options(method, edge_type,
       }
 
       if(response == 2){
-         printf("\n\t    Recall:"); 
+         printf("\n\t    Recall:");
          printf("\n\t     1=Prewitt     2=Kirsch");
          printf("\n\t     3=Sobel       4=quick");
          printf("\n\t     5=homogeneity 6=difference");

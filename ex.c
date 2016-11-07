@@ -1,8 +1,7 @@
+#include <cips.h>
 
-#include "d:\cips\cips.h"
 
-
-main()
+int main(int argc, char *argv[])
 {
 	 int file_desc, i, j;
 	 char buffer[100];

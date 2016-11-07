@@ -1,39 +1,39 @@
-       /*****************************************************
-       *
-       *       file d:\cips\delas.c
-       *
-       *       Functions: This file contains
-       *          main
-       *          display_image_portion
-       *          read_string
-       *          read_image
-       *          my_read
-       *          get_image_name
-       *          get_parameters
-       *          show_parameters
-       *          read_header
-       *          color_transform
-       *          display_menu
-       *
-       *       Purpose: This program displays images on the EGA
-       *          monitor.
-       *          It can display either a 300x500 section of a
-       *          single
-       *          channel of an image, or three channels of a
-       *          100x500
-       *	  section of an image. This can use either a straight
-       *	  mapping of 256 gray levels to 16 colors or a modified
-       *	  mapping that brings out selected objects in the image.
-       *
-       *
-       ********************************************************/
+/*****************************************************
+*
+*       file delas.c
+*
+*       Functions: This file contains
+*          main
+*          display_image_portion
+*          read_string
+*          read_image
+*          my_read
+*          get_image_name
+*          get_parameters
+*          show_parameters
+*          read_header
+*          color_transform
+*          display_menu
+*
+*       Purpose: This program displays images on the EGA
+*          monitor.
+*          It can display either a 300x500 section of a
+*          single
+*          channel of an image, or three channels of a
+*          100x500
+*	  section of an image. This can use either a straight
+*	  mapping of 256 gray levels to 16 colors or a modified
+*	  mapping that brings out selected objects in the image.
+*
+*
+********************************************************/
 
 
-#include "d:\lsu\vision3.h"
+#include <vision3.h>
 
    short image[ROWS][COLS];
 
-main()
+int main(int argc, char *argv[])
 {
    char  channels[80],
          color_transform[80],

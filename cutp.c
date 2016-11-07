@@ -1,36 +1,34 @@
-    /***********************************************
-    *
-    *       file cutp.c
-    *
-    *       Functions: This file contains
-    *          paste_image_piece
-    *          check_cut_and_paste_limits
-    *
-    *       Purpose:
-    *          These functions paste a part of one
-    *          image into another image.
-    *
-    *       External Calls:
-    *          none
-    *
-    *
-    *************************************************/
+/***********************************************
+*
+*       file cutp.c
+*
+*       Functions: This file contains
+*          paste_image_piece
+*          check_cut_and_paste_limits
+*
+*       Purpose:
+*          These functions paste a part of one
+*          image into another image.
+*
+*       External Calls:
+*          none
+*
+*
+*************************************************/
 
-#include "cips.h"
+#include <cips.h>
 
-
-
-     /*******************************************
-     *
-     *   paste_image_piece(...
-     *
-     *   This function pastes a rectangular
-     *   piece of an image into another image.
-     *   The rectangle to be pasted into the image
-     *   is described by the il1, ie1, ll1, le1
-     *   parameters for the input image.
-     *
-     *******************************************/
+/*******************************************
+*
+*   paste_image_piece(...
+*
+*   This function pastes a rectangular
+*   piece of an image into another image.
+*   The rectangle to be pasted into the image
+*   is described by the il1, ie1, ll1, le1
+*   parameters for the input image.
+*
+*******************************************/
 
 paste_image_piece(the_image, out_image,
                   il1, ie1, ll1, le1,

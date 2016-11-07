@@ -1,4 +1,4 @@
-#include "d:\cips\cips.h"
+#include "cips.h"
 
 #define EIGHT  '\010'
 #define ESCAPE 27

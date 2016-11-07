@@ -1,59 +1,32 @@
+/***************************
+*
+*   edges.c
+*   COMPOSITE FILE COMPRISING:
+*   edge.c
+*   edge2.c
+*   edge3.c
+*
+***************************\
 
-   /*************************** 
-   * 
-   *   edges.c 
-   *   COMPOSITE FILE COMPRISING: 
-   *   edge.c 
-   *   edge2.c 
-   *   edge3.c 
-   * 
-   ***************************\ 
+/***********************************************
+*
+*       file edge.c
+*
+*       Functions: This file contains
+*          detect_edges
+*          setup_masks
+*          get_edge_options
+*          perform_convolution
+*          quick_edge
+*          fix_edges
+*
+*       Purpose:
+*          These functions implement several
+*          types of basic edge detection.
+*
+*************************************************/
 
-
-
-
-       /***********************************************
-       *
-       *       file d:\cips\edge.c
-       *
-       *       Functions: This file contains
-       *          detect_edges
-       *          setup_masks
-       *          get_edge_options
-       *          perform_convolution
-       *          quick_edge
-       *          fix_edges
-       *
-       *       Purpose:
-       *          These functions implement several
-       *          types of basic edge detection.
-       *
-       *       External Calls:
-       *          wtiff.c - round_off_image_size
-       *                    create_file_if_needed
-       *                    write_array_into_tiff_image
-       *          tiff.c - read_tiff_header
-       *          rtiff.c - read_tiff_image
-       *          numcvrt.c - get_integer
-       *
-       *
-       *       Modifications:
-       *          27 January 1991 - created
-       *          27 December 1992 - Fixed an error in
-       *              how I did the 8 direction edge
-       *              detectors.  I was only detecting
-       *              edges in the last (the 7)
-       *              direction.  I fixed this by
-       *              setting the out_image to the sum
-       *              only if the sum was greater than
-       *              the out_image.  This is in the
-       *              function perform_convolution.
-       *          22 April 1998 - added capability to
-       *              work an entire image at one time.
-       *
-       *************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -239,8 +212,8 @@ detect_edges(the_image, out_image,
 {
    perform_convolution(the_image, out_image,
                        detect_type, threshold,
-                       rows, cols, 
-                       bits_per_pixel, 
+                       rows, cols,
+                       bits_per_pixel,
                        high);
    fix_edges(out_image, 1, rows, cols);
 }  /* ends detect_edges */
@@ -276,7 +249,7 @@ perform_convolution(image, out_image,
        i,
        is_present,
        j,
-       sum; 
+       sum;
 
    short  mask_0[3][3],
           mask_1[3][3],
@@ -551,8 +524,8 @@ quick_edge(the_image, out_image,
        }
    }  /* ends if threshold == 1 */
 
-   fix_edges(out_image, 1, 
-             rows-1, cols-1); 
+   fix_edges(out_image, 1,
+             rows-1, cols-1);
 
 }  /* ends quick_edge */
 
@@ -816,10 +789,10 @@ homogeneity(the_image, out_image,
           for(a=-1; a<=1; a++){
              for(b=-1; b<=1; b++){
 
-                diff = the_image[i][j] - 
+                diff = the_image[i][j] -
                         the_image[i+a][j+b];
                 absdiff = abs(diff);
-                if(absdiff > max_diff) 
+                if(absdiff > max_diff)
                    max_diff = absdiff;
 
              }  /* ends loop over b */
@@ -958,7 +931,7 @@ contrast_edge(the_image, out_image,
 {
    int ad, d;
    int a, b, absdiff, absmax, diff, i, j,
-       length, max, new_hi, new_low, 
+       length, max, new_hi, new_low,
        sum_d, sum_n, width;
 
    new_hi  = 250;
@@ -998,9 +971,9 @@ contrast_edge(the_image, out_image,
 
          out_image[i][j] = sum_n/d;
 
-         if(out_image[i][j] > max) 
+         if(out_image[i][j] > max)
             out_image[i][j] = max;
-         if(out_image[i][j] < 0) 
+         if(out_image[i][j] < 0)
             out_image[i][j] = 0;
 
 
@@ -1123,8 +1096,8 @@ range(the_image, out_image,
    *   variance(...
    *
    *   This function replaces the pixel in the center
-   *   of a 3x3 area with the square root of the sum 
-   *   of squares of the differences between the 
+   *   of a 3x3 area with the square root of the sum
+   *   of squares of the differences between the
    *   center pixel and its eight neighbors.
    *
    ***************************************************/
@@ -1269,7 +1242,7 @@ gaussian_edge(the_image, out_image,
               rows, cols, bits_per_pixel,
               size, threshold, high)
    int    high, size, threshold;
-   short  **the_image, 
+   short  **the_image,
           **out_image;
    long   rows, cols, bits_per_pixel;
 {
@@ -1277,7 +1250,7 @@ gaussian_edge(the_image, out_image,
    long sum;
    int  a, b, absdiff, absmax, diff, i, j,
         length, lower, max, new_hi, new_low,
-        scale, starti, stopi, startj, stopj, 
+        scale, starti, stopi, startj, stopj,
         upper, width;
 
    new_hi  = 250;
@@ -1387,7 +1360,7 @@ gaussian_edge(the_image, out_image,
 enhance_edges(the_image, out_image,
               rows, cols, bits_per_pixel, high)
    int    high;
-   short  **the_image, 
+   short  **the_image,
           **out_image;
    long   rows, cols, bits_per_pixel;
 

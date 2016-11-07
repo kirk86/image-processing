@@ -1,39 +1,26 @@
+/***********************************************
+*
+*   file double.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains the main calling
+*      routine for a program which enlarges
+*      an image by a factor of two using the
+*      replication method.
+*
+*************************************************/
 
-
-    /***********************************************
-    *
-    *   file d:\cips\double.c
-    *
-    *   Functions: This file contains
-    *      main
-    *
-    *   Purpose:
-    *      This file contains the main calling
-    *      routine for a program which enlarges
-    *      an image by a factor of two using the
-    *      replication method.
-    *
-    *   External Calls:
-    *      gin.c - get_image_name
-    *      numcvrt.c - get_integer
-    *                  int_convert
-    *      tiff.c - read_tiff_header
-    *
-    *   Modifications:
-    *      7 November 1992 - created
-    *
-    *************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 
 
 short the_image[ROWS][COLS];
 short out_image[ROWS][COLS];
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
 
    char     method[80], in_name[80], out_name[80];
@@ -101,11 +88,11 @@ main(argc, argv)
    count = 1;
    for(I=0; I<length; I++){
       for(J=0; J<width; J++){
-         printf("\nrunning %d of %d", 
+         printf("\nrunning %d of %d",
                 count1++, length*width);
 
-         read_tiff_image(in_name, the_image, 
-                         il+I*ROWS, ie+J*COLS, 
+         read_tiff_image(in_name, the_image,
+                         il+I*ROWS, ie+J*COLS,
                          ll+I*ROWS, le+J*COLS);
          count = 1;
          for(A=0; A<factor; A++){
@@ -122,10 +109,10 @@ main(argc, argv)
            }  /* ends loop over i */
            printf("\n\tzooming replication %3d of %3d",
                   count++, factor*factor);
-           write_array_into_tiff_image(out_name, 
-               out_image, 1+A*ROWS+I*ROWS*factor, 
-               1+B*COLS+J*COLS*factor, 
-               101+A*ROWS+I*ROWS*factor, 
+           write_array_into_tiff_image(out_name,
+               out_image, 1+A*ROWS+I*ROWS*factor,
+               1+B*COLS+J*COLS*factor,
+               101+A*ROWS+I*ROWS*factor,
                101+B*COLS+J*COLS*factor);
           }  /* ends loop over B */
          }  /* ends loop over A */

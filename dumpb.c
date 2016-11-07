@@ -1,38 +1,23 @@
+/***********************************************
+*
+*   file dumpi.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains a program that
+*      is very similar to dumpi.  Dumpi dumps
+*      the number values of an image
+*      to an ascii text file.
+*      This program sends a space to a text
+*      file for zeros in the image and an
+*      asterisk for non-zeros in the image.
+*************************************************/
 
-   /***********************************************
-   *
-   *   file dumpi.c
-   *
-   *   Functions: This file contains
-   *      main
-   *
-   *   Purpose:
-   *      This file contains a program that 
-   *      is very similar to dumpi.  Dumpi dumps 
-   *      the number values of an image
-   *      to an ascii text file.
-   *      This program sends a space to a text
-   *      file for zeros in the image and an
-   *      asterisk for non-zeros in the image.
-   *
-   *   External Calls:
-   *      imageio.c - read_image_array
-   *                  get_image_size
-   *                  allocate_image_array
-   *                  free_image_array
-   *                  does_not_exist
-   *
-   *   Modifications:
-   *      3 October 1998 - created to work with 
-   *           all I O routines in imageio.c.
-   *
-   *************************************************/
+#include <cips.h>
 
-#include "cips.h"
-
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
    char  in_name[MAX_NAME_LENGTH];
    char  out_name[MAX_NAME_LENGTH];
@@ -42,7 +27,7 @@ main(argc, argv)
    short **the_image;
    FILE  *out_file;
 
-   
+
       /******************************************
       *
       *   Ensure the command line is correct.
@@ -56,7 +41,7 @@ main(argc, argv)
 
    strcpy(in_name,  argv[1]);
    strcpy(out_name, argv[2]);
-   
+
       /******************************************
       *
       *   Ensure the input image exists.

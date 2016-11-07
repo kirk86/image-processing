@@ -1,6 +1,5 @@
-
-
-/*PAGE Includes and Definitions
+/**
+PAGE Includes and Definitions
 
   A. Include file definitions
   B. Define constants
@@ -8,7 +7,7 @@
 	  You modify the program to include new page break
      types at that point.  The PAGES array will hold
      up to PAGE_TYPE types of markers.  If this is not
-     enough, increase the value of the PAGE_TYPE 
+     enough, increase the value of the PAGE_TYPE
      constant.
 
 */
@@ -42,7 +41,7 @@ char PAGES[PAGE_TYPE][LENGTH] = {
 
 /*PAGE main */
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
    char paged_file_name[LENGTH],
 	     string[LENGTH],
@@ -660,8 +659,8 @@ get_unique_file_name(char *file_name)
 
 new_page_marker(char *string)
 {
-	int i            = 0, 
-	    not_finished = 1, 
+	int i            = 0,
+	    not_finished = 1,
 		 result       = 0;
 
 	for(i=0; i<PAGE_TYPE && PAGES[i][0] != '\0'; i++){

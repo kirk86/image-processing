@@ -1,33 +1,20 @@
+/***********************************************
+*
+*       file filt2.c
+*
+*       Functions: This file contains
+*          filter_image
+*          setup_fitlers
+*          get_filter_options
+*
+*       Purpose:
+*          These functions implement several
+*          types of basic edge detection.
+*
+*
+*************************************************/
 
-       /***********************************************
-       *
-       *       file d:\cips\filt2.c
-       *
-       *       Functions: This file contains
-       *          filter_image
-       *          setup_fitlers
-       *          get_filter_options
-       *
-       *       Purpose:
-       *          These functions implement several
-       *          types of basic edge detection.
-       *
-       *       External Calls:
-       *          wtiff.c - does_not_exist
-       *                    round_off_image_size
-       *                    create_file_if_needed
-       *                    write_array_into_tiff_image
-       *          tiff.c - read_tiff_header
-       *          rtiff.c - read_tiff_image
-       *          numcvrt.c - get_integer
-       *
-       *
-       *       Modifications:
-       *          15 February 1992 - created
-       *
-       *************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 short lpf_filter_6[3][3] =
    { {0, 1, 0},
@@ -77,14 +64,8 @@ short hpf_filter_3[3][3] =
      *******************************************/
 
 
-bfilter_image(in_name, out_name, the_image, out_image,
-             filter, type)
-   char   in_name[], out_name[];
-   int    type;
-   short  filter[3][3],
-          **the_image,
-          **out_image;
-
+bfilter_image(char in_name[], char ougt_name[], short **the_image, short **out_image,
+             short filter[3][3], int type)
 {
    int    a, b, d, i, j, k,
           length, max, new_hi, new_low,
@@ -249,7 +230,7 @@ statistical_differencing(in_name, out_name, the_image, out_image,
       if( (i%10) == 0) printf("%d ", i);
       for(j=sd2; j<COLS-sd2; j++){
 
-            /* mean is the average of the image over 
+            /* mean is the average of the image over
                the neighborhood */
          mean = 0;
          for(a=-sd2; a<sd2p1; a++){
@@ -270,7 +251,7 @@ statistical_differencing(in_name, out_name, the_image, out_image,
          dsigma          = sqrt(dsigma_square);
          value           = (double)the_image[i][j];
          value           = value*dsigma;
-         if(value > (double)max) 
+         if(value > (double)max)
                    value = (double)max;
          out_image[i][j] = (short)value;
 
@@ -433,13 +414,13 @@ get_filter_options(filter_type, low_high)
 
    /***********************************************
     *
-    *    median_of(...         
+    *    median_of(...
     *
-    *    This function finds and returns the   
-    *    median value of the elements array.  
-    *    
-    *    As a side result, it also sorts the 
-    *    elements array. 
+    *    This function finds and returns the
+    *    median value of the elements array.
+    *
+    *    As a side result, it also sorts the
+    *    elements array.
     *
     ***********************************************/
 
@@ -457,10 +438,10 @@ median_of(elements, count)
 
    /***********************************************
     *
-    *    sort_elements(...     
+    *    sort_elements(...
     *
     *    This function performs a simple bubble
-    *    sort on the elements from the median 
+    *    sort on the elements from the median
     *    filter.
     *
     ***********************************************/
@@ -482,7 +463,7 @@ sort_elements(elements, count)
 
    /***********************************************
     *
-    *    swap(...     
+    *    swap(...
     *
     *    This function swaps two shorts.
     *

@@ -1,26 +1,20 @@
-   /************************************************
-   *
-   *       file create.c
-   *
-   *       Functions: This file contains
-   *           main
-   *
-   *       Purpose:
-   *          This program creates an 8 bit tiff file
-   *          of size l*ROWS by w*COLS.
-   *
-   *       External Calls:
-   *          imageio.c
-   *             create_allocate_tif_file
-   *             create_allocate_bmp_file
-   *
-   *
-   *************************************************/
+/************************************************
+*
+*       file create.c
+*
+*       Functions: This file contains
+*           main
+*
+*       Purpose:
+*          This program creates an 8 bit tiff file
+*          of size l*ROWS by w*COLS.
+*
+*************************************************/
 
-#include "cips.h"
+#include <cips.h>
 
 
-main(argc, argv)
+int main(int argc, char *argv[])
    int  argc;
    char *argv[];
 {

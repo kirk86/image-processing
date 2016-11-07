@@ -1,88 +1,73 @@
+/*********************************************
+*
+*       file flip.c
+*
+*       Functions: This file contains
+*          main
+*          flip_image
+*
+*       Purpose:
+*          The program rotates or flips an
+*          image in 90 degree increments.
+*
+*
+*   The rotation_type parameter specifies
+*   the operation.  When rotation_type is
+*   1, 2, or 3 you rotate.  When it is
+*   4 or 5 you flip.
+*
+*   I define rotation as this:  Pin down the
+*   lower left hand corner of the image array
+*   and rotate the image 90 degrees clockwise.
+*   1 rotation is 90 degrees, 2 rotations are
+*   180 degrees, and 3 rotations are 270 degrees.
+*   4 rotations bring you back to where you
+*   started.
+*
+*   The cases are:
+*
+*   If the input image array is:
+*        1 2 3
+*        4 5 6
+*        7 8 9
+*
+*   Rotate # 1 - the result is:
+*        7 4 1
+*        8 5 2
+*        9 6 3
+*
+*   Rotate # 2 - the result is:
+*        9 8 7
+*        6 5 4
+*        3 2 1
+*
+*   Rotate # 3 - the result is:
+*        3 6 9
+*        2 5 8
+*        1 4 7
+*
+*   Flip # 4 - horizontal the result is:
+*        3 2 1
+*        6 5 4
+*        9 8 7
+*
+*   Flip # 5 - vertical the result is:
+*        7 8 9
+*        4 5 6
+*        1 2 3
+*
+*
+***********************************************/
 
 
-       /*********************************************
-       *
-       *       file flip.c
-       *
-       *       Functions: This file contains
-       *          main
-       *          flip_image
-       *
-       *       Purpose:
-       *          The program rotates or flips an
-       *          image in 90 degree increments.
-       *
-       *
-       *   The rotation_type parameter specifies
-       *   the operation.  When rotation_type is
-       *   1, 2, or 3 you rotate.  When it is
-       *   4 or 5 you flip.
-       *
-       *   I define rotation as this:  Pin down the
-       *   lower left hand corner of the image array
-       *   and rotate the image 90 degrees clockwise.
-       *   1 rotation is 90 degrees, 2 rotations are
-       *   180 degrees, and 3 rotations are 270 degrees.
-       *   4 rotations bring you back to where you
-       *   started.
-       *
-       *   The cases are:
-       *
-       *   If the input image array is:
-       *        1 2 3
-       *        4 5 6
-       *        7 8 9
-       *
-       *   Rotate # 1 - the result is:
-       *        7 4 1
-       *        8 5 2
-       *        9 6 3
-       *
-       *   Rotate # 2 - the result is:
-       *        9 8 7
-       *        6 5 4
-       *        3 2 1
-       *
-       *   Rotate # 3 - the result is:
-       *        3 6 9
-       *        2 5 8
-       *        1 4 7
-       *
-       *   Flip # 4 - horizontal the result is:
-       *        3 2 1
-       *        6 5 4
-       *        9 8 7
-       *
-       *   Flip # 5 - vertical the result is:
-       *        7 8 9
-       *        4 5 6
-       *        1 2 3
-       *
-       *
-       *       External Calls:
-       *          imageio.c - create_image_file
-       *                  read_image_array
-       *                  write_image_array
-       *                  get_image_size
-       *                  allocate_image_array
-       *                  free_image_array
-       *
-       *       Modifications:
-       *          1 July 1999 - created
-       *
-       ***********************************************/
-
-
-#include "cips.h"
+#include <.cips.h>
 
 
 
 short **the_image;
 short **out_image;
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
 
    char in_name[MAX_NAME_LENGTH], out_name[MAX_NAME_LENGTH];
@@ -133,7 +118,7 @@ main(argc, argv)
 
 
 
-flip_image(the_image, out_image, 
+flip_image(the_image, out_image,
            type,
            rows, cols)
    int   type;

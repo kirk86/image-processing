@@ -42,7 +42,7 @@
 
 *********/
 
-#include "cips.h"
+#include <cips.h>
 
 #define PATTERN_START  48 /* the zero character    */
 #define PATTERN_END   122 /* the small z character */

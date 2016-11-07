@@ -1,48 +1,37 @@
-
-   /*************************** 
-   * 
-   *   cips5.c 
-   *   COMPOSITE FILE COMPRISING: 
-   *   boole.c 
-   *   overlay.c 
-   *   txtrsubs.c 
-   * 
-   ***************************\ 
-
+/***************************
+*
+*   cips5.c
+*   COMPOSITE FILE COMPRISING:
+*   boole.c
+*   overlay.c
+*   txtrsubs.c
+*
+***************************\
 
 
 
-    /***********************************************
-    *
-    *       file d:\cips\boole.c
-    *
-    *       Functions: This file contains
-    *          and_image
-    *          or_image
-    *          xor_image
-    *          nand_image
-    *          nor_image
-    *          not_image
-    *
-    *       Purpose:
-    *          These functions implement the basic
-    *          Boolean algebra functions AND, OR,
-    *          XOR, NAND, NOR, and NOT.
-    *
-    *       External Calls:
-    *          wtiff.c - create_file_if_needed
-    *                    write_array_into_tiff_image
-    *          tiff.c - read_tiff_header
-    *          rtiff.c - read_tiff_image
-    *          numcvrt.c - get_integer
-    *
-    *       Modifications:
-    *          3 March 1993 - created
-    *
-    ***********************************************/
+
+ /***********************************************
+ *
+ *       file d:\cips\boole.c
+ *
+ *       Functions: This file contains
+ *          and_image
+ *          or_image
+ *          xor_image
+ *          nand_image
+ *          nor_image
+ *          not_image
+ *
+ *       Purpose:
+ *          These functions implement the basic
+ *          Boolean algebra functions AND, OR,
+ *          XOR, NAND, NOR, and NOT.
+ *
+ ***********************************************/
 
 
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -50,7 +39,7 @@
    *
    *   and_image(...
    *
-   *   This function performs the Boolean AND 
+   *   This function performs the Boolean AND
    *   operation.  The output image = in1 AND in2.
    *   This works for 0 non-zero images.  If both
    *   in1 and in2 are non-zero, the output = in1.
@@ -103,7 +92,7 @@ and_image(in1_name, in2_name, out_name,
    *
    *   or_image(...
    *
-   *   This function performs the Boolean OR 
+   *   This function performs the Boolean OR
    *   operation.  The output image = in1 OR in2.
    *   This works for 0 non-zero images.  If both
    *   in1 and in2 are non-zero, the output = in1.
@@ -163,9 +152,9 @@ or_image(in1_name, in2_name, out_name,
    *
    *   xor_image(...
    *
-   *   This function performs the Boolean XOR 
+   *   This function performs the Boolean XOR
    *   operation.  The output image = in1 XOR in2.
-   *   This works for 0 non-zero images.  If 
+   *   This works for 0 non-zero images.  If
    *   in1 is non-zero and in2 is 0, output = in1. If
    *   in2 is non-zero and in1 is 0, output = in2.
    *   If both in1 and in2 are non-zero, output = 0.
@@ -228,7 +217,7 @@ xor_image(in1_name, in2_name, out_name,
    *
    *   nand_image(...
    *
-   *   This function performs the Boolean NAND 
+   *   This function performs the Boolean NAND
    *   operation.  The output image = in1 NAND in2.
    *   This works for 0 non-zero images.  If both
    *   in1 and in2 are non-zero, the output = 0.
@@ -283,7 +272,7 @@ nand_image(in1_name, in2_name, out_name,
    *
    *   nor_image(...
    *
-   *   This function performs the Boolean NOR 
+   *   This function performs the Boolean NOR
    *   operation.  The output image = in1 NOR in2.
    *   This works for 0 non-zero images.  If niether
    *   in1 nor in2 are non-zero, the output = value.
@@ -697,7 +686,7 @@ average_overlay(in1_name, in2_name, out_name,
      *
      *   sigma(..
      *
-     *   This calculates the variance and the 
+     *   This calculates the variance and the
      *   sigma for a sizeXsize area.
      *
      *   It sums the squares of the difference
@@ -1107,7 +1096,7 @@ difference_array(the_image, out_image, size)
    for(i=sd2; i<ROWS-sd2; i++){
       for(j=sd2; j<COLS-sd2; j++){
          out_image[i][j] =
-            abs(the_image[i][j] - 
+            abs(the_image[i][j] -
                 the_image[i+sd2][j+sd2]);
       }  /* ends loop over j */
    }  /* ends loop over i */
@@ -1122,8 +1111,8 @@ difference_array(the_image, out_image, size)
      *
      *   hurst(..
      *
-     *   This routine performs the Hurst 
-     *   operation as described in "The Image 
+     *   This routine performs the Hurst
+     *   operation as described in "The Image
      *   Processing Handbook" by John C. Russ
      *   CRC Press 1992.
      *
@@ -1509,7 +1498,7 @@ compare(in_name, out_name, the_image, out_image,
      *
      *******************************************/
 
-get_texture_options(type, threshold, t_value, size, 
+get_texture_options(type, threshold, t_value, size,
                     line, element)
    char type[];
    int  *threshold, *t_value, *size, *line, *element;
@@ -1520,7 +1509,7 @@ get_texture_options(type, threshold, t_value, size,
 
       printf("\n");
       printf("\n1. Type of texture operator is %s",
-             type);  
+             type);
       printf("\n   recall type: sigma      skewness");
       printf("\n                amean      adifference");
       printf("\n                hurst      compare");

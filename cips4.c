@@ -1,44 +1,34 @@
-
-   /*************************** 
-   * 
-   *   cips4.c 
-   *   COMPOSITE FILE COMPRISING: 
-   *   gin.c 
-   *   hist.c 
-   *   pi.c 
-   *   ht.c 
-   * 
-   ***************************\ 
-
+/***************************
+*
+*   cips4.c
+*   COMPOSITE FILE COMPRISING:
+*   gin.c
+*   hist.c
+*   pi.c
+*   ht.c
+*
+***************************\
 
 
-        /*******************************************************
-        *
-        *       file d:\cips\gin.c
-        *
-        *       Functions: This file contains
-        *           get_image_name
-        *           get_directory_name
-        *           extract_base_image_name
-        *
-        *       Purpose - This function prompts the user to
-          *            enter the name of an image.
-        *
-        *       External Calls:
-        *                       clear_buffer
-        *
-        *       Modifications:
-        *           26 September 86 - now uses vision3.h
-        *               instead of vision2.h and the read_string
-        *               and get_integer instead of  scanf.
-        *           11 March 1987 - this function was
-        *               removed from the file ip.c and put
-        *               in file gin.c.
-        *
-        ******************************************************/
+
+/*******************************************************
+*
+*       file gin.c
+*
+*       Functions: This file contains
+*           get_image_name
+*           get_directory_name
+*           extract_base_image_name
+*
+*       Purpose - This function prompts the user to
+  *            enter the name of an image.
+*
+*       External Calls:
+*                       clear_buffer
+******************************************************/
 
 
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -186,7 +176,7 @@ printf("\nEBN> base is %s", base_name);
    *       smooth_histogram
    *       display_histogram
    *
-   *   Purpose: These functions calculate and display 
+   *   Purpose: These functions calculate and display
    *      the histogram of an input image array.
    *
    *   Modifications:
@@ -399,8 +389,8 @@ print_histogram(histogram, name)
         printf("\nPI> Print header");
         line_counter = 0;
         hist_long_clear_buffer(string);
-        sprintf(string, 
-           "          This image is -- %s --\n", 
+        sprintf(string,
+           "          This image is -- %s --\n",
            name);
         fputs(string, printer);
         ++line_counter;
@@ -440,12 +430,12 @@ print_histogram(histogram, name)
               fputs(string, printer);
               hist_long_clear_buffer(string);
               sprintf(output, " ");
-              for(j=0; j<((int)(histogram[i]/scale)); 
+              for(j=0; j<((int)(histogram[i]/scale));
                   j++){
                  sprintf(string, "*");
                  strcat(output, string);
               }         /* ends loop over j */
-              fputs(string, printer); 
+              fputs(string, printer);
               fputc('\n', printer);
               ++line_counter;
               if(line_counter >= 55){
@@ -563,7 +553,7 @@ display_histogram(histogram, x, y,
        *
        ****************************************/
 
-display_menu_for_histogram(print, vertical, 
+display_menu_for_histogram(print, vertical,
                            horizontal)
    int *print, *vertical, *horizontal;
 {
@@ -637,8 +627,8 @@ display_menu_for_histogram(print, vertical,
       *
       *********************************************/
 
-calculate_area_histogram(histogram, vertical, 
-                   horizontal, the_image, name, il, 
+calculate_area_histogram(histogram, vertical,
+                   horizontal, the_image, name, il,
                    ie, ll, le)
    char     name[];
    int      horizontal, il, ie, ll, le, vertical;
@@ -656,7 +646,7 @@ calculate_area_histogram(histogram, vertical,
          printf("\n\tcalculating %d of %d",
                count, horizontal*vertical);
          read_tiff_image(name, the_image,
-               il+i*ROWS, ie+j*COLS, 
+               il+i*ROWS, ie+j*COLS,
                ll+i*ROWS, le+j*COLS);
          calculate_histogram(the_image, histogram);
          count++;
@@ -724,21 +714,21 @@ hist_long_clear_buffer(string)
    *       perform_printing
    *       print_column_header
    *
-   *   Purpose - These functions print an image out 
-   *       to the line printer.  The parameters in 
-   *       this function are defined differently 
-   *       than in most other CIPS functions.  
-   *       The parameters il, ie, ll, le are 
+   *   Purpose - These functions print an image out
+   *       to the line printer.  The parameters in
+   *       this function are defined differently
+   *       than in most other CIPS functions.
+   *       The parameters il, ie, ll, le are
    *       coordinates inside the 100x100 image array.
    *       The parameters first_line and first_element
    *       are coordinates for the entire image file.
    *       So, if you want to start printing at row 10
-   *       and column 10 of the image file you would 
+   *       and column 10 of the image file you would
    *       call:
    *
    *       read_tiff_image(name, the_image, 10, 10,
    *                       110, 110);
-   *       print_image(the_image, name, 1, 1, 1, 
+   *       print_image(the_image, name, 1, 1, 1,
    *                   100, 18, 10, 10);
    *
    *       In normal print mode you can only print 17
@@ -769,7 +759,7 @@ hist_long_clear_buffer(string)
 print_image(the_image, name, channel, il, ie, ll, le,
             first_line, first_element)
    char  name[];
-   int   channel, il, ie, ll, le, 
+   int   channel, il, ie, ll, le,
          first_line, first_element;
    short the_image[ROWS][COLS];
 {
@@ -797,8 +787,8 @@ print_image(the_image, name, channel, il, ie, ll, le,
            *
            ******************************************/
 
-      perform_printing(printer, the_image, name, 
-                       channel, il, ll, ie, le, 
+      perform_printing(printer, the_image, name,
+                       channel, il, ll, ie, le,
                        first_line, first_element);
       fclose(printer);
    }  /* ends else print  */
@@ -814,11 +804,11 @@ print_image(the_image, name, channel, il, ie, ll, le,
    *********************************************/
 
 perform_printing(printer, the_image, name, channel,
-                 il, ll, ie, le, first_line, 
+                 il, ll, ie, le, first_line,
                  first_element)
    char  name[];
    FILE  *printer;
-   int   channel, il, ie, ll, le, 
+   int   channel, il, ie, ll, le,
          first_line, first_element;
    short the_image[ROWS][COLS];
 {
@@ -834,7 +824,7 @@ perform_printing(printer, the_image, name, channel,
    printf("\nPI> Print header");
    line_counter = 0;
    pi_long_clear_buffer(string);
-   sprintf(string, "     This image is -- %s --\n", 
+   sprintf(string, "     This image is -- %s --\n",
            name);
    fputs(string, printer);
    ++line_counter;
@@ -845,7 +835,7 @@ perform_printing(printer, the_image, name, channel,
    ++line_counter;
 
    pi_long_clear_buffer(string);
-   sprintf(string, 
+   sprintf(string,
            "     channel=%d il=%d ll=%d ie=%d le=%d\n",
            channel, first_line, first_line+ll-2,
            first_element, first_element+le-2);
@@ -857,8 +847,8 @@ perform_printing(printer, the_image, name, channel,
    fputs(string, printer);
    ++line_counter;
 
-   print_column_header(&line_counter, first_element, 
-                       ie, le, output, string, 
+   print_column_header(&line_counter, first_element,
+                       ie, le, output, string,
                        printer);
 
    for(i=il; i<ll; i++){
@@ -881,9 +871,9 @@ perform_printing(printer, the_image, name, channel,
       if(line_counter >= 53){
          line_counter = 0;
          putc(FORMFEED, printer);
-         print_column_header(&line_counter, 
+         print_column_header(&line_counter,
                              first_element, ie,
-                             le, output, string, 
+                             le, output, string,
                              printer);
       }  /* ends if line_counter >=65  */
    }  /* ends loop over i rows */
@@ -905,7 +895,7 @@ perform_printing(printer, the_image, name, channel,
    *
    *********************************************/
 
-print_column_header(line_counter, first_element, 
+print_column_header(line_counter, first_element,
                     ie, le, output,
                     string, printer)
    char string[], output[];
@@ -982,19 +972,19 @@ pi_long_clear_buffer(string)
    *       show_half_tone
    *       get_threshold_value
    *
-   *   Purpose: This program displays an image using 
-   *      a halftoning process.  The algorithm was 
-   *      taken from "Personal computer based image 
-   *      processing with halftoning," John A Saghri, 
-   *      Hsieh S. Hou, Andrew Tescher, Optical 
-   *      Engineering, March 1986, Vol.25, No. 3, 
+   *   Purpose: This program displays an image using
+   *      a halftoning process.  The algorithm was
+   *      taken from "Personal computer based image
+   *      processing with halftoning," John A Saghri,
+   *      Hsieh S. Hou, Andrew Tescher, Optical
+   *      Engineering, March 1986, Vol.25, No. 3,
    *      pp 499-503. The display_using_halftoning
    *      determines display size and reads the image.
-   *      The half_tone function implements the 
+   *      The half_tone function implements the
    *      algorithm shown on page 502 of the article.
    *
-   *      The function print_halftone_array prints 
-   *      a half toned image array to a regular line 
+   *      The function print_halftone_array prints
+   *      a half toned image array to a regular line
    *      printer.
    *
    *
@@ -1021,7 +1011,7 @@ display_using_halftoning(in_image, file_name,
          image_colors, image_header, monitor_type,
          print, show_hist, color_transform)
 
-   char  color_transform[], file_name[], 
+   char  color_transform[], file_name[],
          monitor_type[];
    int   image_colors, invert,
          il, ie, ll, le, threshold,
@@ -1117,9 +1107,9 @@ display_using_halftoning(in_image, file_name,
       max_vertical   = (image_header->image_width+50)
                          /ROWS;
 
-      if(horizontal > max_horizontal) 
+      if(horizontal > max_horizontal)
             horizontal = max_horizontal;
-      if(vertical > max_vertical) 
+      if(vertical > max_vertical)
             vertical = max_vertical;
 
       if(print == 1){
@@ -1156,9 +1146,9 @@ display_using_halftoning(in_image, file_name,
                       count,vertical*horizontal);
                count++;
 
-               read_tiff_image(file_name, in_image, 
+               read_tiff_image(file_name, in_image,
                             il+y, ie+x, ll+y, le+x);
-               calculate_histogram(in_image, 
+               calculate_histogram(in_image,
                                    histogram);
 
             }  /* ends loop over b */
@@ -1202,8 +1192,8 @@ display_using_halftoning(in_image, file_name,
 
       for(i=0; i<horizontal; i++){
          for(j=0; j<vertical; j++){
-            read_tiff_image(file_name, in_image, 
-                           il+i*ROWS, ie+j*COLS, 
+            read_tiff_image(file_name, in_image,
+                           il+i*ROWS, ie+j*COLS,
                            ll+i*ROWS, le+j*COLS);
 
             if(   (show_hist == 1)  &&
@@ -1225,12 +1215,12 @@ display_using_halftoning(in_image, file_name,
             }  /* ends if color_transform == S */
 
             if(color_transform[0] == 'H')
-               half_tone(in_image, threshold/2, 
+               half_tone(in_image, threshold/2,
                       eg, ep, i, j,
                       one, zero, invert, print);
 
             else
-               half_tone(in_image, threshold, 
+               half_tone(in_image, threshold,
                       eg, ep, i, j,
                       one, zero, invert, print);
 
@@ -1291,7 +1281,7 @@ display_using_halftoning(in_image, file_name,
 
 
 
-      if(print == 1) 
+      if(print == 1)
          printf("\n\nHT> Hit ENTER to continue");
       gets(response);
       my_clear_text_screen();
@@ -1361,8 +1351,8 @@ half_tone(in_image, threshold, eg, ep, yoff,
 
        /**********************************************
        *
-       *   29 February 1988 - Fix to remove a solid 
-       *   line at the bottom of each region. Loop 
+       *   29 February 1988 - Fix to remove a solid
+       *   line at the bottom of each region. Loop
        *   over ROWS-1 and then draw an extra line.
        *
        **********************************************/
@@ -1373,7 +1363,7 @@ half_tone(in_image, threshold, eg, ep, yoff,
          sum_p = 0.0;
          for(i=0; i<2; i++){
             for(j=0; j<3; j++){
-               sum_p = sum_p + 
+               sum_p = sum_p +
                        c[i][j] * eg[m-i+1][n-j+1];
             }  /* ends loop over j */
          }     /* ends loop over i */
@@ -1493,7 +1483,7 @@ get_threshold_value(threshold, print)
       *threshold = i;
 
    printf(
-      "\nHT> print = %d (1 for print  0 for display)", 
+      "\nHT> print = %d (1 for print  0 for display)",
       *print);
    printf("\nHT> Enter print value  \n_\b");
    get_integer(&i);

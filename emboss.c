@@ -1,35 +1,27 @@
+/*********************************************
+*
+*       file c:\cips\emboss.c
+*
+*       Functions: This file contains
+*          main
+*          emboss_convolution
+*
+*       Purpose:
+*          This file contains the main calling
+*          routine in an edge detection program.
+*
+*       External Calls:
+*          imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  allocate_image_array
+*                  free_image_array
+*
+*
+***********************************************/
 
-
-       /*********************************************
-       *
-       *       file c:\cips\emboss.c
-       *
-       *       Functions: This file contains
-       *          main
-       *          emboss_convolution
-       *
-       *       Purpose:
-       *          This file contains the main calling
-       *          routine in an edge detection program.
-       *
-       *       External Calls:
-       *          imageio.c - create_image_file
-       *                  read_image_array
-       *                  write_image_array
-       *                  get_image_size
-       *                  allocate_image_array
-       *                  free_image_array
-       *
-       *       Modifications:
-       *          2 February 1991 - created
-       *          1 January 1993 - added calls to
-       *             range and variance functions.
-       *          3 October 1998 - modified to work with 
-       *             all I O routines in imageio.c.
-       *
-       ***********************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -91,9 +83,7 @@ short emboss_7_mask[3][3] =  {
 short **the_image;
 short **out_image;
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
 
    char in_name[80], out_name[80];
@@ -145,8 +135,8 @@ main(argc, argv)
 
 
    emboss_convolution(the_image, out_image,
-               threshold, high, 
-               zero, one, 
+               threshold, high,
+               zero, one,
                two, three, four,
                five, six, seven,
                length, width,
@@ -171,17 +161,11 @@ main(argc, argv)
   *
   ********************************************************/
 
-emboss_convolution(image, out_image,
-                   threshold, high,
-                   zero, one, two, three, four,
-                   five, six, seven,
-                   rows, cols, bitsperpixel)
-   short **image,
-         **out_image;
-   int   high, threshold;
-   int    zero, one, two, three, four, five,
-          six, seven;
-   long   rows, cols, bitsperpixel;
+emboss_convolution(short **image, short **out_image,
+                   int threshold, int high,
+                   int zero, int one, int two, int three, int four,
+                   int five, int six, int seven,
+                   long rows, long cols, long bitsperpixel)
 {
 
    int a, b, i, is_present, j, sum;
@@ -216,8 +200,8 @@ emboss_convolution(image, out_image,
 
          /******************************
          *
-         *  Look at all 8 directions 
-         *  convolve only if the 
+         *  Look at all 8 directions
+         *  convolve only if the
          *  direction is set
          *
          ******************************/
@@ -243,7 +227,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_1_mask[a+1][b+1];
             }
          }
@@ -259,7 +243,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_2_mask[a+1][b+1];
             }
          }
@@ -275,7 +259,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_3_mask[a+1][b+1];
             }
          }
@@ -291,7 +275,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_4_mask[a+1][b+1];
             }
          }
@@ -307,7 +291,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_5_mask[a+1][b+1];
             }
          }
@@ -326,7 +310,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_6_mask[a+1][b+1];
             }
          }
@@ -342,7 +326,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_7_mask[a+1][b+1];
             }
          }
@@ -372,5 +356,3 @@ emboss_convolution(image, out_image,
    }  /* ends if threshold == 1 */
 
 }  /* ends emboss_convolution */
-
-

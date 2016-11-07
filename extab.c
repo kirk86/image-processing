@@ -1,6 +1,4 @@
-
-
-/*
+/**
 	tab program
 
    usage:  tab input_file #_of_spaces [output_file]
@@ -10,12 +8,10 @@
 */
 
 
-
 #include <stdio.h>
+#include <string.h>
 
-main(argc, argv)
-  int argc;
-  char *argv[];
+int main(int argc, char *argv[])
 {
   FILE *input_file;
   FILE *output_file;

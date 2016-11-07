@@ -1,40 +1,22 @@
+/***********************************************
+*
+*       file embsubs.c
+*
+*       Functions: This file contains
+*          detect_edges
+*          setup_masks
+*          get_edge_options
+*          perform_convolution
+*          quick_edge
+*          fix_edges
+*
+*       Purpose:
+*          These functions implement several
+*          types of basic edge detection.
+*
+*************************************************/
 
-
-       /***********************************************
-       *
-       *       file c:\cips\embsubs.c
-       *
-       *       Functions: This file contains
-       *          detect_edges
-       *          setup_masks
-       *          get_edge_options
-       *          perform_convolution
-       *          quick_edge
-       *          fix_edges
-       *
-       *       Purpose:
-       *          These functions implement several
-       *          types of basic edge detection.
-       *
-       *       External Calls:
-       *          wtiff.c - round_off_image_size
-       *                    create_file_if_needed
-       *                    write_array_into_tiff_image
-       *          tiff.c - read_tiff_header
-       *          rtiff.c - read_tiff_image
-       *          numcvrt.c - get_integer
-       *
-       *
-       *       Modifications:
-       *          3 April 1994 - created
-       *
-       *************************************************/
-
-#include "cips.h"
-
-
-
-
+#include <cips.h>
 
 
 short emboss_0_mask[3][3] =  {
@@ -201,8 +183,8 @@ emboss_convolution(image, out_image,
 
          /******************************
          *
-         *  Look at all 8 directions 
-         *  convolve only if the 
+         *  Look at all 8 directions
+         *  convolve only if the
          *  direction is set
          *
          ******************************/
@@ -228,7 +210,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_1_mask[a+1][b+1];
             }
          }
@@ -244,7 +226,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_2_mask[a+1][b+1];
             }
          }
@@ -260,7 +242,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_3_mask[a+1][b+1];
             }
          }
@@ -276,7 +258,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_4_mask[a+1][b+1];
             }
          }
@@ -292,7 +274,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_5_mask[a+1][b+1];
             }
          }
@@ -311,7 +293,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_6_mask[a+1][b+1];
             }
          }
@@ -327,7 +309,7 @@ emboss_convolution(image, out_image,
          sum = 0;
          for(a=-1; a<2; a++){
             for(b=-1; b<2; b++){
-               sum = sum + image[i+a][j+b] * 
+               sum = sum + image[i+a][j+b] *
                      emboss_7_mask[a+1][b+1];
             }
          }

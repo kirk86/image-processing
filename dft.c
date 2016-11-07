@@ -1,28 +1,17 @@
-       /******************************************************
-       *
-       *       file d:\cips\dft.c
-       *
-       *       Functions: This file contains
-       *          dft
-       *          invdft
-       *          dft_2d
-	   *          invdft_2d
-	   *          perform_fourier_transform
-       *          print_real_im
-       *          print_2d_real_im
-       *
-       *       Purpose:
-       *          These functions perform forward and
-       *          inverse discrete Fourier transforms
-       *          in 1 and 2 dimensions.  The basic algorithms
-       *          are from "An Introduction to Digital
-       *          Signal Processing," John H. Karl, Academic
-       *          Press, 1989.
-       *
-       *       External Calls:
-       *          none
-       *
-       *****************************************************/
+/******************************************************
+*
+*       file dft.c
+*
+*       Functions: This file contains
+*          dft
+*          invdft
+*          dft_2d
+*          invdft_2d
+*          perform_fourier_transform
+*          print_real_im
+*          print_2d_real_im
+*
+*****************************************************/
 
 
 #include "d:\cips\cips.h"

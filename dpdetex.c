@@ -1,8 +1,3 @@
-
-/********************************************************/
-/********************************************************/
-/********************************************************/
-
 /******************* includes ***************************/
 #include <stdlib.h>
 #include <stdio.h>
@@ -15,7 +10,7 @@
 #define  MIN_PARAMS 2
 #define  MAX_PARAMS 3
 #define  LL       100
-#define  BACKSLASH 92 
+#define  BACKSLASH 92
 #define  PERCENT   37
 #define  SLQOUTE   96 /* single left qoute */
 #define  SRQOUTE   39 /* single right qoute */
@@ -157,8 +152,8 @@ int  contains_latex_commands(char line[])
    remove_latex_commands(...
 */
 
-void remove_latex_commands(FILE *input_file, 
-                           FILE *output_file) 
+void remove_latex_commands(FILE *input_file,
+                           FILE *output_file)
 {
    char input_line[LL], output_line[LL];
 
@@ -195,8 +190,8 @@ void remove_latex_commands(FILE *input_file,
    word is null terminated.
 */
 
-void copy_word(char input_line[], 
-               int *ip, 
+void copy_word(char input_line[],
+               int *ip,
                char output_word[])
 {
    int i,
@@ -267,7 +262,7 @@ void copy_text_until(char input_line[], char output_line[],
 
          case 3.2 the end_character is one character.
 
-         In both cases, copy the last character and 
+         In both cases, copy the last character and
          stop the copying.
       */
 
@@ -334,15 +329,15 @@ void copy_text_until(char input_line[], char output_line[],
 void process_line(char input_line[], char output_line[],
                   FILE *input_file, FILE *output_file)
 {
-   char latex_word[LL], 
-        temp[LL], 
+   char latex_word[LL],
+        temp[LL],
         this,
         that,
         response[LL];
 
    int  case1 = 0,
         case4 = 0,
-        ip    = 0, 
+        ip    = 0,
         op    = 0,
         tp    = 0;
 
@@ -370,9 +365,9 @@ void process_line(char input_line[], char output_line[],
             ip = ip + 4;
             while(input_line[ip] == ' ')
                ip++;
-            copy_text_until(input_line, output_line, 
+            copy_text_until(input_line, output_line,
                             &ip, &op,
-                            input_file, output_file, 
+                            input_file, output_file,
                             '}');
             break;
 
@@ -532,7 +527,7 @@ int is_ldots(char input[], int ip)
 
    case 1: The command begins with a '{'.  Inside the {
    is a \xx command like em bf rm it sl sf sc.  Skip
-   over the { and these three characters and copy 
+   over the { and these three characters and copy
    the text until you hit the }.  You may need
    to read several lines of input.
 
@@ -553,7 +548,7 @@ int is_ldots(char input[], int ip)
 
    case 5:  Two parts
 
-   case 5.1: The kill all case.  The Latex command is a 
+   case 5.1: The kill all case.  The Latex command is a
    \begin end documenstyle maketitle tableofcontents or
    %comments.  Delete this line.  Kill it all.
 
@@ -567,7 +562,7 @@ void process_line(char input_line[], char output_line[],
 {
    char latex_word[LL], response[LL];
    int  case4 = 0,
-        ip    = 0, 
+        ip    = 0,
         op    = 0;
 
    while(input_line[ip] != '\0'){
@@ -581,7 +576,7 @@ void process_line(char input_line[], char output_line[],
          op++;
          ip++;
       }  /* ends nothing case */
-      
+
          /* case  1 */
       if(input_line[ip] == '{'){
          ip = ip + 4;
@@ -603,9 +598,9 @@ void process_line(char input_line[], char output_line[],
             output_line[op] = DBLQOUTE;
             op = op + 1;
             ip = ip + 2;
-            copy_text_until(input_line, output_line, 
+            copy_text_until(input_line, output_line,
                             &ip, &op,
-                            input_file, output_file, 
+                            input_file, output_file,
                             SRQOUTE);
          }  /* ends second if SLQOUTE */
          else { /* else just 1 SLQOUTE */
@@ -630,7 +625,7 @@ void process_line(char input_line[], char output_line[],
                ip = ip + 2;
          }  /* ends if case 4 */
 
-            /* if you did case4, jump around cases 
+            /* if you did case4, jump around cases
                5.1 and 5.2 */
 
          if(case4 == 0){
@@ -659,9 +654,9 @@ void process_line(char input_line[], char output_line[],
                 (strcmp(latex_word, "date") == 0)){
                ip++; /* ip points to { so increment it */
                if(input_line[ip] == '{') ip++;
-               copy_text_until(input_line, output_line, 
+               copy_text_until(input_line, output_line,
                                &ip, &op,
-                               input_file, output_file, 
+                               input_file, output_file,
                                '}');
             }  /* ends case 5.2 */
 

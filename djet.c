@@ -1,87 +1,74 @@
+/*************************************************
+*
+*   file djet.c
+*
+*   Functions: This file contains
+*      end_graphics_mode
+*      get_graphics_caption
+*      print_bytes
+*      print_graphics_image
+*      print_original_200_row
+*      select_300_dpi_resolution
+*      select_full_graphics_mode
+*      set_horizontal_offset
+*      set_raster_width
+*      start_raster_graphics
+*
+*   Purpose:
+*      These functions print a 200x200 image using
+*      dithering to an HP DeskJet or compatable
+*      (Laserjet). This uses an 8x8 matrix which
+*      gives 64 shades of gray.
+*
+*
+ZDDDDD?   ZDDDDD?
+3     3   3     3   The function print_graphics_image
+3     3   3     3   begins with 2 100x100 image arrays
+3     3   3     3
+3     3   3     3
+@DDDDDY   @DDDDDY
+
+ZDDDDDDDDDDDDDDD?
+3               3   It joins them into
+3               3   1 100x200 image array
+3               3
+3               3
+@DDDDDDDDDDDDDDDY
+
+ZDDDDDDDDDDDDDDD?
+@DDDDDDDDDDDDDDDY
+ZDDDDDDDDDDDDDDD?
+@DDDDDDDDDDDDDDDY
+       .            It loops and creates
+       .            100 200 element image arrays
+       .
+ZDDDDDDDDDDDDDDD?
+@DDDDDDDDDDDDDDDY
 
 
-   /*************************************************
-   *
-   *   file d:\cips\djet.c
-   *
-   *   Functions: This file contains
-   *      end_graphics_mode
-   *      get_graphics_caption
-   *      print_bytes
-   *      print_graphics_image
-   *      print_original_200_row
-   *      select_300_dpi_resolution
-   *      select_full_graphics_mode
-   *      set_horizontal_offset
-   *      set_raster_width
-   *      start_raster_graphics
-   *
-   *   Purpose:
-   *      These functions print a 200x200 image using
-   *      dithering to an HP DeskJet or compatable 
-   *      (Laserjet). This uses an 8x8 matrix which 
-   *      gives 64 shades of gray.
-   *
-   *   External Calls:
-   *          rtiff.c - read_tiff_image
-   *           hist.c - zero_histogram
-   *                    calculate_histogram
-   *                    perform_histogram_equalization
-   *
-   *
-   *   Modifications:
-   *      January 1991 - created
-   *      25 August 1991 - modified for use in the
-   *         C Image Processing System.
-   *
-    ZDDDDD?   ZDDDDD?
-    3     3   3     3   The function print_graphics_image
-    3     3   3     3   begins with 2 100x100 image arrays
-    3     3   3     3
-    3     3   3     3
-    @DDDDDY   @DDDDDY
+      The function print_original_200_row
+      receives a 200 element array
+ZBDDDDDDDDDDDDDDDDDDDDDDDDDDB?
+@ADDDDDDDDDDDDDDDDDDDDDDDDDDAY
 
-    ZDDDDDDDDDDDDDDD?
-    3               3   It joins them into
-    3               3   1 100x200 image array
-    3               3
-    3               3
-    @DDDDDDDDDDDDDDDY
+      This array is transformed into a 8x200
+      array of characters called 'row'
+ZDDDDDDDDD ... ~DDDDDDD?
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+CDDDDDDDDD ... ~DDDDDDD4
+@DDDDDDDDD ... ~DDDDDDDY
 
-    ZDDDDDDDDDDDDDDD?
-    @DDDDDDDDDDDDDDDY
-    ZDDDDDDDDDDDDDDD?
-    @DDDDDDDDDDDDDDDY
-           .            It loops and creates
-           .            100 200 element image arrays
-           .
-    ZDDDDDDDDDDDDDDD?
-    @DDDDDDDDDDDDDDDY
-
-
-          The function print_original_200_row 
-          receives a 200 element array
-    ZBDDDDDDDDDDDDDDDDDDDDDDDDDDB?
-    @ADDDDDDDDDDDDDDDDDDDDDDDDDDAY
-
-          This array is transformed into a 8x200 
-          array of characters called 'row'
-    ZDDDDDDDDD ... ~DDDDDDD?
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    CDDDDDDDDD ... ~DDDDDDD4
-    @DDDDDDDDD ... ~DDDDDDDY
-
-          Each column of this array is a 1x8 character
-          array which is an 8-bit x 8-bit array
-    IMM;
-    :  :
-    HMM<
-          Each row of 'row' is passed to the funnction 
+      Each column of this array is a 1x8 character
+      array which is an 8-bit x 8-bit array
+IMM;
+:  :
+HMM<
+          Each row of 'row' is passed to the funnction
           print_bytes for graphics printing
 
 
@@ -92,7 +79,7 @@
    ***************************************************/
 
 
-#include "cips.h"
+#include <cips.h>
 
 #define ESCAPE 27
 #define FORMFEED  '\014'
@@ -226,7 +213,7 @@ print_graphics_image(image1, image2, image_name,
 
 
    printf("\nReading image");
-   read_tiff_image(image_name, image2, 
+   read_tiff_image(image_name, image2,
                    il, ie+100, ll, le+100);
 
 
@@ -284,7 +271,7 @@ print_graphics_image(image1, image2, image_name,
    if(color_transform[0] == 'H'){
 
       printf("\nReading image");
-      read_tiff_image(image_name, image1, 
+      read_tiff_image(image_name, image1,
                    il+100, ie, ll+100, le);
       printf("\nReading image");
       read_tiff_image(image_name, image2,
@@ -294,11 +281,11 @@ print_graphics_image(image1, image2, image_name,
       calculate_histogram(image2, histogram);
 
       printf("\nReading image");
-      read_tiff_image(image_name, image1, 
+      read_tiff_image(image_name, image1,
                    il, ie, ll, le);
 
       printf("\nReading image");
-      read_tiff_image(image_name, image2, 
+      read_tiff_image(image_name, image2,
                    il, ie+100, ll, le+100);
 
       printf("\nDJET> Equalizing histogram");
@@ -319,8 +306,8 @@ print_graphics_image(image1, image2, image_name,
 
       /*********************************************
       *
-      *   If invert is set them invert the 
-      *   transformed image arrays (they now 
+      *   If invert is set them invert the
+      *   transformed image arrays (they now
       *   only have 64 shades of gray).
       *
       **********************************************/
@@ -351,10 +338,10 @@ print_graphics_image(image1, image2, image_name,
 
         /*********************************************
         *
-        *   Print the two arrays to make a 100x200 
-        *   output. To do this you loop over 100 rows, 
-        *   set the r buffer to the image values, set 
-        *   the graphics, and print the row via 
+        *   Print the two arrays to make a 100x200
+        *   output. To do this you loop over 100 rows,
+        *   set the r buffer to the image values, set
+        *   the graphics, and print the row via
         *   function print_original_200_row.
         *
         **********************************************/
@@ -389,7 +376,7 @@ print_graphics_image(image1, image2, image_name,
 
 
    printf("\nReading image");
-   read_tiff_image(image_name, image1, 
+   read_tiff_image(image_name, image1,
                 il+100, ie, ll+100, le);
    printf("\nReading image");
    read_tiff_image(image_name, image2,
@@ -504,8 +491,8 @@ print_graphics_image(image1, image2, image_name,
 
       /**********************************************
       *
-      *   If show_hist is 1 then calculate the 
-      *   histogram for the two image arrays and 
+      *   If show_hist is 1 then calculate the
+      *   histogram for the two image arrays and
       *   print the histogram.
       *
       ***********************************************/
@@ -849,7 +836,7 @@ print_hist_image(printer, hist)
 
    printf("\n\nHIST> Now printing the histogram");
    for(i=0; i<256; i++){
-      printf("\n\tHIST> Histogram[%d]=%ld", 
+      printf("\n\tHIST> Histogram[%d]=%ld",
             i, hist[i]);
 
             /* print the line 2 times */

@@ -1,36 +1,36 @@
-       /******************************************************
-       *
-       *       file d:\cips\dftsave.c
-       *
-       *       Functions: This file contains
-       *          main
-       *          dft
-       *          invdft
-       *          dft_2d
-       *          invdft_2d
-       *          odd_dft
-       *          odd_invdft
-       *          print_real_im
-       *          print_2d_real_im
-       *
-       *       Purpose:
-       *          These functions perform forward and
-       *          inverse discrete Fourier transforms
-       *          in 1 and 2 dimensions.  The basic algorithms
-       *          are from "An Introduction to Digital
-       *          Signal Processing," John H. Karl, Academic
-       *          Press, 1989.  The basic routines work for even
-       *          dimensioned arrays.  For odd dimensioned arrays
-       *          you must use the odd routines.
-       *
-       *       External Calls:
-       *          none
-       *
-       *
-       *****************************************************/
+/******************************************************
+*
+*       file dftsave.c
+*
+*       Functions: This file contains
+*          main
+*          dft
+*          invdft
+*          dft_2d
+*          invdft_2d
+*          odd_dft
+*          odd_invdft
+*          print_real_im
+*          print_2d_real_im
+*
+*       Purpose:
+*          These functions perform forward and
+*          inverse discrete Fourier transforms
+*          in 1 and 2 dimensions.  The basic algorithms
+*          are from "An Introduction to Digital
+*          Signal Processing," John H. Karl, Academic
+*          Press, 1989.  The basic routines work for even
+*          dimensioned arrays.  For odd dimensioned arrays
+*          you must use the odd routines.
+*
+*       External Calls:
+*          none
+*
+*
+*****************************************************/
 
 
-#include "d:\cips\cips.h"
+#include <cips.h>
 
 
 #define N 5
@@ -71,7 +71,7 @@ float r[N], i[N];
 
 
 
-main()
+int main(int argc, char *argv[])
 {
 
 

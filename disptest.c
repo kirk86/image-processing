@@ -1,5 +1,3 @@
-
-
    /**************************************************
    *
    *   file d:\cips\display.c
@@ -40,7 +38,7 @@
    ***************************************************/
 
 
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -54,8 +52,8 @@
 
 
 display_image(file_name, image, il, ie, ll, le,
-              image_header, monitor_type, 
-              color_transform, invert, image_colors, 
+              image_header, monitor_type,
+              color_transform, invert, image_colors,
               display_colors, show_hist, title)
    char    color_transform[],
            file_name[],
@@ -106,8 +104,8 @@ display_image(file_name, image, il, ie, ll, le,
 
      /**********************************************
      *
-     *   If you want to display the histogram and 
-     *   do not want to perform hist equalization, 
+     *   If you want to display the histogram and
+     *   do not want to perform hist equalization,
      *   then zero the histogram for calculations.
      *
      **********************************************/
@@ -150,9 +148,9 @@ display_image(file_name, image, il, ie, ll, le,
 
         /********************************************
         *
-        *   Somehow, my dx and dy offsets are 
-        *   backwards from my horizontal and vertical 
-        *   variables. Trying to center the images 
+        *   Somehow, my dx and dy offsets are
+        *   backwards from my horizontal and vertical
+        *   variables. Trying to center the images
         *   on the screen. March 21 1992
         *
         ********************************************/
@@ -170,9 +168,9 @@ display_image(file_name, image, il, ie, ll, le,
       if(max_horizontal > horizontal) dy_offset = 0;
       if(max_vertical > vertical)     dx_offset = 0;
 
-      if(horizontal > max_horizontal) 
+      if(horizontal > max_horizontal)
          horizontal = max_horizontal;
-      if(vertical > max_vertical)     
+      if(vertical > max_vertical)
          vertical   = max_vertical;
 
 
@@ -215,10 +213,10 @@ display_image(file_name, image, il, ie, ll, le,
         /* set graphics mode */
 
    my_setvideomode(display_mode); /* MSC 6.0 */
-   if(display_colors == 16) 
+   if(display_colors == 16)
       map_16_shades_of_gray(display_mode);
 /*********
-   if(display_colors == 256) 
+   if(display_colors == 256)
       my_map_64_shades_of_gray();
 *********/
 
@@ -246,11 +244,11 @@ display_image(file_name, image, il, ie, ll, le,
 
         /*****************************************
         *
-        *   These statements place a gray 
-        *   background across the display area of 
-        *   a VGA screen.  This reduces the 
-        *   contrast between the screen background 
-        *   and the images you display. This makes 
+        *   These statements place a gray
+        *   background across the display area of
+        *   a VGA screen.  This reduces the
+        *   contrast between the screen background
+        *   and the images you display. This makes
         *   it easier to take photos.
         *
         *******************************************/
@@ -274,18 +272,18 @@ display_image(file_name, image, il, ie, ll, le,
                  (color_transform[0] != 'H'))
                calculate_histogram(image, histogram);
 
-            transform_the_colors(image, 
+            transform_the_colors(image,
                                  color_transform,
                                  display_colors,
-                                 image_colors, 
+                                 image_colors,
                                  histogram,
-                                 horizontal, 
+                                 horizontal,
                                  vertical);
 
             if(color_transform[0] == 'H')
                calculate_histogram(image, new_hist);
           display_image_portion(image, x+dx_offset,
-                                y+dy_offset, 
+                                y+dy_offset,
                                 display_colors,
                                 image_colors, invert);
          }        /* ends loop over b */
@@ -293,10 +291,10 @@ display_image(file_name, image, il, ie, ll, le,
 
           /*******************************************
           *
-          *   Put in these statements to print a title 
-          *   at the bottom of the display.  This is 
-          *   nice for taking photos or articles 
-          *   because it tells the reader what you 
+          *   Put in these statements to print a title
+          *   at the bottom of the display.  This is
+          *   nice for taking photos or articles
+          *   because it tells the reader what you
           *   are trying to do.
           *
           ********************************************/
@@ -376,13 +374,13 @@ display_image(file_name, image, il, ie, ll, le,
    *
    ************************************************/
 
-display_menu_for_display_image(image_colors, 
+display_menu_for_display_image(image_colors,
                               display_colors,
                               invert, color_transform,
                               monitor_type,
                               show_hist)
    char color_transform[], monitor_type[];
-   int  *invert, *image_colors, 
+   int  *invert, *image_colors,
         *display_colors, *show_hist;
 {
    char response[80];
@@ -402,7 +400,7 @@ display_menu_for_display_image(image_colors,
              *display_colors);
       printf("\nDISPLAY> 5. Monitor type is %s",
              monitor_type);
-      printf("\nDISPLAY> 6. Histogram is %d", 
+      printf("\nDISPLAY> 6. Histogram is %d",
              *show_hist);
       printf("  (1=show 0=don't show)");
       printf("\nDISPLAY> _\b");
@@ -429,7 +427,7 @@ display_menu_for_display_image(image_colors,
          gets(response);
          if((response[0] == 'S') ||
             (response[0] == 's'))
-               strcpy(color_transform, 
+               strcpy(color_transform,
                       "Straight mode");
          else
                strcpy(color_transform,
@@ -495,7 +493,7 @@ display_menu_for_display_image(image_colors,
    *
    *********************************/
 
-display_image_portion(image, x, y, display_colors, 
+display_image_portion(image, x, y, display_colors,
                       image_colors, invert)
    int      invert, display_colors, image_colors;
    short    image[ROWS][COLS];
@@ -629,5 +627,3 @@ transform_the_colors(image, color_transform,
    }  /* ends if transform is hist equalization */
 
 }  /* ends transform_the_colors */
-
-

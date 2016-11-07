@@ -1,30 +1,28 @@
-    /***********************************************
-    *
-    *    file filter.c
-    *
-    *    Functions: This file contains
-    *       filter_image
-    *       median_filter
-    *       high_pixel
-    *       low_pixel
-    *       setup_filters
-    *       get_filter_options
-    *       median_of
-    *       fsort_elements
-    *       fswap
-    *
-    *    Purpose:
-    *       These functions implement several
-    *       types of basic spatial frequency
-    *       filters.
-    *
-    *    External Calls:
-    *       utility.c - fix_edges
-    *
-    *
-    *************************************************/
+/***********************************************
+*
+*    file filter.c
+*
+*    Functions: This file contains
+*       filter_image
+*       median_filter
+*       high_pixel
+*       low_pixel
+*       setup_filters
+*       get_filter_options
+*       median_of
+*       fsort_elements
+*       fswap
+*
+*    Purpose:
+*       These functions implement several
+*       types of basic spatial frequency
+*       filters.
+*
+*
+*
+*************************************************/
 
-#include "cips.h"
+#include <cips.h>
 
 
      /*******************************************
@@ -87,16 +85,9 @@ short hpf_filter_3[3][3] =
      *******************************************/
 
 
-filter_image(the_image, out_image,
-             rows, cols, bits_per_pixel,
-             filter, type, low_high)
-   int    type;
-   short  filter[3][3],
-          **the_image,
-          **out_image;
-   char   low_high[];
-   long   rows, cols, bits_per_pixel;
-
+filter_image(short **the_image, short **out_image,
+             long rows, long cols, long bits_per_pixel,
+             short filter[3][3], int type, char low_high[])
 {
    int    a, b, d, i, j, k,
           length, max, sum, width;
@@ -146,13 +137,8 @@ filter_image(the_image, out_image,
      *
      *******************************************/
 
-median_filter(the_image, out_image,
-              rows, cols, size)
-   int    size;
-   short  **the_image,
-          **out_image;
-   long   rows, cols;
-
+median_filter(short **the_image, short **out_image,
+              long rows, long cols, int size)
 {
    int    a, b, count, i, j, k,
           length, sd2, sd2p1, ss, width;
@@ -211,9 +197,7 @@ median_filter(the_image, out_image,
     *
     ***********************************************/
 
-median_of(elements, count)
-   int   *count;
-   short elements[];
+median_of(short elements[], int *count)
 {
    short median;
 
@@ -233,13 +217,8 @@ median_of(elements, count)
      *******************************************/
 
 
-low_pixel(the_image, out_image,
-          rows, cols, size)
-   int    size;
-   short  **the_image,
-          **out_image;
-   long   rows, cols;
-
+low_pixel(short **the_image, short **out_image,
+          long rows, long cols, int size)
 {
    int    a, b, count, i, j, k,
           length, sd2, sd2p1, ss, width;
@@ -287,22 +266,18 @@ low_pixel(the_image, out_image,
 
 
 
-     /*******************************************
-     *
-     *   high_pixel(..
-     *
-     *   This function replaces the pixel at
-     *   the center of a 3x3, 5x5, etc. area
-     *   with the max for that area.
-     *
-     *******************************************/
+/*******************************************
+*
+*   high_pixel(..
+*
+*   This function replaces the pixel at
+*   the center of a 3x3, 5x5, etc. area
+*   with the max for that area.
+*
+*******************************************/
 
-high_pixel(the_image, out_image,
-           rows, cols, size)
-   int    size;
-   short  **the_image,
-          **out_image;
-   long   rows, cols;
+high_pixel(short **the_image, short **out_image,
+           long rows, long cols, int size)
 {
    int    a, b, count, i, j, k,
           length, sd2, sd2p1, ss, width;
@@ -360,9 +335,7 @@ high_pixel(the_image, out_image,
     *
     ***********************************************/
 
-fsort_elements(elements, count)
-   int   *count;
-   short elements[];
+fsort_elements(short elements[], int *count)
 {
    int i, j;
    j = *count;
@@ -384,8 +357,7 @@ fsort_elements(elements, count)
     *
     ***********************************************/
 
-fswap(a, b)
-   short *a, *b;
+fswap(short *a, short *b)
 {
    short temp;
    temp  = *a;
@@ -406,10 +378,7 @@ fswap(a, b)
     ************************************************/
 
 
-setup_filters(filter_type, low_high, filter)
-   char   low_high[];
-   int    filter_type;
-   short  filter[3][3];
+setup_filters(int filter_type, char low_high, short filter[3][3])
 {
    int i, j;
 

@@ -1,23 +1,18 @@
-    /***********************************************
-    *
-    *
-    *  Functions: This file contains
-    *     main
-    *     find_text
-    *
-    *  Purpose:
-    *     This file contains the main calling
-    *     routine and subroutines to find
-    *     text on hidden top of an image.
-    *
-    *  External Calls:
-    *     tiff.c - read_tiff_header
-    *     rtiff.c - read_tiff_image
-    *     wtiff.c - write_array_into_tiff_image
-    *
-    *************************************************/
+/***********************************************
+*
+*
+*  Functions: This file contains
+*     main
+*     find_text
+*
+*  Purpose:
+*     This file contains the main calling
+*     routine and subroutines to find
+*     text on hidden top of an image.
+*
+*************************************************/
 
-#include "cips.h"
+#include <cips.h>
 
 
 short the_image[ROWS][COLS];

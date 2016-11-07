@@ -1,15 +1,15 @@
-       /***************************************************************
-       *
-       *       file c:\lsu\color.c
-       *
-       *       Functions: This file contains
-       *           main
-       *
-       *       Purpose: This program sets the screen to any color
-       *	   combination you want.
-       *
-       *
-       ***************************************************************/
+/***************************************************************
+*
+*       file color.c
+*
+*       Functions: This file contains
+*           main
+*
+*       Purpose: This program sets the screen to any color
+*	   combination you want.
+*
+*
+***************************************************************/
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-main()
+int main(int argc, char *argv[])
 {
 
    char response[80];

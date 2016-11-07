@@ -1,23 +1,23 @@
-   /********************************************
-   *
-   *   This file contains code from the
-   *   Numerical Recipies in C text by
-   *   Press, Flannery, Teukolsky, Vetterling
-   *   I needed the routines to fit data to
-   *   a straight line y=mx+b.
-   *
-   *
-   *   This files contains the files:
-   *      nrutil.h
-   *      fit.c
-   *      gammq.c
-   *      gcf.c
-   *      gser.c
-   *      gammln.c
-   *      nrutil.c
-   *
-   *
-   ********************************************/
+/********************************************
+*
+*   This file contains code from the
+*   Numerical Recipies in C text by
+*   Press, Flannery, Teukolsky, Vetterling
+*   I needed the routines to fit data to
+*   a straight line y=mx+b.
+*
+*
+*   This files contains the files:
+*      nrutil.h
+*      fit.c
+*      gammq.c
+*      gcf.c
+*      gser.c
+*      gammln.c
+*      nrutil.c
+*
+*
+********************************************/
 
 
 

@@ -1,38 +1,22 @@
+/***********************************************
+*
+*       file edge.c
+*
+*       Functions: This file contains
+*          detect_edges
+*          setup_masks
+*          get_edge_options
+*          perform_convolution
+*          quick_edge
+*
+*       Purpose:
+*          These functions implement several
+*          types of basic edge detection.
+*
+*
+*************************************************/
 
-
-       /***********************************************
-       *
-       *       file edge.c
-       *
-       *       Functions: This file contains
-       *          detect_edges
-       *          setup_masks
-       *          get_edge_options
-       *          perform_convolution
-       *          quick_edge
-       *
-       *       Purpose:
-       *          These functions implement several
-       *          types of basic edge detection.
-       *
-       *       External Calls:
-       *          utility.c - fix_edges
-       *
-       *       Modifications:
-       *          27 January 1991 - created
-       *          27 December 1992 - Fixed an error in
-       *              how I did the 8 direction edge
-       *              detectors.  I was only detecting
-       *              edges in the last (the 7)
-       *              direction.  I fixed this by
-       *              setting the out_image to the sum
-       *              only if the sum was greater than
-       *              the out_image.  This is in the
-       *              function perform_convolution.
-       *
-       *************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 short quick_mask[3][3] =  {
        {-1,  0, -1},
@@ -214,8 +198,8 @@ detect_edges(the_image, out_image,
 {
    perform_convolution(the_image, out_image,
                        detect_type, threshold,
-                       rows, cols, 
-                       bits_per_pixel, 
+                       rows, cols,
+                       bits_per_pixel,
                        high);
    fix_edges(out_image, 1, rows, cols);
 }  /* ends detect_edges */
@@ -251,7 +235,7 @@ perform_convolution(image, out_image,
        i,
        is_present,
        j,
-       sum; 
+       sum;
 
    short  mask_0[3][3],
           mask_1[3][3],
@@ -526,8 +510,8 @@ quick_edge(the_image, out_image,
        }
    }  /* ends if threshold == 1 */
 
-   fix_edges(out_image, 1, 
-             rows-1, cols-1); 
+   fix_edges(out_image, 1,
+             rows-1, cols-1);
 
 }  /* ends quick_edge */
 

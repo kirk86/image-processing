@@ -1,61 +1,47 @@
+/***********************************************
+*
+*   file cipspr.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This is the main routine of a
+*      stand alone program that prints
+*      TIFF images to the HP DeskJet printer
+*      graphically.
+*
+*      You can run this program using either
+*      the command line or via menus.
+*
+*      cipspr image-name [help -i -h -e -il -ie -t]
+*
+*      cipspr help - gives you a usage message
+*
+*      cipspr - gives you the menu interface
+*
+*      cipspr image-name - displays that image
+*
+*      Options:
+*         -i  - invert the image when displaying
+*         -h  - show the histogram
+*         -e  - use histogram equalization
+*         -il - specify initial line
+*         -ie - specify initial element
+*         -t  - means the words following -t
+*               are a title to display below
+*               the image.  Always put the -t
+*               as the final option.
+*
+*************************************************/
 
-
-    /***********************************************
-    *
-    *   file d:\cips\cipspr.c
-    *
-    *   Functions: This file contains
-    *      main
-    *
-    *   Purpose:
-    *      This is the main routine of a
-    *      stand alone program that prints
-    *      TIFF images to the HP DeskJet printer
-    *      graphically.
-    *
-    *      You can run this program using either
-    *      the command line or via menus.
-    *
-    *      cipspr image-name [help -i -h -e -il -ie -t]
-    *
-    *      cipspr help - gives you a usage message
-    *
-    *      cipspr - gives you the menu interface
-    *
-    *      cipspr image-name - displays that image
-    *
-    *      Options:
-    *         -i  - invert the image when displaying
-    *         -h  - show the histogram
-    *         -e  - use histogram equalization
-    *         -il - specify initial line
-    *         -ie - specify initial element
-    *         -t  - means the words following -t
-    *               are a title to display below
-    *               the image.  Always put the -t
-    *               as the final option.
-    *
-    *   External Calls:
-    *      gin.c - get_image_name
-    *      rtiff.c - read_tiff_image
-    *      tiff.c - read_tiff_header
-    *      display.c - display_menu_for_display_image
-    *      djet.c - print_graphics_image
-    *
-    *   Modifications:
-    *      5 June 1993 - created
-    *
-    *************************************************/
-
-#include "cips.h"
+#include <cips.h>
 
 
 short the_image[ROWS][COLS];
 short the_image2[ROWS][COLS];
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
    char color_transform[80],
         monitor_type[80],
@@ -100,7 +86,7 @@ main(argc, argv)
          if(strcmp(argv[i], "-h") == 0)
             show_hist = 1;
          if(strcmp(argv[i], "-e") == 0)
-            strcpy(color_transform, 
+            strcpy(color_transform,
                    "Histogram Equalization");
          if(strcmp(argv[i], "-il") == 0){
             i++;

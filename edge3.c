@@ -1,33 +1,26 @@
+/***********************************************
+*
+*    file d:\cips\edge3.c
+*
+*    Functions: This file contains
+*       gaussian_edge
+*       enhance_edges
+*
+*    Purpose:
+*       These functions implement several
+*       types of advanced edge detection.
+*
+*    External Calls:
+*       none
+*
+*    Modifications:
+*       26 March 1991 - created
+*       May 10, 1998 - modified routines to work
+*           with an entire image in one array.
+*
+***********************************************/
 
-
-    /***********************************************
-    *
-    *    file d:\cips\edge3.c
-    *
-    *    Functions: This file contains
-    *       gaussian_edge
-    *       enhance_edges
-    *
-    *    Purpose:
-    *       These functions implement several
-    *       types of advanced edge detection.
-    *
-    *    External Calls:
-    *       none
-    *
-    *    Modifications:
-    *       26 March 1991 - created
-    *       May 10, 1998 - modified routines to work
-    *           with an entire image in one array.
-    *
-    ***********************************************/
-
-
-
-
-
-
-#include "cips.h"
+#include <cips.h>
 
 
 short enhance_mask[3][3] =  {
@@ -70,7 +63,7 @@ gaussian_edge(the_image, out_image,
               rows, cols, bits_per_pixel,
               size, threshold, high)
    int    high, size, threshold;
-   short  **the_image, 
+   short  **the_image,
           **out_image;
    long   rows, cols, bits_per_pixel;
 {
@@ -78,7 +71,7 @@ gaussian_edge(the_image, out_image,
    long sum;
    int  a, b, absdiff, absmax, diff, i, j,
         length, lower, max, new_hi, new_low,
-        scale, starti, stopi, startj, stopj, 
+        scale, starti, stopi, startj, stopj,
         upper, width;
 
    new_hi  = 250;
@@ -188,7 +181,7 @@ gaussian_edge(the_image, out_image,
 enhance_edges(the_image, out_image,
               rows, cols, bits_per_pixel, high)
    int    high;
-   short  **the_image, 
+   short  **the_image,
           **out_image;
    long   rows, cols, bits_per_pixel;
 

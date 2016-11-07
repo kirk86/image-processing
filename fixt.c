@@ -1,24 +1,18 @@
-       /***********************************************
-       *
-       *   file d:\cips\fixt.c
-       *
-       *   Functions: This file contains
-       *      main
-       *
-       *   Purpose:
-       *      This file contains the main calling
-       *      routine to fix thresholded images.
-       *
-       *   External Calls:
-       *      gin.c - get_image_name
-       *      numcvrt.c - get_integer
-       *                  int_convert
-       *      tiff.c - read_tiff_header
-       *
-       *
-       *************************************************/
+/***********************************************
+*
+*   file fixt.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains the main calling
+*      routine to fix thresholded images.
+*
+*
+*************************************************/
 
-#include "cips.h"
+#include <cips.h>
 
 
 
@@ -27,9 +21,7 @@ short out_image[ROWS][COLS];
 unsigned long histogram[GRAY_LEVELS+1];
 long slopes[GRAY_LEVELS+1];
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
 
    char name[80], name2[80], response[80];

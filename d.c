@@ -1,4 +1,4 @@
-/*
+/**
    This program illustrates the depth first
    search algorithm.
 
@@ -51,7 +51,7 @@ int state_doesnt_exist(struct node *,
 
 /************************************************/
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 
 char response[80];
