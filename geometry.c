@@ -1,6 +1,6 @@
     /********************************************
     *
-    *    file d:\cips\geometry.c
+    *    file geometry.c
     *
     *    Functions: This file contains
     *       main

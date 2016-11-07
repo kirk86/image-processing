@@ -1,7 +1,3 @@
-
-
-
-
        /*****************************************************
        *
        *       file d:\cips\delas.c
@@ -19,32 +15,16 @@
        *          color_transform
        *          display_menu
        *
-       *       Purpose: This program displays images on the EGA 
+       *       Purpose: This program displays images on the EGA
        *          monitor.
-       *          It can display either a 300x500 section of a 
+       *          It can display either a 300x500 section of a
        *          single
-       *          channel of an image, or three channels of a 
+       *          channel of an image, or three channels of a
        *          100x500
        *	  section of an image. This can use either a straight
        *	  mapping of 256 gray levels to 16 colors or a modified
        *	  mapping that brings out selected objects in the image.
        *
-       *       Modifications:
-       *          17 June 1987 - created
-       *          8 August 1987 - added the ability to draw a
-       *              grid over the image and label areas with
-       *              a C or an L.
-       *	  30 August 1987 - major changes made so that this is
-       *              the only display routine needed.
-       *           9 April 1988 - moved to Borland's Turbo C 1.5.
-       *              This has a library of graphics routines that
-       *	      are more reliable and execute faster.
-       *	  13 September 1990 - put in function
-       *	      blank_out_display to help reduce
-       *	      the contrast when taking photos.
-       *	  15 September 1990 - put the x_offset and
-       *	      y_offset parameters in to center the
-       *	      image display.
        *
        ********************************************************/
 
@@ -533,7 +513,7 @@ a
        *           12 June 1987 - one function, read_image, moved
        *              from the file rwimage.c to this file.
        *
-      
+
 *************************************************************/
 
 
@@ -657,7 +637,7 @@ position */
        *           10 June 1987 - created
        *
        *
-      
+
 ************************************************************/
 
 
@@ -677,7 +657,7 @@ my_write(file_descriptor, buffer, number_of_bytes)
    int write();
    write(file_descriptor, buffer, number_of_bytes);
 }
-       
+
 /***************************************************************
         *
         *       file c:\lsu\gin.c
@@ -702,7 +682,7 @@ get_integer
 the
         *               file ip.c and put in file gin.c.
         *
-       
+
 ***************************************************************/
 
 
@@ -724,7 +704,7 @@ get_image_name(name)
         }
 }       /* ends get_image_name  */
 
-       
+
 /***************************************************************
         *
         *       file c:\lsu\gp.c
@@ -744,7 +724,7 @@ get_image_name(name)
 out
         *               of the file ip.c.
         *
-       
+
 ***************************************************************/
 
 
@@ -828,7 +808,7 @@ show_parameters(channel, il, ie, ll, le, h, v, dd)
 
 }  /* ends show_parameters  */
 
-       
+
 /***********************************************************
         *
         *        file c:\lsu\rhead.c
@@ -852,14 +832,14 @@ show_parameters(channel, il, ie, ll, le, h, v, dd)
         *            12 June 1987 - ported to Borland Turbo C. The
         *                call to read was changed to my_read.
         *
-       
+
 ***********************************************************/
 
 
         /*********************************************
         *
         *       This function will read the header of
-        *       an elas image and report the 
+        *       an elas image and report the
         *       parameters.
         *
         *********************************************/
@@ -905,7 +885,7 @@ header_size);
         long_equate(in_buffer, &lcu, value);
         params->nbih = lcu.l_num;
 
-        
+
         value = 4;
         long_equate(in_buffer, &lcu, value);
         params->nbpr = lcu.l_num;
@@ -1132,7 +1112,7 @@ store_float_into_buffer(buffer, fcu, start)
            buffer[start + i] = fcu->f_alpha[3-i];
 }
 
-               
+
 /******************************************************
                 *
                 *                file c:\lsu\intcvrt.c
@@ -1142,15 +1122,15 @@ store_float_into_buffer(buffer, fcu, start)
                 *                    int_convert
                 *
                 *                Purpose: These functions convert
-a string of 
+a string of
                 *                characters to their number value.
                 *
-                *                Modifications: 
+                *                Modifications:
                 *            Taken from Jamsa's software package
                 *            and altered to fit into the computer
                 *            vision programming 22 August 1986.
                 *
-               
+
 *******************************************************/
 
 
@@ -1184,7 +1164,7 @@ get_integer(n)
 
     /* check for sign */
 
-    if (*ascii_val == '-' || *ascii_val == '+') 
+    if (*ascii_val == '-' || *ascii_val == '+')
        sign = (*ascii_val++ == '-') ? -1 : 1;  /* find sign */
 
    /*
@@ -1192,7 +1172,7 @@ get_integer(n)
     * decimal value by subtracting '0' from each character.
     *
     * for example, the ASCII '9' is equivalent to 57 in decimal.
-    * by subtracting '0' (or 48 in decimal) we get the desired 
+    * by subtracting '0' (or 48 in decimal) we get the desired
     * value.
     *
     * if we have already converted '9' to 9 and the next character
@@ -1210,7 +1190,7 @@ get_integer(n)
 
 
     *result = *result * sign;
-       
+
     return (NO_ERROR);
   }
 

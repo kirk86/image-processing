@@ -1,11 +1,7 @@
 /*
-   d.c
-   Dwayne Phillips
-
    This program illustrates the depth first
    search algorithm.
 
-   April 1999
 
 */
 
@@ -14,7 +10,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#undef DEBUG    
+#undef DEBUG
 
 #define COUNT      2
 #define TABLE     -1
@@ -63,7 +59,7 @@ int stupid = 99;
 
    int b[COUNT+1],
        goal[COUNT+1],
-       i, 
+       i,
        j,
        node_number = 0,
        searching   = 1;
@@ -97,7 +93,7 @@ int stupid = 99;
       *   Make up a goal
       *
       *   0
-      *   1 
+      *   1
       *   2
       *
       ******************************************/
@@ -108,7 +104,7 @@ int stupid = 99;
 
       /******************************************
       *
-      *   Search through the state space for 
+      *   Search through the state space for
       *   a solution.
       *
       ******************************************/
@@ -126,7 +122,7 @@ int stupid = 99;
             *   and put it on the CLOSED list.
             *
             *   Try to expand the node.  Three
-            *   rules for expanding (moving a 
+            *   rules for expanding (moving a
             *   block to another place).
             *
             *   1. The block must be uncovered,
@@ -135,7 +131,7 @@ int stupid = 99;
             *      is b has something on it, i.e.
             *      block b must be uncovered.
             *   3. Cannot repeat a state, i.e.
-            *      the new state cannot be in 
+            *      the new state cannot be in
             *      the OPEN or CLOSED list.
             *
             ************************************/
@@ -149,7 +145,7 @@ int stupid = 99;
                *
                *   Expand node n.
                *   Look at each block in node n.
-               *   
+               *
                *********************************/
 
             for(i=0; i<=COUNT; i++){
@@ -157,19 +153,19 @@ int stupid = 99;
 /* RULE 1 */   if(is_uncovered(n, i)){
 
                      /* Special case
-                        Try to move block i 
+                        Try to move block i
                         to the TABLE */
                   if(n->blocks[i] != TABLE){
 /* RULE 3 */         if(state_doesnt_exist(OPEN,
                                            CLOSED,
                                            n, i,
                                            TABLE)){
-                        new = move_block(n, 
-                                    node_number, 
+                        new = move_block(n,
+                                    node_number,
                                     i, TABLE);
-                        if(is_a_goal_node(new, 
+                        if(is_a_goal_node(new,
                                           goal)){
-                           solution_found(new, 
+                           solution_found(new,
                                       &searching);
                         }
                         node_number++;
@@ -177,7 +173,7 @@ int stupid = 99;
                      }  /* ends state_doesnt_exist */
                   }  /* ends if TABLE */
 
-                     /* Try to move block i 
+                     /* Try to move block i
                         onto block j */
                   for(j=0; j<=COUNT; j++){
                      if(i != j){
@@ -191,11 +187,11 @@ int stupid = 99;
                                     i, j);
                               if(is_a_goal_node(new,
                                          goal)){
-                                 solution_found(new, 
+                                 solution_found(new,
                                       &searching);
                               }
                               node_number++;
-                              add_to_list(&OPEN, 
+                              add_to_list(&OPEN,
                                           &new);
                            }  /* statedoesntexist */
                         }  /* ends if j is uncovered */
@@ -214,11 +210,11 @@ int stupid = 99;
 
 /************************************************/
 /*
-   Add a node to the start of the linked list 
+   Add a node to the start of the linked list
    pointed to be the head pointer.
 */
 
-void add_to_list(struct node **head, 
+void add_to_list(struct node **head,
                  struct node **new)
 {
    struct node *temp;
@@ -323,7 +319,7 @@ int is_uncovered(struct node *n, int block)
 
 /************************************************/
 /*
-   If we put block on place, does that state 
+   If we put block on place, does that state
    already exist in the list pointed to by open
    or the list pointed to by closed.  Return 1
    if neither list contains that state.
@@ -335,7 +331,7 @@ int state_doesnt_exist(struct node *open,
                        int block,
                        int place)
 {
-   int i, 
+   int i,
        tempb[COUNT+1],
        result=1;
    struct node *tempp;
@@ -386,7 +382,7 @@ int is_the_same(struct node *n, int b[])
 
 int is_a_goal_node(struct node *n, int g[])
 {
-   int i, 
+   int i,
        result = 1;
 
    for(i=0; i<=COUNT; i++){
@@ -399,7 +395,7 @@ int is_a_goal_node(struct node *n, int g[])
 
 /************************************************/
 
-int solution_found(struct node *end, 
+int solution_found(struct node *end,
                    int *searching)
 {
    struct node *temp;
@@ -435,8 +431,8 @@ int solution_found(struct node *end,
 */
 
 struct node * move_block(struct node *n,
-                         int number, 
-                         int block, 
+                         int number,
+                         int block,
                          int place)
 {
    int i, b[COUNT+1];
@@ -456,10 +452,10 @@ struct node * move_block(struct node *n,
 
 /************************************************/
 
-struct node * create_new_node(int number, 
+struct node * create_new_node(int number,
                               int b[],
                               int depth)
-{ 
+{
    int i;
    struct node *new;
 

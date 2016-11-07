@@ -1,4 +1,3 @@
-
    /***********************************************
    *
    *  file cstereo.c
@@ -20,9 +19,6 @@
    *
    *  External Calls:
    *     none
-   *
-   *  Modifications:
-   *     7 February 1995 - created
    *
    *************************************************/
 
@@ -72,7 +68,7 @@ main(argc, argv)
    int  argc;
 {
    char *depth_line,
-        *pattern, 
+        *pattern,
         *processed_pattern,
         *pdest,
         response[80];
@@ -86,7 +82,7 @@ main(argc, argv)
 
    int  current_width,
         j,
-        index, 
+        index,
         location,
         max_width,
         pattern_width,
@@ -113,22 +109,22 @@ main(argc, argv)
 
    if((depth_file = fopen(argv[3], "rt")) == NULL){
       printf(
-     "\ncstereo: Error opening input file %s\n", 
+     "\ncstereo: Error opening input file %s\n",
       argv[3]);
       exit(3);
    }
 
    if((stereo_file = fopen(argv[4], "wt")) == NULL){
       printf(
-    "\ncstereo: Error opening output file %s\n", 
+    "\ncstereo: Error opening output file %s\n",
       argv[4]);
       exit(4);
    }
 
-   if((processed_pattern_file = 
+   if((processed_pattern_file =
       fopen(argv[5], "wt")) == NULL){
       printf(
-      "\ncstereo: Error opening temp file %s\n", 
+      "\ncstereo: Error opening temp file %s\n",
       argv[5]);
       exit(5);
    }
@@ -144,20 +140,20 @@ main(argc, argv)
 
    if((depth_file = fopen("dfile.txt", "rt")) == NULL){
       printf(
-     "\ncstereo: Error opening input file %s\n", 
+     "\ncstereo: Error opening input file %s\n",
       "dfile.txt");
       exit(3);
    }
 
    if((stereo_file = fopen("sfile.txt", "wt")) == NULL){
       printf(
-    "\ncstereo: Error opening output file %s\n", 
+    "\ncstereo: Error opening output file %s\n",
       "sfile.txt");
       exit(4);
    }
 
 
-   if((processed_pattern_file = 
+   if((processed_pattern_file =
       fopen("ppfile.txt", "wt")) == NULL){
       printf(
     "\ncstereo: Error opening temp file %s\n", "ppfile.txt");
@@ -169,28 +165,28 @@ main(argc, argv)
 
 #endif /* ifdef DEBUG_MODE */
 
-   
+
 
       /******************************************
       *
       *   This is the major loop of the program.
-      *   It reads one line at a time from the 
+      *   It reads one line at a time from the
       *   depth file, processes that one line,
       *   and writes the resulting pattern to the
       *   processed pattern file.
       *
       ******************************************/
 
-   while(fgets(depth_line, 
-               KONSTANT*width, 
+   while(fgets(depth_line,
+               KONSTANT*width,
                depth_file)){
-   
+
       fill_line(pattern, KONSTANT*width);
       fill_line(processed_pattern, KONSTANT*width);
 
-      initialize_pattern(pattern, 
-                         &current_width, 
-                         &max_width, 
+      initialize_pattern(pattern,
+                         &current_width,
+                         &max_width,
                          pattern_width,
                          &index);
 
@@ -203,11 +199,11 @@ main(argc, argv)
          *   and this character.
          *
          *******************************************/
-    
+
       last_character = depth_line[0];
 
       pp_index = 0;
-      
+
       for(j=0; j<width; j++){
          this_character = depth_line[j];
          if(this_character == '\n')
@@ -223,11 +219,11 @@ main(argc, argv)
 
          if(this_character < last_character)
             lengthen_pattern(
-               (last_character-this_character), 
-               pattern, &index, &current_width, 
+               (last_character-this_character),
+               pattern, &index, &current_width,
                &width, &max_width);
 
-         
+
 
             /****************************************
             *
@@ -238,22 +234,22 @@ main(argc, argv)
             ****************************************/
 
          no_change(pattern, processed_pattern,
-                   pp_index, current_width, &index); 
+                   pp_index, current_width, &index);
          pp_index++;
-         
+
          last_character = depth_line[j];
 
       }  /* ends loop over j */
-      
+
       pdest    = strchr(processed_pattern, '\0');
       location = pdest - processed_pattern;
       processed_pattern[location] = '\n';
-      
-      fputs(processed_pattern, 
+
+      fputs(processed_pattern,
             processed_pattern_file);
       random_substitution(processed_pattern, width);
       fputs(processed_pattern, stereo_file);
-      
+
    }   /* ends the major loop */
 
    fclose(depth_file);
@@ -266,7 +262,7 @@ main(argc, argv)
    free(processed_pattern);
 
    return(111);
-   
+
 }  /* ends main                 */
 
 
@@ -279,7 +275,7 @@ main(argc, argv)
    *
    *   This funtion shortens the pattern by
    *   deleting an element from it.  For example,
-   *   if the input pattern is abcdefg, 
+   *   if the input pattern is abcdefg,
    *   the output pattern could be abcfg.
    *
    ***********************************************/
@@ -341,8 +337,8 @@ void shorten_pattern(size, pattern, index,
    *
    ***********************************************/
 
-void initialize_pattern(pattern, current_width, 
-                        max_width, pattern_width, 
+void initialize_pattern(pattern, current_width,
+                        max_width, pattern_width,
                         index)
    char pattern[];
    int *current_width,
@@ -378,7 +374,7 @@ void no_change(pattern, processed_pattern, pp_index,
    char *pattern, *processed_pattern;
    int  pp_index, current_width, *index;
 {
-   processed_pattern[pp_index] = 
+   processed_pattern[pp_index] =
       pattern[*index];
 
    *index = *index + 1;
@@ -419,7 +415,7 @@ void fill_line(line, length)
    *
    *   This funtion lengthens the pattern by
    *   inserting an element(s) from it.  For example,
-   *   if the input pattern is abcdefg, 
+   *   if the input pattern is abcdefg,
    *   the output pattern could be abcdefgh.
    *
    ***********************************************/
@@ -427,7 +423,7 @@ void fill_line(line, length)
 void lengthen_pattern(size, pattern, index,
                      current_width, width, max_width)
    char *pattern;
-   int  size, *index, *current_width, 
+   int  size, *index, *current_width,
         *width, *max_width;
 {
    char *temp_pattern;
@@ -437,12 +433,12 @@ void lengthen_pattern(size, pattern, index,
 
    for(i=0; i<(*width); i++)
       temp_pattern[i] = pattern[i];
-      
+
    fill_line(pattern, *width);
 
-   for(count=0, new_index=0; count<size; 
+   for(count=0, new_index=0; count<size;
        count++, new_index++)
-      pattern[new_index] = 
+      pattern[new_index] =
          count + *max_width + PATTERN_START;
 
    new_width = *current_width + size;
@@ -488,51 +484,51 @@ void random_substitution(processed_pattern, width)
    int  i, place;
 
    get_random_values(substitution_values);
-   
+
    for(i=0; i<(KONSTANT*width); i++){
       if(processed_pattern[i] != '\n'   &&
          processed_pattern[i] != '\0'){
          place = processed_pattern[i];
-         processed_pattern[i] = 
+         processed_pattern[i] =
             substitution_values[place];
-      }  /* ends if */         
+      }  /* ends if */
    }  /* ends loop over i */
-   
+
 }  /* ends random_substitution */
 
 
 
-                                 
+
 
    /***********************************************
    *
    *   get_random_values(...
    *
    *   This function fills array with random values.
-   *   The limit on the random values are from     
+   *   The limit on the random values are from
    *   PATTERN_START to PATTERN_END.
    *
    ***********************************************/
 
-void get_random_values(array)  
+void get_random_values(array)
    char array[];
 {
    int i, number;
 
 #ifdef NEVER
 these lines worked ok, they used all the printable
-characters from 0 through small z   
+characters from 0 through small z
    for(i=0; i<ASCII_SIZE; i++){
        number   = rand();
        number   = number % (PATTERN_END - PATTERN_START);
        number   = number + PATTERN_START;
        array[i] = number;
-   }  /* ends loop over i */     
+   }  /* ends loop over i */
 #endif
 
 #ifdef NEVER
 /* Let's try something different, only use the
-   characters 0-9 and A-Z 
+   characters 0-9 and A-Z
    0-9 are 48-57 decimal A-Z are 65-90 */
 
    for(i=0; i<ASCII_SIZE; i++){
@@ -542,11 +538,11 @@ characters from 0 through small z
        if(number > 57   &&   number < 65)
           number = number + 7;
        array[i] = number;
-   }  /* ends loop over i */     
+   }  /* ends loop over i */
 #endif
-   
+
 /* Let's try something different, only use the
-   characters A-Z 
+   characters A-Z
    A-Z are 65-90 */
 
    for(i=0; i<ASCII_SIZE; i++){
@@ -554,14 +550,14 @@ characters from 0 through small z
        number   = number % 26;
        number   = number + 65;
        array[i] = number;
-   }  /* ends loop over i */     
-   
+   }  /* ends loop over i */
+
 }  /* ends get_random_values */
 
 
 
 
-                                 
+
    /***********************************************
    *
    *  test_print_line(...

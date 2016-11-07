@@ -1,9 +1,6 @@
 /*
    adaline.c
 
-   Dwayne Phillips
-   February 1992
-
    The functions in this file implement the adaptive
    linear element - Adaline - and the alpha-LMS
    learning law.

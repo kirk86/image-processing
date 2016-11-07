@@ -1,5 +1,3 @@
-
-
        /******************************************************
        *
        *       file d:\cips\dft.c
@@ -14,7 +12,7 @@
        *          print_2d_real_im
        *
        *       Purpose:
-       *          These functions perform forward and 
+       *          These functions perform forward and
        *          inverse discrete Fourier transforms
        *          in 1 and 2 dimensions.  The basic algorithms
        *          are from "An Introduction to Digital
@@ -23,9 +21,6 @@
        *
        *       External Calls:
        *          none
-       *
-       *       Modifications:
-       *          05 February 1991 - created
        *
        *****************************************************/
 
@@ -50,7 +45,7 @@ short hi_pass[M][N] = {{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
 #define pie 3.1425927
 
 
-perform_fourier_transform(in_name, out_name, image1, 
+perform_fourier_transform(in_name, out_name, image1,
          image2, image3, image4, il, ie, ll, le)
    char   in_name[], out_name[];
    int	  il, ie, ll, le;
@@ -107,9 +102,9 @@ perform_fourier_transform(in_name, out_name, image1,
 
 
 /*
-      This is a simple print routine to 
+      This is a simple print routine to
       look at the 2D real and imaginary
-      for small M N 
+      for small M N
 */
 print_2d_real_im(a, b)
    short a[M][N], b[M][N];
@@ -146,9 +141,9 @@ print_2d_real(a)
 
 
 /*
-      This is a simple print routine to 
+      This is a simple print routine to
       look at the 1D real and imaginary
-      for small N 
+      for small N
 */
 
 print_real_im(a, b)
@@ -166,7 +161,7 @@ print_real_im(a, b)
 
 
 
-/*   
+/*
    This is the 1D forward DFT.
    This is the centered format.
    This runs from -COLS/2 to COLS/2 + 1
@@ -206,7 +201,7 @@ dft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the 1D reverse DFT.
    This is the centered format.
    This runs from -COLS/2 to COLS/2 + 1
@@ -246,7 +241,7 @@ invdft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the forward 2D DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1
@@ -300,7 +295,7 @@ printf(" m%2d", m);
                      /* you can probably separate the following
                         to increase speed */
                /**p  = 2. * pie * (n*u*M + m*v*N) / (N*M);**/
-			   p  = twopie_d * (n*um + mvn); 
+			   p  = twopie_d * (n*um + mvn);
                c  = cos(p);
                s  = sin(p);
 			      /* the y array is all zero is remove it
@@ -327,7 +322,7 @@ printf(" m%2d", m);
 
 
 
-/*   
+/*
    This is the reverse 2D DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1
@@ -413,7 +408,7 @@ calculate_magnitude(a, b)
 
 /*
    Replaces data by its ndim-dimensional discrete Fourier transform,
-   if isign is input as 1.  nn[1..ndim] is an integer array containing 
+   if isign is input as 1.  nn[1..ndim] is an integer array containing
    the lengths of each dimension (number of complex values), which
    MUST all be powers of 2.  data is a real array of length twive
    the product of these lengths, in which the data are stored as
@@ -433,7 +428,7 @@ fourn(data, nn, ndim, isign)
    short data[];
    int nn[], ndim, isign;
 {
-   int     i1, i2, i3, i2rev, i3rev, 
+   int     i1, i2, i3, i2rev, i3rev,
            ip1, ip2, ip3, ifp1, ifp2;
    int     ibit, idim, k1, k2, n, nprev, nrem, ntot;
    float   tempi, tempr;

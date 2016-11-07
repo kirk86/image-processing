@@ -29,8 +29,6 @@
        *              only if the sum was greater than
        *              the out_image.  This is in the
        *              function perform_convolution.
-       *          22 April 1998 - added capability to
-       *              work an entire image at one time.
        *
        *************************************************/
 

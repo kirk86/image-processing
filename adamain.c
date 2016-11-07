@@ -1,19 +1,15 @@
-
 /*
     adamain.c
 
-
-   Dwayne Phillips
-   February 1992
 
    This file contains the main calling
    routine for the Adaline (Adaptive
    Linear Element) program.
 
-  
-  
+
+
    Notes:
-  
+
    the inputs array x has N+2 elements
      x[0] is always 1
      then there are 1 to N elements
@@ -21,7 +17,7 @@
    the weights array w has N+1 elements
      w[0] is the bias
      then there are 1 to N elements
-  
+
 */
 
 

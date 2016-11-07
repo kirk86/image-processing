@@ -1,6 +1,3 @@
-
-
-
        /***************************************************************
        *
        *       file c:\lsu\color.c
@@ -11,8 +8,6 @@
        *       Purpose: This program sets the screen to any color
        *	   combination you want.
        *
-       *       Modifications:
-       *	   1 September 1996 - created
        *
        ***************************************************************/
 
@@ -29,7 +24,7 @@ main()
 {
 
    char response[80];
-   long  back, fore; 
+   long  back, fore;
    int   i, j, quit, not_done = 1;
 
    _setvideomode(_TEXTC80);
@@ -42,7 +37,7 @@ main()
       gets(response);
       fore = atoi(response);
 
-      if(back >= 0   &&  back <= 7   &&  
+      if(back >= 0   &&  back <= 7   &&
          fore >= 0   &&  fore <= 15  &&
          back != fore){
            _setbkcolor(back);

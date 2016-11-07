@@ -1,11 +1,7 @@
 /*
-   b.c
-   Dwayne Phillips
-
-   This program illustrates the breadth first 
+   This program illustrates the breadth first
    search algorithm.
 
-   April 1999
 
 */
 
@@ -96,7 +92,7 @@ int stupid = 99;
 
       /******************************************
       *
-      *   Search through the state space for 
+      *   Search through the state space for
       *   a solution.
       *
       ******************************************/
@@ -120,8 +116,8 @@ int stupid = 99;
 
             /************************************
             *
-            *   First try to go downwards.  If 
-            *   that is possible, don't expand 
+            *   First try to go downwards.  If
+            *   that is possible, don't expand
             *   anymore.
             *
             ************************************/
@@ -129,7 +125,7 @@ int stupid = 99;
          if(can_go_downwards(n)){
             down = new_down_node(&n, node_number);
             node_number++;
-            if(is_a_goal_node(down)) 
+            if(is_a_goal_node(down))
                solution_found(down, &searching);
             else
                add_to_list(&OPEN, &down);
@@ -137,7 +133,7 @@ int stupid = 99;
 
             /************************************
             *
-            *   If cannot go downwards, expand 
+            *   If cannot go downwards, expand
             *   left and right.
             *
             ************************************/
@@ -171,11 +167,11 @@ int stupid = 99;
 
 /************************************************/
 /*
-   Add a node to the end of the linked list 
+   Add a node to the end of the linked list
    pointed to be the head pointer.
 */
 
-void add_to_list(struct node **head, 
+void add_to_list(struct node **head,
                  struct node **new)
 {
    struct node *temp;
@@ -232,7 +228,7 @@ int no_solution_exists(int *searching)
 
 void print_node(struct node *a)
 {
-   printf("\nNode number=%d x=%d y=%d", 
+   printf("\nNode number=%d x=%d y=%d",
    a->number, a->x, a->y);
 }  /* ends print_node */
 
@@ -267,12 +263,12 @@ int can_go_downwards(struct node *n)
 
 /************************************************/
 
-struct node * new_down_node(struct node **n, 
+struct node * new_down_node(struct node **n,
                             int node_number)
 {
    struct node *result;
 
-   result = create_new_node(node_number, 
+   result = create_new_node(node_number,
                             (*n)->x, (*n)->y+1);
    result->parent = (*n);
    return(result);
@@ -291,7 +287,7 @@ int is_a_goal_node(struct node *n)
 
 /************************************************/
 
-int solution_found(struct node *end, 
+int solution_found(struct node *end,
                    int *searching)
 {
    struct node *temp;
@@ -340,12 +336,12 @@ int is_clear(struct node *n)
 
 /************************************************/
 
-struct node * new_left_node(struct node **n, 
+struct node * new_left_node(struct node **n,
                             int node_number)
 {
    struct node *result;
 
-   result = create_new_node(node_number, 
+   result = create_new_node(node_number,
                             (*n)->x-1, (*n)->y);
    result->parent = (*n);
    return(result);
@@ -353,12 +349,12 @@ struct node * new_left_node(struct node **n,
 
 /************************************************/
 
-struct node * new_right_node(struct node **n, 
+struct node * new_right_node(struct node **n,
                              int node_number)
 {
    struct node *result;
 
-   result = create_new_node(node_number, 
+   result = create_new_node(node_number,
                             (*n)->x+1, (*n)->y);
    result->parent = (*n);
    return(result);
@@ -367,7 +363,7 @@ struct node * new_right_node(struct node **n,
 
 /************************************************/
 
-struct node * create_new_node(int number, 
+struct node * create_new_node(int number,
                               int x, int y)
 {
    struct node *new;

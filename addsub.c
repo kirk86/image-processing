@@ -1,4 +1,3 @@
-
    /***********************************************
    *
    *       file addsub.c
@@ -13,9 +12,6 @@
    *
    *       External Calls:
    *          none
-   *
-   *       Modifications:
-   *          1 April 1992 - created
    *
    *************************************************/
 
@@ -41,7 +37,7 @@ add_image_array(the_image, out_image, rows, cols, max)
 
    for(i=0; i<rows; i++){
       for(j=0; j<cols; j++){
-         out_image[i][j] = the_image[i][j] + 
+         out_image[i][j] = the_image[i][j] +
                            out_image[i][j];
          if(out_image[i][j] > max)
             out_image[i][j] = max;
@@ -73,7 +69,7 @@ subtract_image_array(the_image, out_image, rows, cols)
 
    for(i=0; i<rows; i++){
       for(j=0; j<cols; j++){
-         out_image[i][j] = the_image[i][j] - 
+         out_image[i][j] = the_image[i][j] -
                            out_image[i][j];
          if(out_image[i][j] < 0)
             out_image[i][j] = 0;

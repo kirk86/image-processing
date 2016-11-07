@@ -1,5 +1,3 @@
-
-
    /************************************************
    *
    *       file create.c
@@ -16,12 +14,6 @@
    *             create_allocate_tif_file
    *             create_allocate_bmp_file
    *
-   *       Modifications:
-   *          7 Arpil 1992 - created
-   *         15 August 1998 - modified to work with
-   *              an entire image array at once.
-   *         18 September 1998 - modified to work with 
-   *              all I O routines in imageio.c.
    *
    *************************************************/
 
@@ -56,7 +48,7 @@ main(argc, argv)
       image_header.image_length   = l;
       image_header.image_width    = w;;
       image_header.strip_offset   = 1000;
-      create_allocate_tiff_file(argv[1], 
+      create_allocate_tiff_file(argv[1],
                                 &image_header);
    }  /* ends tif */
 
@@ -65,8 +57,8 @@ main(argc, argv)
       ok = 1;
       bmheader.height = l;
       bmheader.width  = w;
-      create_allocate_bmp_file(argv[1], 
-                               &bmp_file_header, 
+      create_allocate_bmp_file(argv[1],
+                               &bmp_file_header,
                                &bmheader);
    }  /* ends tif */
 

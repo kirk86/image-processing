@@ -1,5 +1,3 @@
-
-
        /******************************************************
        *
        *       file d:\cips\dftsave.c
@@ -16,7 +14,7 @@
        *          print_2d_real_im
        *
        *       Purpose:
-       *          These functions perform forward and 
+       *          These functions perform forward and
        *          inverse discrete Fourier transforms
        *          in 1 and 2 dimensions.  The basic algorithms
        *          are from "An Introduction to Digital
@@ -28,8 +26,6 @@
        *       External Calls:
        *          none
        *
-       *       Modifications:
-       *          05 February 1991 - created
        *
        *****************************************************/
 
@@ -41,7 +37,7 @@
 #define M 5
 #define pie 3.1425927
 
-float box1[M][N] = {{0., 0.,     0.,    0.,     0.}, 
+float box1[M][N] = {{0., 0.,     0.,    0.,     0.},
                     {0.,-1.0   ,-1.0  ,-1.0   , 0.},
                     {0.,-1.0   , 9.0  ,-1.0  ,  0.},
                     {0.,-1.0   ,-1.0  ,-1.0   , 0.},
@@ -127,9 +123,9 @@ main()
 
 
 /*
-      This is a simple print routine to 
+      This is a simple print routine to
       look at the 2D real and imaginary
-      for small M N 
+      for small M N
 */
 print_2d_real_im(a, b)
    float a[M][N], b[M][N];
@@ -149,9 +145,9 @@ print_2d_real_im(a, b)
 
 
 /*
-      This is a simple print routine to 
+      This is a simple print routine to
       look at the 1D real and imaginary
-      for small N 
+      for small N
 */
 
 print_real_im(a, b)
@@ -169,7 +165,7 @@ print_real_im(a, b)
 
 
 
-/*   
+/*
    This is the 1D forward DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1.
@@ -210,7 +206,7 @@ dft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the 1D reverse DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1.
@@ -248,7 +244,7 @@ invdft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the 1D forward DFT.
    This is the centered format.
    This runs from -N/2 to N/2.
@@ -286,7 +282,7 @@ odd_dft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the 1D reverse DFT.
    This is the centered format.
    This runs from -N/2 to N/2.
@@ -326,7 +322,7 @@ odd_invdft(x, y, r, i)
 
 
 
-/*   
+/*
    This is the forward 2D DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1
@@ -384,7 +380,7 @@ dft_2d(x, y, r, i)
 
 
 
-/*   
+/*
    This is the reverse 2D DFT.
    This is the centered format.
    This runs from -N/2 to N/2 + 1
@@ -444,10 +440,10 @@ invdft_2d(x, y, r, i)
 
 
 
-/*   
+/*
    This is the forward 2D DFT.
    This is the centered format.
-   This runs from -N/2 to N/2 
+   This runs from -N/2 to N/2
    This runs from -M/2 to M/2
    This works for MxN matrices
    where M and N are odd.
@@ -502,7 +498,7 @@ odd_dft_2d(x, y, r, i)
 
 
 
-/*   
+/*
    This is the reverse 2D DFT.
    This is the centered format.
    This runs from -N/2 to N/2
@@ -556,4 +552,3 @@ odd_invdft_2d(x, y, r, i)
    }  /* ends loop over v */
 
 }  /* ends odd_invdft_2d */
-

@@ -1,7 +1,3 @@
-
-
-
-
 #include "d:\cips\cips.h"
 
 #define EIGHT  '\010'
