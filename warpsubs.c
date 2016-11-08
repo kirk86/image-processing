@@ -1,55 +1,49 @@
-    /***********************************************
-    *
-    *    file warpsubs.c
-    *
-    *    Functions: This file contains
-    *       warp
-    *       warp_loop
-    *       bi_warp_loop
-    *       object_warp
-    *       full_warp_loop
-    *       bi_full_warp_loop
-    *       get_warp_options
-    *
-    *    Purpose:
-    *       These functions performs different
-    *       geometric operations.
-    *
-    *    External Calls:
-    *       geosubs.c - bilinear_interpolate
-    *
-    *
-    *
-    *
-    *
-    *
-    *************************************************/
+/***********************************************
+*
+*    file warpsubs.c
+*
+*    Functions: This file contains
+*       warp
+*       warp_loop
+*       bi_warp_loop
+*       object_warp
+*       full_warp_loop
+*       bi_full_warp_loop
+*       get_warp_options
+*
+*    Purpose:
+*       These functions performs different
+*       geometric operations.
+*
+*    External Calls:
+*       geosubs.c - bilinear_interpolate
+*
+*************************************************/
 
 #include "cips.h"
 
 #define FILL 150
 
-
-     /*******************************************
-     *
-     *   warp(..
-     *
-     *   This routine warps a rowsxcols section
-     *   of an image.  The il, ie parameters
-     *   specify which rowsxcols section of
-     *   the image to warp.  The x_control and
-     *   y_control parameters are the control
-     *   points inside that section.  Therefore,
-     *   x_control and y_control will always be
-     *   less the cols and rows.
-     *
-     *   The point coordinates are for the four
-     *   corners of a four side figure.
-     *      x1,y1     x2,y2
-     *
-     *      x4,y4     x3,y3
-     *
-     *******************************************/
+/*******************************************
+*
+*   warp(..
+*
+*   This routine warps a rowsxcols section
+*   of an image.  The il, ie parameters
+*   specify which rowsxcols section of
+*   the image to warp.  The x_control and
+*   y_control parameters are the control
+*   points inside that section.  Therefore,
+*   x_control and y_control will always be
+*   less the cols and rows.
+*
+*   The point coordinates are for the four
+*   corners of a four side figure.
+*      x1,y1     x2,y2
+*
+*      x4,y4     x3,y3
+*
+*******************************************/
 
 warp(the_image, out_image,
      x_control, y_control,
