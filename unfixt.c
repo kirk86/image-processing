@@ -1,25 +1,25 @@
-       /***********************************************
-       *
-       *   file fixt.c
-       *
-       *   Functions: This file contains
-       *      main
-       *
-       *   Purpose:
-       *      This file contains the main calling
-       *      routine to unfix thresholded images.
-       *      It takes an image, such as a 200 100
-       *      image, and makes it a 200 0 image.
-       *
-       *   External Calls:
-       *      gin.c - get_image_name
-       *      numcvrt.c - get_integer
-       *                  int_convert
-       *      tiff.c - read_tiff_header
-       *
-       *
-       *
-       *************************************************/
+/***********************************************
+*
+*   file fixt.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains the main calling
+*      routine to unfix thresholded images.
+*      It takes an image, such as a 200 100
+*      image, and makes it a 200 0 image.
+*
+*   External Calls:
+*      gin.c - get_image_name
+*      numcvrt.c - get_integer
+*                  int_convert
+*      tiff.c - read_tiff_header
+*
+*
+*
+*************************************************/
 
 #include "cips.h"
 
