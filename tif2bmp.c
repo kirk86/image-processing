@@ -1,25 +1,25 @@
-   /************************************************
-   *
-   *       file tif2bmp.c
-   *
-   *       Functions: This file contains
-   *           main
-   *
-   *       Purpose:
-   *          This program creates a bmp file
-   *          that is just like the input tiff file.
-   *
-   *       External Calls:
-   *          imageio.c
-   *             does_not_exist
-   *             get_image_size
-   *             read_image_array
-   *             write_image_array
-   *             free_image_array
-   *             create_allocate_bmp_file
-   *
-   *
-   *************************************************/
+/************************************************
+*
+*       file tif2bmp.c
+*
+*       Functions: This file contains
+*           main
+*
+*       Purpose:
+*          This program creates a bmp file
+*          that is just like the input tiff file.
+*
+*       External Calls:
+*          imageio.c
+*             does_not_exist
+*             get_image_size
+*             read_image_array
+*             write_image_array
+*             free_image_array
+*             create_allocate_bmp_file
+*
+*
+*************************************************/
 
 #include "cips.h"
 
