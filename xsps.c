@@ -1,37 +1,37 @@
-   /***********************************************
-   *
-   *  file spstereo.c
-   *
-   *  Functions: This file contains
-   *     main
-   *     zero_line
-   *     initialize_pattern
-   *     s_lengthen_pattern
-   *     no_change
-   *     shorten_pattern
-   *     special_substitution
-   *     read_image_line
-   *     write_image_line
-   *     test_print_line
-   *     equate_headers
-   *
-   *  Purpose:
-   *     This file contains a program that will
-   *     make pixel based repeating pattern
-   *     stereograms.
-   *
-   *  External Calls:
-   *     tiff.c - read_tiff_header
-   *     rtiff.c - read_tiff_image
-   *     wtiff.c - does_not_exist
-   *               round_off_image_size
-   *               create_allocate_tiff_file
-   *               write_array_into_tiff_image
-   *
-   *
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*  file spstereo.c
+*
+*  Functions: This file contains
+*     main
+*     zero_line
+*     initialize_pattern
+*     s_lengthen_pattern
+*     no_change
+*     shorten_pattern
+*     special_substitution
+*     read_image_line
+*     write_image_line
+*     test_print_line
+*     equate_headers
+*
+*  Purpose:
+*     This file contains a program that will
+*     make pixel based repeating pattern
+*     stereograms.
+*
+*  External Calls:
+*     tiff.c - read_tiff_header
+*     rtiff.c - read_tiff_image
+*     wtiff.c - does_not_exist
+*               round_off_image_size
+*               create_allocate_tiff_file
+*               write_array_into_tiff_image
+*
+*
+*
+*
+*************************************************/
 
 
 #include "cips.h"
