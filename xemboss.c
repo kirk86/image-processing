@@ -1,29 +1,29 @@
-    /*********************************************
-    *
-    *       file xemboss.c
-    *
-    *       Functions: This file contains
-    *          main
-    *          emboss_convolution
-    *          copy_array
-    *
-    *       Purpose:
-    *          This program performs embossing on
-    *          images using a collection of
-    *          convolution masks.
-    *
-    *       External Calls:
-    *          imageio.c - create_image_file
-    *                  read_image_array
-    *                  write_image_array
-    *                  get_image_size
-    *                  allocate_image_array
-    *                  free_image_array
-    *
-    *
-    *
-    *
-    ***********************************************/
+/*********************************************
+*
+*       file xemboss.c
+*
+*       Functions: This file contains
+*          main
+*          emboss_convolution
+*          copy_array
+*
+*       Purpose:
+*          This program performs embossing on
+*          images using a collection of
+*          convolution masks.
+*
+*       External Calls:
+*          imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  allocate_image_array
+*                  free_image_array
+*
+*
+*
+*
+***********************************************/
 
 #include "cips.h"
 
