@@ -1,4 +1,3 @@
-
    /***********************************************
    *
    *       file d:\cips\cips.c
@@ -105,7 +104,7 @@
 short the_image[ROWS][COLS];
 short out_image[ROWS][COLS];
 
-main()
+int main(int argc, char *argv[])
 {
 
    char caption[80],
@@ -865,11 +864,11 @@ main()
                   il, ie, ll, le, size);
          if(strncmp(low_high, "skewness", 3) == 0)
             skewness(name, name2, the_image, out_image,
-                     il, ie, ll, le, size, 
+                     il, ie, ll, le, size,
                      threshold, value);
          if(strncmp(low_high, "sigma", 3) == 0)
             sigma(name, name2, the_image, out_image,
-                  il, ie, ll, le, size, 
+                  il, ie, ll, le, size,
                   threshold, value);
 
         break;
@@ -881,21 +880,21 @@ main()
          get_image_name(name2);
          get_parameters(&il, &ie, &ll, &le);
          get_geometry_options(
-                     method, &angle, 
-                     &x_displace, &y_displace, 
-                     &x_stretch, &y_stretch, 
-                     &x_cross,  &y_cross, 
+                     method, &angle,
+                     &x_displace, &y_displace,
+                     &x_stretch, &y_stretch,
+                     &x_cross,  &y_cross,
                      &bilinear, &m, &n);
          if(strncmp(method, "geometry", 3) == 0)
-            geometry(name, name2, 
+            geometry(name, name2,
                   the_image, out_image,
-                  il, ie, ll, le, angle, 
+                  il, ie, ll, le, angle,
                   x_stretch, y_stretch,
                   x_displace, y_displace,
                   x_cross, y_cross,
                   bilinear);
          if(strncmp(method, "rotate", 3) == 0)
-            arotate(name, name2, 
+            arotate(name, name2,
                   the_image, out_image,
                   il, ie, ll, le,
                   angle, m, n, bilinear);
@@ -907,21 +906,21 @@ main()
          printf("\nCIPS> Enter output image name\n");
          get_image_name(name2);
          get_parameters(&il, &ie, &ll, &le);
-         get_warp_options(method, &bilinear, 
+         get_warp_options(method, &bilinear,
                  &x_control, &y_control,
-                 &x1, &y1, &x2, &y2, 
+                 &x1, &y1, &x2, &y2,
                  &x3, &y3, &x4, &y4);
          if(strncmp(method, "warp", 3) == 0)
-            warp(name, name2, 
+            warp(name, name2,
               the_image, out_image,
                  il, ie, ll, le,
                  x_control, y_control,
                  bilinear);
          if(strncmp(method, "object-warp", 3) == 0)
-            object_warp(name, name2, 
+            object_warp(name, name2,
                the_image, out_image,
-                  il, ie, ll, le, 
-                  x1, y1, x2, y2, 
+                  il, ie, ll, le,
+                  x1, y1, x2, y2,
                   x3, y3, x4, y4,
                   bilinear);
         break;
@@ -937,6 +936,7 @@ main()
 
      }               /* ends switch response */
   }               /* ends while not finished */
+     return 0;
 }               /* ends main                 */
 
 
@@ -994,17 +994,17 @@ show_menu()
  "\n\t\tThe C Image Processing System"
  "\n\t\tDwayne Phillips 1990-1993"
  "\nThese are your choices:"
- "\n1.  Display image header               13. Image rotate & flip" 
- "\n2.  Show image numbers                 14. Image scaling"    
- "\n3.  Print image numbers                15. Create blank image" 
+ "\n1.  Display image header               13. Image rotate & flip"
+ "\n2.  Show image numbers                 14. Image scaling"
+ "\n3.  Print image numbers                15. Create blank image"
  "\n4.  Display (EGA & VGA)                16. Image thresholding"
  "\n5.  Display or print using halftoning  17. Image segmentation"
  "\n6.  Print using dithering              18. Edge & gray segmentation"
  "\n7.  Print or display histogram         19. Boolean operations"
  "\n8.  Edge Detection                     20. Image overlay"
- "\n9.  Edge Enhancement                   21. Shape operations"  
+ "\n9.  Edge Enhancement                   21. Shape operations"
  "\n10. Image filtering                    22. Texture operations"
- "\n11. Image add & subtract               23. Geometry operations" 
+ "\n11. Image add & subtract               23. Geometry operations"
  "\n12 Image cut & paste                   24. Warp operations"
  "\n30. Exit system\n"
  "\nEnter choice __\b\b");

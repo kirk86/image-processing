@@ -31,12 +31,7 @@ struct ctstruct{
 };
 
 
-
-
-
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
    char  image_name[MAX_NAME_LENGTH];
    char  image_name2[MAX_NAME_LENGTH];
@@ -59,9 +54,10 @@ main(argc, argv)
       *
       ******************************************/
 
-   if(argc < 3){
-    printf("\n   usage: bmedge input-image output-image");
-    exit(0);
+   if(argc < 3)
+   {
+       printf("\n   usage: bmedge input-image output-image");
+       exit(0);
    }
    else
       printf("\n%s %s %s", argv[0], argv[1], argv[2]);
@@ -86,10 +82,9 @@ main(argc, argv)
    create_bmp_file_if_needed(image_name, image_name2, the_image);
 
    read_bmp_image(image_name, the_image);
-printf("\nMAIN> read %s", image_name);
+   printf("\nMAIN> read %s", image_name);
 
-   quick_edge(the_image,
-              out_image,
+   quick_edge(the_image, out_image,
               1,         /* threshold */
               90,        /* high      */
               bmheader.height,
@@ -97,16 +92,14 @@ printf("\nMAIN> read %s", image_name);
               bmheader.bitsperpixel);
 
 
-printf("\nMAIN> Back from the edge detector");
+   printf("\nMAIN> Back from the edge detector");
 
 
    write_bmp_image(image_name2, out_image);
-printf("\nMAIN> wrote %s", image_name2);
+   printf("\nMAIN> wrote %s", image_name2);
 
-   free_image_array(the_image,
-      image_header.image_length);
-   free_image_array(out_image,
-      image_header.image_length);
+   free_image_array(the_image, image_header.image_length);
+   free_image_array(out_image, image_header.image_length);
 
 }  /* ends main */
 

@@ -1,26 +1,30 @@
-      /************************************************************
-      *
-      *   file cips.h
-      *
-      *       Functions: This file contains declarations of the
-      *                  data structures used by the C image functions.
-      *
-      *   Purpose:
-      *      To declare data structures.
-      *
-      **********************************************************/
+ /************************************************************
+ *
+ *   file cips.h
+ *
+ *       Functions: This file contains declarations of the
+ *                  data structures used by the C image functions.
+ *
+ *   Purpose:
+ *      To declare data structures.
+ *
+ **********************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 /****#include <graph.h>*****/
-#include <io.h>
+#ifdef __APPLE__
+    #include <sys/uio.h>
+#else
+    #include <sys/io.h>
+#endif
 #include <fcntl.h>
-#include <dos.h>
+/* #include <dos.h> */
 #include <math.h>
-#include <malloc.h>
+/* #include <malloc.h> */
 #include <string.h>
-#include <sys\types.h>
-#include <sys\stat.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #define MAX_NAME_LENGTH       80
 #define ROWS                 100
