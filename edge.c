@@ -12,8 +12,6 @@
 *       Purpose:
 *          These functions implement several
 *          types of basic edge detection.
-*
-*
 *************************************************/
 
 #include <cips.h>
