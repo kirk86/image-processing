@@ -1,6 +1,3 @@
-
-
-
        /***************************************************************
        *
        *       file c:\lsu\blue.c
@@ -18,16 +15,13 @@
 
 
 
-#include "d:\msvc\include\stdio.h"
-#include "d:\msvc\include\graph.h"
-#include "d:\msvc\include\io.h"
+#include <stdio.h>
+/* #include "d:\msvc\include\graph.h" */
+#include <io.h>
 
 
-
-
-main()
+int main(int argc, char *argv[])
 {
-
    char string[80];
    int  i, j;
 

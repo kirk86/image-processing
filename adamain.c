@@ -1,4 +1,4 @@
-/*
+/**
     adamain.c
 
 
@@ -17,19 +17,16 @@
    the weights array w has N+1 elements
      w[0] is the bias
      then there are 1 to N elements
-
 */
 
 
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+/* #include <malloc.h> */
 
 
-main(argc, argv)
-  int argc;
-  char *argv[];
+int main(int argc, char *argv[])
 {
    char  inputs_file[80], weights_file[80];
    FILE  *inputs, *weights;
@@ -40,7 +37,8 @@ main(argc, argv)
    long *w, *x, N;
 
 
-   if(argc < 5){
+   if(argc < 5)
+   {
       printf("\n\nUsage: adaline inputs_file weights_file ");
       printf("size_of_vectors mode");
       printf("\n   where mode=t (training)");
@@ -70,10 +68,12 @@ main(argc, argv)
 
 
 
-      /* I N P U T   M O D E */
+      /* INPUT   MODE */
 
-   if(input_mode){
-      if( (inputs = fopen(inputs_file, "w+b")) == '\0'){
+   if(input_mode)
+   {
+      if( (inputs = fopen(inputs_file, "w+b")) == '\0')
+      {
          printf("\n\nERROR - cannot open input vector file\n");
          exit(0);
       }
@@ -84,17 +84,20 @@ main(argc, argv)
 
 
 
-      /*  T R A I N I N G   M O D E */
+      /*  TRAINING   MODE */
 
-   if(training_mode){
+   if(training_mode)
+   {
 
-      if( (inputs = fopen(inputs_file, "r+b")) == '\0'){
+      if( (inputs = fopen(inputs_file, "r+b")) == '\0')
+      {
          printf("\n\nERROR - cannot open input vector file\n");
          files_ok = 0;
          exit(0);
       }
 
-      if( (weights = fopen(weights_file, "w+b")) == '\0'){
+      if( (weights = fopen(weights_file, "w+b")) == '\0')
+      {
          printf("\n\nERROR - cannot open weights vector file\n");
          files_ok = 0;
          exit(0);
@@ -108,11 +111,13 @@ main(argc, argv)
 
 
 
-      /* W O R K I N G   M O D E */
+      /* WORKING   MODE */
 
-   if(working_mode){
+   if(working_mode)
+   {
 
-      if( (weights = fopen(weights_file, "r+b")) == '\0'){
+      if( (weights = fopen(weights_file, "r+b")) == '\0')
+      {
          printf("\n\nERROR - cannot open weights vector file\n");
          exit(0);
       }
@@ -123,6 +128,8 @@ main(argc, argv)
 
    free(x);
    free(w);
+
+   return 0;
 
 
 }  /* ends main */

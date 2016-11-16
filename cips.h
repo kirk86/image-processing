@@ -1,18 +1,12 @@
-
-
       /************************************************************
       *
-      *   file d:\cips\cips.h
+      *   file cips.h
       *
-      *       Functions: This file contains no functions. It
-      *          contains declarations of the data structures used
-      *          by the C Image Processing Systems CIPS.
+      *       Functions: This file contains declarations of the
+      *                  data structures used by the C image functions.
       *
       *   Purpose:
       *      To declare data structures.
-      *
-      *   Modifications:
-      *      June 1990 = created
       *
       **********************************************************/
 
@@ -42,25 +36,24 @@
 #define FORGET_IT            -50
 #define STACK_FILE     "c:stack"
 
-
       /*********************************************
       *
       *   N O T E
       *   P O R T A B I L I T Y   I S S U E
       *
-      *   The next two statements help port the 
+      *   The next two statements help port the
       *   system to non-Microsoft C compilers.
-      *   
+      *
       *   If you use Microsoft C, then you should
       *   #define MSC 1     and
       *   #undef  OTHERC
-      *   
+      *
       *   If you are using another C compiler or
-      *   are porting this to another type of 
-      *   machine, then you should 
+      *   are porting this to another type of
+      *   machine, then you should
       *   #undef  MSC
       *   #define OTHERC 1
-      *   
+      *
       *   Now you need to make changes in mymsc.c
       *
       **********************************************/

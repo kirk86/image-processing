@@ -3,9 +3,7 @@
 
 
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
    char  image_name[MAX_NAME_LENGTH];
    char  image_name2[MAX_NAME_LENGTH];
@@ -14,7 +12,7 @@ main(argc, argv)
    short **the_image, **out_image;
    short filter[3][3];
    struct   tiff_header_struct image_header;
-   
+
       /******************************************
       *
       *   Ensure the command line is correct.
@@ -32,15 +30,15 @@ main(argc, argv)
    strcpy(image_name2, argv[2]);
 
    if(does_not_exist(image_name)){
-      printf("\n%s does not exist, quitting", 
+      printf("\n%s does not exist, quitting",
           image_name);
       exit(1);
    }  /* ends if does_not_exist */
-     
+
 
 
    read_tiff_header(image_name, &image_header);
-   
+
       /******************************************
       *
       *   This is how to malloc a 2D array.
@@ -71,7 +69,7 @@ main(argc, argv)
 
 
 
-   
+
       /******************************************
       *
       *   I can read an image correctly
@@ -79,7 +77,7 @@ main(argc, argv)
       ******************************************/
 
    bread_tiff_image(image_name, the_image);
-   
+
    for(i=0; i<15; i++){
       printf("\n");
       for(j=0; j<15; j++){
@@ -94,7 +92,7 @@ main(argc, argv)
       *
       ******************************************/
    bcreate_file_if_needed(image_name, "stupid.tif", the_image);
-   
+
    for(i=0; i<15; i++){
       printf("\n");
       for(j=0; j<15; j++){
@@ -111,8 +109,8 @@ printf("\n3Holding");
       *   This is how to free a 2D array.
       *
       ******************************************/
-   
-   free_image_array(the_image, 
+
+   free_image_array(the_image,
       image_header.image_length);
 #ifdef NEVER
    for(i=0; i<image_header.image_length; i++)
@@ -141,9 +139,7 @@ short *allocate_image_array(length, width)
 }  /* ends allocate_image_array */
 #endif
 
-int free_image_array(the_array, length)
-   short **the_array;
-   long  length;
+int free_image_array(long **the_array, short length)
 {
    int i;
    for(i=0; i<length; i++)
@@ -217,14 +213,14 @@ bread_tiff_image(image_file_name, the_image)
 
    image_file = fopen(image_file_name, "rb");
    if(image_file != NULL){
-      position = fseek(image_file, 
-                       image_header.strip_offset, 
+      position = fseek(image_file,
+                       image_header.strip_offset,
                        SEEK_SET);
 
       for(i=0; i<image_header.image_length; i++){
 
-         bytes_read   = bread_line(image_file, the_image, 
-                                  i, &image_header, 
+         bytes_read   = bread_line(image_file, the_image,
+                                  i, &image_header,
                                   0, image_header.image_width);
       }  /* ends loop over i  */
 
@@ -244,16 +240,16 @@ bread_tiff_image(image_file_name, the_image)
        *
        *   read_line(...
        *
-       *   This function reads bytes from the TIFF 
-       *   file into a buffer, extracts the numbers 
-       *   from that buffer, and puts them into a 
-       *   ROWSxCOLS array of shorts. The process 
-       *   depends on the number of bits per pixel used 
+       *   This function reads bytes from the TIFF
+       *   file into a buffer, extracts the numbers
+       *   from that buffer, and puts them into a
+       *   ROWSxCOLS array of shorts. The process
+       *   depends on the number of bits per pixel used
        *   in the file (4 or 8).
        *
        **********************************************/
 
-bread_line(image_file, the_image, line_number, 
+bread_line(image_file, the_image, line_number,
           image_header, ie, le)
    FILE   *image_file;
    int    ie, le, line_number;
@@ -273,14 +269,14 @@ bread_line(image_file, the_image, line_number,
 
         /********************************************
         *
-        *   Use the number of bits per pixel to 
+        *   Use the number of bits per pixel to
         *   calculate how many bytes to read.
         *
         ********************************************/
 
    bytes_to_read = (le-ie)/
                    (8/image_header->bits_per_pixel);
-   bytes_read    = fread(buffer, 1, bytes_to_read, 
+   bytes_read    = fread(buffer, 1, bytes_to_read,
                          image_file);
 
    for(i=0; i<bytes_read; i++){
@@ -389,7 +385,7 @@ seek_to_end_of_line(image_file, le, image_header)
        *      does_not_exist
        *
        *  Purpose:
-       *     These functions create TIFF image files 
+       *     These functions create TIFF image files
        *     on disk and insert a ROWSxCOLS array
        *     into a tiff image already stored on disk.
        *
@@ -467,7 +463,7 @@ printf("\nBFIN> Created %s", out_name);
    ***************************************************/
 
 
-bcreate_allocate_tiff_file(file_name, 
+bcreate_allocate_tiff_file(file_name,
                           image_header)
    char   file_name[];
    struct tiff_header_struct *image_header;
@@ -580,7 +576,7 @@ bcreate_allocate_tiff_file(file_name,
    insert_short_into_buffer(buffer, 0, 256);
    insert_short_into_buffer(buffer, 2, 3);
    insert_short_into_buffer(buffer, 4, 1);
-   insert_short_into_buffer(buffer, 8, 
+   insert_short_into_buffer(buffer, 8,
                      image_header->image_width);
    bytes_written = fwrite(buffer, 1, 12, image_file);
    printf("\n wrote %d bytes", bytes_written);
@@ -590,7 +586,7 @@ bcreate_allocate_tiff_file(file_name,
    insert_short_into_buffer(buffer, 0, 257);
    insert_short_into_buffer(buffer, 2, 3);
    insert_short_into_buffer(buffer, 4, 1);
-   insert_short_into_buffer(buffer, 8, 
+   insert_short_into_buffer(buffer, 8,
                      image_header->image_length);
    bytes_written = fwrite(buffer, 1, 12, image_file);
    printf("\n wrote %d bytes", bytes_written);
@@ -600,7 +596,7 @@ bcreate_allocate_tiff_file(file_name,
    insert_short_into_buffer(buffer, 0, 258);
    insert_short_into_buffer(buffer, 2, 3);
    insert_short_into_buffer(buffer, 4, 1);
-   insert_short_into_buffer(buffer, 8, 
+   insert_short_into_buffer(buffer, 8,
                      image_header->bits_per_pixel);
    bytes_written = fwrite(buffer, 1, 12, image_file);
    printf("\n wrote %d bytes", bytes_written);
@@ -662,7 +658,7 @@ bcreate_allocate_tiff_file(file_name,
    insert_short_into_buffer(buffer, 0, 279);
    insert_short_into_buffer(buffer, 2, 4);
    insert_short_into_buffer(buffer, 4, 1);
-   insert_long_into_buffer(buffer, 8, 
+   insert_long_into_buffer(buffer, 8,
     (long)(image_header->image_length *
            image_header->image_width));
    bytes_written = fwrite(buffer, 1, 12, image_file);
@@ -781,7 +777,7 @@ bcreate_allocate_tiff_file(file_name,
    long_buffer[47] = '\0';
    long_buffer[48] = '\0';
    long_buffer[49] = '\0';
-   bytes_written = fwrite(long_buffer, 1, 50, 
+   bytes_written = fwrite(long_buffer, 1, 50,
                           image_file);
    printf("\n wrote %d bytes", bytes_written);
    printf("\n%s", long_buffer);
@@ -794,16 +790,16 @@ bcreate_allocate_tiff_file(file_name,
       *
       ****************************************/
 
-   printf("\n length is %ld", 
+   printf("\n length is %ld",
           image_header->image_length);
-   printf("\n width is %ld", 
+   printf("\n width is %ld",
           image_header->image_width);
 
    k = image_header->image_width;
 
    if(image_header->bits_per_pixel == 4)
       k = k/2;
-   
+
    image_buffer = (char  *) malloc(k * sizeof(char ));
 
    for(i=0; i<k; i++)
@@ -827,7 +823,7 @@ bcreate_allocate_tiff_file(file_name,
        *
        * write_array_into_tiff_file(...
        *
-       * This function takes an array of shorts and 
+       * This function takes an array of shorts and
        * writes them into an existing tiff image file.
        *
        **********************************************/
@@ -868,12 +864,12 @@ bwrite_tiff_image(image_file_name, array)
 
    image_file = fopen(image_file_name, "rb+");
    position   = fseek(image_file,
-                      image_header.strip_offset, 
+                      image_header.strip_offset,
                       SEEK_SET);
 
    for(i=0; i<image_header.image_length; i++){
       bytes_written = bwrite_line(image_file, array,
-                                  i, &image_header, 
+                                  i, &image_header,
                                   0, image_header.image_width);
    }  /* ends loop over i  */
 
@@ -888,16 +884,16 @@ bwrite_tiff_image(image_file_name, array)
        *
        *   write_line(...
        *
-       *   This function takes an array of shorts, 
-       *   extracts the numbers and puts them into 
-       *   a buffer, then writes this buffer into a 
-       *   tiff file on disk. The process depends on 
-       *   the number of bits per pixel used in the 
+       *   This function takes an array of shorts,
+       *   extracts the numbers and puts them into
+       *   a buffer, then writes this buffer into a
+       *   tiff file on disk. The process depends on
+       *   the number of bits per pixel used in the
        *   file (4 or 8).
        *
        **********************************************/
 
-bwrite_line(image_file, array, line_number, 
+bwrite_line(image_file, array, line_number,
            image_header, ie, le)
    FILE   *image_file;
    int    ie, le, line_number;
@@ -949,7 +945,7 @@ bwrite_line(image_file, array, line_number,
    }  /*  ends loop over i  */
 
 
-   bytes_written = fwrite(buffer, 1, bytes_to_write, 
+   bytes_written = fwrite(buffer, 1, bytes_to_write,
                           image_file);
 
    free(buffer);
@@ -1067,7 +1063,3 @@ does_not_exist(file_name)
    }
    return(result);
 }  /* ends does_not_exist */
-
-
-
-
