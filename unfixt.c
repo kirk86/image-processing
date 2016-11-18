@@ -17,22 +17,16 @@
 *                  int_convert
 *      tiff.c - read_tiff_header
 *
-*
-*
 *************************************************/
 
 #include "cips.h"
-
-
 
 short the_image[ROWS][COLS];
 short out_image[ROWS][COLS];
 unsigned long histogram[GRAY_LEVELS+1];
 long slopes[GRAY_LEVELS+1];
 
-main(argc, argv)
-   int argc;
-   char *argv[];
+int main(int argc, char *argv[])
 {
 
    char name[80], name2[80], response[80];
