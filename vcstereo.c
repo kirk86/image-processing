@@ -1,27 +1,27 @@
-   /***********************************************
-   *
-   *  file cstereo.c
-   *
-   *  Functions: This file contains
-   *     main
-   *     fill_line
-   *     initialize_pattern
-   *     lengthen_pattern
-   *     no_change
-   *     shorten_pattern
-   *     get_random_values
-   *     random_substitution
-   *     test_print_line
-   *
-   *  Purpose:
-   *     This file contains a program that will
-   *     make character based stereograms.
-   *
-   *  External Calls:
-   *     none
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*  file cstereo.c
+*
+*  Functions: This file contains
+*     main
+*     fill_line
+*     initialize_pattern
+*     lengthen_pattern
+*     no_change
+*     shorten_pattern
+*     get_random_values
+*     random_substitution
+*     test_print_line
+*
+*  Purpose:
+*     This file contains a program that will
+*     make character based stereograms.
+*
+*  External Calls:
+*     none
+*
+*
+*************************************************/
 
 /***** ALGORITHM NOTES
    width is the width of the input and output lines
