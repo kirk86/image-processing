@@ -1,5 +1,3 @@
-
-
 /**************************************************/
 /*PAGE Includes and Definitions
 
@@ -33,7 +31,6 @@
 #define FOOT_SPACE  10
 #define FOOTER       4
 #define DEBUG
-
 
 /* C. */
 char PAGES[PAGE_TYPE][LENGTH] = {
@@ -70,7 +67,7 @@ void end_toc_page();
 
 */
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
    char paged_file_name[LENGTH],
         string[LENGTH],
