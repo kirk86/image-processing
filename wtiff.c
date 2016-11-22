@@ -1,52 +1,39 @@
-       /**********************************************
-       *
-       *  file wtiff.c
-       *
-       *  Functions: This file contains
-       *      create_file_if_needed
-       *      create_allocate_tiff_file
-       *      write_array_into_tiff_image
-       *      write_line
-       *      insert_short_into_buffer
-       *      insert_long_into_buffer
-       *      round_off_image_size
-       *      does_not_exist
-       *
-       *  Purpose:
-       *     These functions create TIFF image files
-       *     on disk and insert a ROWSxCOLS array
-       *     into a tiff image already stored on disk.
-       *
-       *  External Calls:
-       *     rtiff.c - seek_to_first_line
-       *               seek_to_end_of_line
-       *     tiff.c - read_tiff_header
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *
-       *********************************************/
+/**********************************************
+*
+*  file wtiff.c
+*
+*  Functions: This file contains
+*      create_file_if_needed
+*      create_allocate_tiff_file
+*      write_array_into_tiff_image
+*      write_line
+*      insert_short_into_buffer
+*      insert_long_into_buffer
+*      round_off_image_size
+*      does_not_exist
+*
+*  Purpose:
+*     These functions create TIFF image files
+*     on disk and insert a ROWSxCOLS array
+*     into a tiff image already stored on disk.
+*
+*  External Calls:
+*     rtiff.c - seek_to_first_line
+*               seek_to_end_of_line
+*     tiff.c - read_tiff_header
+*********************************************/
 
 #include "cips.h"
 
-
-
-
-
-       /**********************************************
-       *
-       *   create_file_if_needed(...
-       *
-       *   This function creates a file on disk
-       *   if it does not exist.  The out file is
-       *   patterned after the in file.
-       *
-       ***********************************************/
+/**********************************************
+*
+*   create_file_if_needed(...
+*
+*   This function creates a file on disk
+*   if it does not exist.  The out file is
+*   patterned after the in file.
+*
+***********************************************/
 
 create_file_if_needed(in_name, out_name, out_image)
    char in_name[], out_name[];

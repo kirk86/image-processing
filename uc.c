@@ -1,9 +1,7 @@
-/*
+/**
    This program illustrates the uniform cost
    search algorithm.
-
 */
-
 
 #include <stdio.h>
 #include <stdlib.h>
