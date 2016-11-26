@@ -1,29 +1,25 @@
-   /***********************************************
-   *
-   *  file scstereo.c
-   *
-   *  Functions: This file contains
-   *     main
-   *     fill_line
-   *     initialize_pattern
-   *     s_lengthen_pattern
-   *     no_change
-   *     shorten_pattern
-   *     special_substitution
-   *     test_print_line
-   *
-   *  Purpose:
-   *     This file contains a program that will
-   *     make character based repeating pattern
-   *     stereograms.
-   *
-   *  External Calls:
-   *     none
-   *
-   *
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*  file scstereo.c
+*
+*  Functions: This file contains
+*     main
+*     fill_line
+*     initialize_pattern
+*     s_lengthen_pattern
+*     no_change
+*     shorten_pattern
+*     special_substitution
+*     test_print_line
+*
+*  Purpose:
+*     This file contains a program that will
+*     make character based repeating pattern
+*     stereograms.
+*
+*  External Calls:
+*     none
+*************************************************/
 
 #include "cips.h"
 
