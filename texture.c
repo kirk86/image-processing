@@ -1,31 +1,29 @@
-    /********************************************
-    *
-    *    file texture.c
-    *
-    *    Functions: This file contains
-    *       main
-    *
-    *    Purpose:
-    *       This file contains the main calling
-    *       routine for texture subroutines.
-    *
-    *    External Calls:
-    *      imageio.c - create_image_file
-    *                  read_image_array
-    *                  write_image_array
-    *                  get_image_size
-    *                  get_bitsperpixel
-    *                  allocate_image_array
-    *                  free_image_array
-    *       txtrsubs.c - sigma
-    *                    skewness
-    *                    amean
-    *                    adifference
-    *                    hurst
-    *                    compare
-    *
-    *
-    ********************************************/
+/********************************************
+*
+*    file texture.c
+*
+*    Functions: This file contains
+*       main
+*
+*    Purpose:
+*       This file contains the main calling
+*       routine for texture subroutines.
+*
+*    External Calls:
+*      imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  get_bitsperpixel
+*                  allocate_image_array
+*                  free_image_array
+*       txtrsubs.c - sigma
+*                    skewness
+*                    amean
+*                    adifference
+*                    hurst
+*                    compare
+********************************************/
 
 #include "cips.h"
 
