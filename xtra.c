@@ -1,60 +1,55 @@
-    /***********************************************
-    *
-    *    file txtrsubs.c
-    *
-    *    Functions: This file contains
-    *
-    *    Purpose:
-    *       These functions calculate measures
-    *       that help distinguish textures.
-    *
-    *    External Calls:
-    *       wtiff.c - round_off_image_size
-    *                 create_file_if_needed
-    *                 write_array_into_tiff_image
-    *       tiff.c - read_tiff_header
-    *       rtiff.c - read_tiff_image
-    *       edge.c - fix_edges
-    *
-    *
-    *
-    *
-    *************************************************/
-
+/***********************************************
+*
+*    file txtrsubs.c
+*
+*    Functions: This file contains
+*
+*    Purpose:
+*       These functions calculate measures
+*       that help distinguish textures.
+*
+*    External Calls:
+*       wtiff.c - round_off_image_size
+*                 create_file_if_needed
+*                 write_array_into_tiff_image
+*       tiff.c - read_tiff_header
+*       rtiff.c - read_tiff_image
+*       edge.c - fix_edges
+*
+*
+*
+*
+*************************************************/
 #include <cips.h>
-
-
-
-
-     /*******************************************
-     *
-     *   hurst(..
-     *
-     *   This routine performs the hurst operation.
-     *   Let's do this for a 7x7 area only first.
-     *
-     *   3x3 case
-     *       c b c
-	  *     d b a b d
-     *       c b c
-     *
-     *   5x5 case
-     *     f e d e f
-     *     e c b c e
-	  *     d b a b d
-     *     e c b c e
-     *     f e d e f
-     *
-     *   7x7 case
-     *       h g h
-     *     f e d e f
-     *   h e c b c e h
-	  *   g d b a b d g
-     *   h e c b c e h
-     *     f e d e f
-     *       h g h
-     *
-     *******************************************/
+/*******************************************
+*
+*   hurst(..
+*
+*   This routine performs the hurst operation.
+*   Let's do this for a 7x7 area only first.
+*
+*   3x3 case
+*       c b c
+     *     d b a b d
+*       c b c
+*
+*   5x5 case
+*     f e d e f
+*     e c b c e
+     *     d b a b d
+*     e c b c e
+*     f e d e f
+*
+*   7x7 case
+*       h g h
+*     f e d e f
+*   h e c b c e h
+     *   g d b a b d g
+*   h e c b c e h
+*     f e d e f
+*       h g h
+*
+*******************************************/
 
 hurst(in_name, out_name, the_image, out_image,
       il, ie, ll, le, size)
