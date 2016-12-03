@@ -1,6 +1,5 @@
 /*PAGE The Beginning */
-/*
-
+/**
 USAGE
       usage file.c -e -p out-file-name
       usage file.cpp -e -p out-file-name
