@@ -1,6 +1,4 @@
 /*****************************************************/
-/*****************************************************/
-
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,11 +14,9 @@
 #define END_OF_LIST   0x00
 #define SPACE          ' '
 #define VERSION
-
-/*****************************************************/
 /*****************************************************/
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
    int i, size, *x;
    size = atoi(argv[1]);
@@ -33,4 +29,5 @@ main(int argc, char *argv[])
          printf("%5d", x[i]);
    }
    free(x);
+   return 0
 }  /* ends main */
