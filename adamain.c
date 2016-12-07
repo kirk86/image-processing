@@ -1,12 +1,9 @@
 /**
     adamain.c
 
-
    This file contains the main calling
    routine for the Adaline (Adaptive
    Linear Element) program.
-
-
 
    Notes:
 
@@ -18,8 +15,6 @@
      w[0] is the bias
      then there are 1 to N elements
 */
-
-
 
 #include <stdio.h>
 #include <stdlib.h>
