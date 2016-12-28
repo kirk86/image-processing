@@ -1,7 +1,4 @@
-
 #include "cips.h"
-
-
 
 short **allocate_image_array(length, width)
    long  length, width;
@@ -20,10 +17,6 @@ short **allocate_image_array(length, width)
 
 }  /* ends allocate_image_array */
 
-
-
-
-
 int free_image_array(the_array, length)
    short **the_array;
    long  length;
@@ -35,39 +28,34 @@ int free_image_array(the_array, length)
 }  /* ends free_image_array */
 
 
-       /*********************************************
-       *
-       *  Functions: This file contains
-       *          read_tiff_image
-       *          read_line
-       *          seek_to_first_line
-       *          seek_to_end_of_line
-       *
-       *  Purpose:
-       *  These functions read a TIFF image and insert
-       *  the data into a ROWSxCOLS array of short.
-       *
-       *       NOTE: The fseek constants are
-       *             0=SEEK_SET = beginning of file
-       *             1=SEEK_CUR = current offset
-       *             2=SEEK_END = end of file
-       *
-       *  External Calls:
-       *  tiff.c - read_tiff_header
-       *
-       *  Modifications:
-       *       25 June 1990 - created
-       *       27 March 1993 - use fopen, fread, fseek
-       *           instead of the earlier open, read,
-       *           seek, etc.
-       *       21 April 1998 - modified to work with
-       *           an entire image at one time.
-       *
-       *
-       *
-       **********************************************/
-
-
+/*********************************************
+*
+*  Functions: This file contains
+*          read_tiff_image
+*          read_line
+*          seek_to_first_line
+*          seek_to_end_of_line
+*
+*  Purpose:
+*  These functions read a TIFF image and insert
+*  the data into a ROWSxCOLS array of short.
+*
+*       NOTE: The fseek constants are
+*             0=SEEK_SET = beginning of file
+*             1=SEEK_CUR = current offset
+*             2=SEEK_END = end of file
+*
+*  External Calls:
+*  tiff.c - read_tiff_header
+*
+*  Modifications:
+*       25 June 1990 - created
+*       27 March 1993 - use fopen, fread, fseek
+*           instead of the earlier open, read,
+*           seek, etc.
+*       21 April 1998 - modified to work with
+*           an entire image at one time.
+**********************************************/
 
 read_tiff_image(image_file_name, the_image)
       char   image_file_name[];
@@ -88,17 +76,17 @@ read_tiff_image(image_file_name, the_image)
 
    read_tiff_header(image_file_name, &image_header);
 
-      /***********************************************
-      *
-      *   Procedure:
-      *   Seek to the strip offset where the data begins.
-      *   Seek to the first line you want.
-      *   Loop over the lines you want to read:
-      *      Seek to the first element of the line.
-      *      Read the line.
-      *      Seek to the end of the data in that line.
-      *
-      ************************************************/
+/***********************************************
+*
+*   Procedure:
+*   Seek to the strip offset where the data begins.
+*   Seek to the first line you want.
+*   Loop over the lines you want to read:
+*      Seek to the first element of the line.
+*      Read the line.
+*      Seek to the end of the data in that line.
+*
+************************************************/
 
    image_file = fopen(image_file_name, "rb");
    if(image_file != NULL){
@@ -122,21 +110,18 @@ read_tiff_image(image_file_name, the_image)
 
 }  /*  ends read_tiff_image */
 
-
-
-
-       /**********************************************
-       *
-       *   read_line(...
-       *
-       *   This function reads bytes from the TIFF 
-       *   file into a buffer, extracts the numbers 
-       *   from that buffer, and puts them into a 
-       *   ROWSxCOLS array of shorts. The process 
-       *   depends on the number of bits per pixel used 
-       *   in the file (4 or 8).
-       *
-       **********************************************/
+/**********************************************
+*
+*   read_line(...
+*
+*   This function reads bytes from the TIFF 
+*   file into a buffer, extracts the numbers 
+*   from that buffer, and puts them into a 
+*   ROWSxCOLS array of shorts. The process 
+*   depends on the number of bits per pixel used 
+*   in the file (4 or 8).
+*
+**********************************************/
 
 read_line(image_file, the_image, line_number, 
           image_header, ie, le)
