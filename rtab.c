@@ -16,11 +16,9 @@
 
 */
 
-
-
 #include "d:\c600\include\stdio.h"
 
-main(argc, argv)
+int main(argc, argv)
   int argc;
   char *argv[];
 {
@@ -69,6 +67,7 @@ main(argc, argv)
   if(argc == 3)
     fclose(output_file);
 
+  return 0
 }  /* ends main */
 
 
