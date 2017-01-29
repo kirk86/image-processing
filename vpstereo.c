@@ -1,34 +1,32 @@
-   /***********************************************
-   *
-   *  file pstereo.c
-   *
-   *  Functions: This file contains
-   *     main
-   *     zero_line
-   *     initialize_pattern
-   *     lengthen_pattern
-   *     no_change
-   *     shorten_pattern
-   *     get_random_values
-   *     random_substitution
-   *     read_image_line
-   *     write_image_line
-   *     test_print_line
-   *
-   *  Purpose:
-   *     This file contains a program that will
-   *     make pixel based random dot stereograms.
-   *
-   *  External Calls:
-   *     tiff.c - read_tiff_header
-   *     rtiff.c - read_tiff_image
-   *     wtiff.c - does_not_exist
-   *               round_off_image_size
-   *               create_allocate_tiff_file
-   *               write_array_into_tiff_image
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*  file pstereo.c
+*
+*  Functions: This file contains
+*     main
+*     zero_line
+*     initialize_pattern
+*     lengthen_pattern
+*     no_change
+*     shorten_pattern
+*     get_random_values
+*     random_substitution
+*     read_image_line
+*     write_image_line
+*     test_print_line
+*
+*  Purpose:
+*     This file contains a program that will
+*     make pixel based random dot stereograms.
+*
+*  External Calls:
+*     tiff.c - read_tiff_header
+*     rtiff.c - read_tiff_image
+*     wtiff.c - does_not_exist
+*               round_off_image_size
+*               create_allocate_tiff_file
+*               write_array_into_tiff_image
+*************************************************/
 
 /***** ALGORITHM NOTES
    width is the width of the input and output lines
