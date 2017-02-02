@@ -1,34 +1,32 @@
-   /***********************************************
-   *
-   *   file mainas.c
-   *
-   *   Functions: This file contains
-   *      main
-   *
-   *   Purpose:
-   *      This file contains the main calling
-   *      routine in an image addition and subtraction
-   *      program.
-   *
-   *   External Calls:
-   *      imageio.c - create_image_file
-   *                  read_image_array
-   *                  write_image_array
-   *                  get_image_size
-   *                  get_bitsperpixel
-   *                  allocate_image_array
-   *                  free_image_array
-   *                  does_not_exist
-   *                  are_not_same_size
-   *      baddsub.c - add_image_array
-   *                  subtract_image_array
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*   file mainas.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains the main calling
+*      routine in an image addition and subtraction
+*      program.
+*
+*   External Calls:
+*      imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  get_bitsperpixel
+*                  allocate_image_array
+*                  free_image_array
+*                  does_not_exist
+*                  are_not_same_size
+*      baddsub.c - add_image_array
+*                  subtract_image_array
+*
+*
+*************************************************/
 
 #include "cips.h"
-
-
 
 main(argc, argv)
    int  argc;
