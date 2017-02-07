@@ -1,38 +1,36 @@
-   /***********************************************
-   *
-   *  file tcommsub.c
-   *
-   *  Functions: This file contains
-   *     read_comments
-   *     insert_comments
-   *
-   *  Purpose:
-   *     This file contains subroutines that will
-   *     read the comments in a TIFF header and
-   *     insert comments into a TIFF header.
-   *
-   *  External Calls:
-   *     tiff.c - read_tiff_header
-   *     rtiff.c - extract_long_from_buffer
-   *               extract_short_from_buffer
-   *     wtiff.c - insert_long_into_buffer
-   *               insert_short_into_buffer
-   *
-   *
-   *************************************************/
-
-
+/***********************************************
+*
+*  file tcommsub.c
+*
+*  Functions: This file contains
+*     read_comments
+*     insert_comments
+*
+*  Purpose:
+*     This file contains subroutines that will
+*     read the comments in a TIFF header and
+*     insert comments into a TIFF header.
+*
+*  External Calls:
+*     tiff.c - read_tiff_header
+*     rtiff.c - extract_long_from_buffer
+*               extract_short_from_buffer
+*     wtiff.c - insert_long_into_buffer
+*               insert_short_into_buffer
+*
+*
+*************************************************/
 #include "cips.h"
 
-   /*************************************************
-   *
-   *   read_comments(...
-   *
-   *   This function reads the comments out of a
-   *   TIFF file header and displays them on the
-   *   screen.
-   *
-   **************************************************/
+/*************************************************
+*
+*   read_comments(...
+*
+*   This function reads the comments out of a
+*   TIFF file header and displays them on the
+*   screen.
+*
+**************************************************/
 
 read_comments(file_name, all_comments)
    char all_comments[], file_name[];

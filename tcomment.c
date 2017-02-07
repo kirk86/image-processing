@@ -1,28 +1,24 @@
-   /***********************************************
-   *
-   *  file tcomment.c
-   *
-   *  Functions: This file contains
-   *     main
-   *
-   *  Purpose:
-   *     This is the main calling program for
-   *     subroutines that read comments from
-   *     a TIFF header and insert comments into
-   *     a TIFF header.
-   *
-   *  External Calls:
-   *     tcommsub.c - read_comments
-   *                  insert_comments
-   *
-   *
-   *************************************************/
-
+/***********************************************
+*
+*  file tcomment.c
+*
+*  Functions: This file contains
+*     main
+*
+*  Purpose:
+*     This is the main calling program for
+*     subroutines that read comments from
+*     a TIFF header and insert comments into
+*     a TIFF header.
+*
+*  External Calls:
+*     tcommsub.c - read_comments
+*                  insert_comments
+*
+*
+*************************************************/
 
 #include "cips.h"
-
-
-
 
 main(argc, argv)
    char *argv[];

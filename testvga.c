@@ -16,8 +16,6 @@ int main(int argc, char *argv[])
       for(j=0; j<200; j++)
 	 my_set_pixel(i, j, 12 + j/5);
 
-
-
 /**********
 
    for(i=0; i<400; i++){
