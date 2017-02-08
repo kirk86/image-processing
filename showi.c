@@ -1,30 +1,30 @@
-   /***********************************************
-   *
-   *   file showi.c
-   *
-   *   Functions: This file contains
-   *      main
-   *      show_screen
-   *      is_in_image
-   *
-   *   Purpose:
-   *      This file contains the program
-   *      that shows image numbers on the screen.
-   *
-   *   External Calls:
-   *      imageio.c - get_image_size
-   *                  read_image_array
-   *                  allocate_image_array
-   *                  free_image_array
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*   file showi.c
+*
+*   Functions: This file contains
+*      main
+*      show_screen
+*      is_in_image
+*
+*   Purpose:
+*      This file contains the program
+*      that shows image numbers on the screen.
+*
+*   External Calls:
+*      imageio.c - get_image_size
+*                  read_image_array
+*                  allocate_image_array
+*                  free_image_array
+*
+*
+*************************************************/
 
 #include "cips.h"
 #define  SHEIGHT 20
 #define  SWIDTH  15
 
-main(argc, argv)
+int main(argc, argv)
    int argc;
    char *argv[];
 {
@@ -96,6 +96,7 @@ main(argc, argv)
    }  /* ends while not_done */
 
    free_image_array(the_image, height);
+   return 0;
 
 }  /* ends main */
 
