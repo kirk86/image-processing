@@ -1,32 +1,31 @@
-   /************************************************
-   *
-   *       file himage.c
-   *
-   *       Functions: This file contains
-   *           main
-   *           vline
-   *           hline
-   *
-   *       Purpose:
-   *          This program calculates the histogram
-   *          of an image and puts the picture of
-   *          that histogram in an output image.
-   *
-   *       External Calls:
-   *          imageio.c
-   *             does_not_exist
-   *             create_allocate_tiff_file
-   *             create_allocate_bmp_file
-   *             get_image_size
-   *             allocate_image_array
-   *             free_image_array
-   *             read_image_array
-   *             write_image_array
-   *          hist.c
-   *             calculate_histogram
-   *
-   *
-   *************************************************/
+ /************************************************
+ *
+ *       file himage.c
+ *
+ *       Functions: This file contains
+ *           main
+ *           vline
+ *           hline
+ *
+ *       Purpose:
+ *          This program calculates the histogram
+ *          of an image and puts the picture of
+ *          that histogram in an output image.
+ *
+ *       External Calls:
+ *          imageio.c
+ *             does_not_exist
+ *             create_allocate_tiff_file
+ *             create_allocate_bmp_file
+ *             get_image_size
+ *             allocate_image_array
+ *             free_image_array
+ *             read_image_array
+ *             write_image_array
+ *          hist.c
+ *             calculate_histogram
+ *
+ *************************************************/
 
 #include "cips.h"
 
