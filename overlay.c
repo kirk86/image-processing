@@ -1,40 +1,40 @@
-    /*********************************************
-    *
-    *       file overlay.c
-    *
-    *       Functions: This file contains
-    *          non_zero_overlay
-    *          zero_overlay
-    *          greater_overlay
-    *          less_overlay
-    *          average_overlay
-    *
-    *       Purpose:
-    *          These functions implement the
-    *          functions that overlay one image
-    *          on top of another image.
-    *
-    *       External Calls:
-    *          none
-    *
-    *
-    *********************************************/
+/*********************************************
+*
+*       file overlay.c
+*
+*       Functions: This file contains
+*          non_zero_overlay
+*          zero_overlay
+*          greater_overlay
+*          less_overlay
+*          average_overlay
+*
+*       Purpose:
+*          These functions implement the
+*          functions that overlay one image
+*          on top of another image.
+*
+*       External Calls:
+*          none
+*
+*
+*********************************************/
 
 
 #include "cips.h"
 
 
 
-   /**********************************************
-   *
-   *   non_zero_overlay(...
-   *
-   *   This function overlays in1 on top of in2
-   *   and writes the result to the output image.
-   *   It writes any non-zero pixel from in1 on top
-   *   of in2.
-   *
-   ***********************************************/
+/**********************************************
+*
+*   non_zero_overlay(...
+*
+*   This function overlays in1 on top of in2
+*   and writes the result to the output image.
+*   It writes any non-zero pixel from in1 on top
+*   of in2.
+*
+***********************************************/
 
 non_zero_overlay(the_image, out_image,
                  rows, cols)
