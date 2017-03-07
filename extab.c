@@ -7,7 +7,6 @@
    if no output file given, send to screen
 */
 
-
 #include <stdio.h>
 #include <string.h>
 
