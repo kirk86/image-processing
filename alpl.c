@@ -1,5 +1,3 @@
-
-
 #include "d:\c600\include\stdio.h"
 #include "d:\c600\include\stdlib.h"
 #include "d:\c600\include\malloc.h"
@@ -34,9 +32,6 @@ struct code_struct
    struct code_struct *next_unit;
    struct code_struct *sub_unit;
 };
-
-
-
 
 main(argc, argv)
    char *argv[];
