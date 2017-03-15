@@ -1,14 +1,9 @@
 /*
    checkout.c
    The Revision Control System
-
-   Dwayne Phillips
-   November1991
 */
 
-
 #include "rcs.h"
-
 
 main(argc, argv)
    int argc;
