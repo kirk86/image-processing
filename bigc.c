@@ -1,8 +1,5 @@
 #include "cips.h"
 
-
-
-
 int main(int argc, char *argv[])
 {
    char  image_name[MAX_NAME_LENGTH];
