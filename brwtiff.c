@@ -48,13 +48,6 @@ int free_image_array(the_array, length)
 *  External Calls:
 *  tiff.c - read_tiff_header
 *
-*  Modifications:
-*       25 June 1990 - created
-*       27 March 1993 - use fopen, fread, fseek
-*           instead of the earlier open, read,
-*           seek, etc.
-*       21 April 1998 - modified to work with
-*           an entire image at one time.
 **********************************************/
 
 read_tiff_image(image_file_name, the_image)
