@@ -1,26 +1,25 @@
-    /************************************************
-    *
-    *   file ilabel.c
-    *
-    *   Functions: This file contains
-    *       main
-    *
-    *   Purpose:
-    *      This program writes simple block letters
-    *      the an image file.  You can use these
-    *      as labels for other images.
-    *
-    *   External Calls:
-    *      imageio.c - create_image_file
-    *                  read_image_array
-    *                  write_image_array
-    *                  get_image_size
-    *                  allocate_image_array
-    *                  free_image_array
-    *
-    *
-    *************************************************/
-
+/************************************************
+*
+*   file ilabel.c
+*
+*   Functions: This file contains
+*       main
+*
+*   Purpose:
+*      This program writes simple block letters
+*      the an image file.  You can use these
+*      as labels for other images.
+*
+*   External Calls:
+*      imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  allocate_image_array
+*                  free_image_array
+*
+*
+*************************************************/
 
 #include "cips.h"
 
