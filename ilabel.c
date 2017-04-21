@@ -18,7 +18,6 @@
 *                  allocate_image_array
 *                  free_image_array
 *
-*
 *************************************************/
 
 #include "cips.h"

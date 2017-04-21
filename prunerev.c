@@ -4,9 +4,7 @@
 
 */
 
-
 #include "rcs.h"
-
 
 main(argc, argv)
    int argc;
