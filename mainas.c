@@ -22,8 +22,6 @@
 *                  are_not_same_size
 *      baddsub.c - add_image_array
 *                  subtract_image_array
-*
-*
 *************************************************/
 
 #include "cips.h"
