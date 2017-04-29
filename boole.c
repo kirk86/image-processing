@@ -1,47 +1,42 @@
-
-
-    /***********************************************
-    *
-    *       file boole.c
-    *
-    *       Functions: This file contains
-    *          and_image
-    *          or_image
-    *          xor_image
-    *          nand_image
-    *          nor_image
-    *          not_image
-    *
-    *       Purpose:
-    *          These functions implement the basic
-    *          Boolean algebra functions AND, OR,
-    *          XOR, NAND, NOR, and NOT.
-    *
-    *       External Calls:
-    *          none
-    *
-    *       Modifications:
-    *          3 March 1993 - created
-    *         22 August 1998 - modified to work on 
-    *              entire images at once.
-    *
-    ***********************************************/
-
+/***********************************************
+*
+*       file boole.c
+*
+*       Functions: This file contains
+*          and_image
+*          or_image
+*          xor_image
+*          nand_image
+*          nor_image
+*          not_image
+*
+*       Purpose:
+*          These functions implement the basic
+*          Boolean algebra functions AND, OR,
+*          XOR, NAND, NOR, and NOT.
+*
+*       External Calls:
+*          none
+*
+*       Modifications:
+*          3 March 1993 - created
+*         22 August 1998 - modified to work on 
+*              entire images at once.
+*
+***********************************************/
 
 #include "cips.h"
 
-
-
-   /************************************************
-   *
-   *   and_image(...
-   *
-   *   This function performs the Boolean AND 
-   *   operation.  The output image = in1 AND in2.
-   *   This works for 0 non-zero images.  If both
-   *   in1 and in2 are non-zero, the output = in1.
-   *
-   *************************************************/
+/************************************************
+*
+*   and_image(...
+*
+*   This function performs the Boolean AND 
+*   operation.  The output image = in1 AND in2.
+*   This works for 0 non-zero images.  If both
+*   in1 and in2 are non-zero, the output = in1.
+*
+*************************************************/
 
 and_image(the_image, out_image,
           rows, cols)
