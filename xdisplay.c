@@ -22,11 +22,6 @@
    *               perform_histogram_equalization
    *               display_histogram
    *
-   *
-   *
-   *
-   *
-   *
    ***************************************************/
 
 
