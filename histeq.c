@@ -1,27 +1,25 @@
-   /***********************************************
-   *
-   *   file histeq.c
-   *
-   *   Functions: This file contains
-   *      main
-   *
-   *   Purpose:
-   *      This file contains the main calling
-   *      routine that performs histogram
-   *      equalization.
-   *
-   *   External Calls:
-   *      imageio.c - create_image_file
-   *                  read_image_array
-   *                  write_image_array
-   *                  get_image_size
-   *                  allocate_image_array
-   *                  free_image_array
-   *      hist.c - calculate_histogram
-   *               perform_histogram_equalization
-   *
-   *
-   *************************************************/
+/***********************************************
+*
+*   file histeq.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This file contains the main calling
+*      routine that performs histogram
+*      equalization.
+*
+*   External Calls:
+*      imageio.c - create_image_file
+*                  read_image_array
+*                  write_image_array
+*                  get_image_size
+*                  allocate_image_array
+*                  free_image_array
+*      hist.c - calculate_histogram
+*               perform_histogram_equalization
+*************************************************/
 
 #include "cips.h"
 
