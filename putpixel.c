@@ -1,4 +1,3 @@
-
 put_pixel(int ppx, int ppy, int color)
 {
    _asm

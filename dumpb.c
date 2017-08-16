@@ -1,5 +1,4 @@
 /***********************************************
-*
 *   file dumpi.c
 *
 *   Functions: This file contains

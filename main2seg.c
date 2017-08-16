@@ -1,30 +1,30 @@
-       /***********************************************
-       *
-       *   file main2seg.c
-       *
-       *   Functions: This file contains
-       *      main
-       *
-       *   Purpose:
-       *      This is a calling program that calls
-       *      the three new segmentation techniques
-       *      discussed in Image Processing part 10.
-       *
-       *   External Calls:
-       *      imageio.c - does_not_exist
-       *                  get_image_size
-       *                  get_bitsperpixel
-       *                  allocate_image_array
-       *                  free_image_array
-       *                  create_file_if_needed
-       *                  read_image_array
-       *                  write_image_array
-       *      segment2.c - edge_region
-       *                   gray_shade_region
-       *                   edge_gray_shade_region
-       *
-       *
-       ***********************************************/
+/***********************************************
+*
+*   file main2seg.c
+*
+*   Functions: This file contains
+*      main
+*
+*   Purpose:
+*      This is a calling program that calls
+*      the three new segmentation techniques
+*      discussed in Image Processing part 10.
+*
+*   External Calls:
+*      imageio.c - does_not_exist
+*                  get_image_size
+*                  get_bitsperpixel
+*                  allocate_image_array
+*                  free_image_array
+*                  create_file_if_needed
+*                  read_image_array
+*                  write_image_array
+*      segment2.c - edge_region
+*                   gray_shade_region
+*                   edge_gray_shade_region
+*
+*
+***********************************************/
 
 #include "cips.h"
 

@@ -1,30 +1,30 @@
-    /***********************************************
-    *
-    *       file scale.c
-    *
-    *       Functions: This file contains
-    *          zoom_image_array
-    *          shrink_image_array
-    *          interpolate_pixel
-    *          average_pixel
-    *          median_pixel
-    *          get_scaling_options
-    *          blank_image_array
-    *
-    *       Purpose:
-    *          These functions implement image array
-    *          zooming (enlarging) and shrinking.
-    *
-    *       External Calls:
-    *          wtiff.c - round_off_image_size
-    *                    create_file_if_needed
-    *                    write_array_into_tiff_image
-    *          tiff.c - read_tiff_header
-    *          rtiff.c - read_tiff_image
-    *          numcvrt.c - get_integer
-    *          filter.c - median_of
-    *
-    *************************************************/
+/***********************************************
+*
+*       file scale.c
+*
+*       Functions: This file contains
+*          zoom_image_array
+*          shrink_image_array
+*          interpolate_pixel
+*          average_pixel
+*          median_pixel
+*          get_scaling_options
+*          blank_image_array
+*
+*       Purpose:
+*          These functions implement image array
+*          zooming (enlarging) and shrinking.
+*
+*       External Calls:
+*          wtiff.c - round_off_image_size
+*                    create_file_if_needed
+*                    write_array_into_tiff_image
+*          tiff.c - read_tiff_header
+*          rtiff.c - read_tiff_image
+*          numcvrt.c - get_integer
+*          filter.c - median_of
+*
+*************************************************/
 
 #include "cips.h"
 
